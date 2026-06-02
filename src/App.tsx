@@ -3,8 +3,7 @@ import {
   Send, 
   Trash2, 
   X,
-  Palette,
-  Sparkles
+  Palette
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -23,14 +22,7 @@ interface Message {
   isImageRequested?: boolean; // Controls whether image is revealed
 }
 
-const SUGGESTIONS = [
-  "Quem foi Cândido Portinari? 🎨",
-  "Pinte sobre Girassóis de Van Gogh 🌻",
-  "Quem pintou o Abaporu? 🗺️",
-  "O que é o Cubismo de Picasso? 🟩",
-  "Quem foi Tarsila do Amaral? 🌸",
-  "Gênios do Renascimento com Da Vinci 🚀"
-];
+// Sugestões removidas para reduzir o tamanho vertical da tela
 
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -175,10 +167,10 @@ export default function App() {
           </button>
         </header>
 
-        {/* Custom scrollbar Chat area */}
+        {/* Custom scrollbar Chat area with optimized height */}
         <div 
           id="chat"
-          className="h-[450px] overflow-y-auto bg-[rgba(15,_52,_96,_0.4)] p-5 rounded-[20px] mb-5 flex flex-col gap-[15px] scroll-behavior-smooth custom-scrollbar"
+          className="h-[320px] overflow-y-auto bg-[rgba(15,_52,_96,_0.4)] p-5 rounded-[20px] mb-5 flex flex-col gap-[15px] scroll-behavior-smooth custom-scrollbar"
         >
           <AnimatePresence initial={false}>
             {messages.map((msg) => (
@@ -263,23 +255,7 @@ export default function App() {
           <div ref={chatEndRef} />
         </div>
 
-        {/* Suggestion tags to inspire children - kept for interactive excellence */}
-        <div className="mb-4">
-          <p className="text-[0.72rem] text-[#ffd700] font-bold mb-1.5 flex items-center gap-1 uppercase tracking-wider">
-            <Sparkles size={11} /> Sugestões para conversar com o Candinho:
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {SUGGESTIONS.map((item) => (
-              <button
-                key={item}
-                onClick={() => handleSend(item.replace(/[\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD00-\uDFFF]/g, ""))}
-                className="bg-slate-800/40 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-705 text-[0.8rem] px-2.5 py-1.5 rounded-lg transition-all hover:border-[#ffd700]/40 cursor-pointer"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </div>
+        {/* Sugestões removidas para otimizar espaço de tela */}
 
         {/* Input Area */}
         <div className="input-area flex gap-2.5">
