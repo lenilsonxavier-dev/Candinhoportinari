@@ -1,0 +1,6 @@
+{
+  "name": "Candinho - Artista Amigo",
+  "description": "Seu amigo artista para conversar sobre história da arte e descobrir obras incríveis de maneira simples e divertida! 🎨",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
