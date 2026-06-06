@@ -27,6 +27,12 @@ interface Message {
 
 // Sugestões removidas para reduzir o tamanho vertical da tela
 
+const getProxiedImageUrl = (url: string) => {
+  if (!url) return "";
+  if (url.startsWith("/") || url.startsWith("data:")) return url;
+  return `/api/proxy-image?url=${encodeURIComponent(url)}`;
+};
+
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
@@ -301,7 +307,7 @@ export default function App() {
                           {msg.image && msg.isImageRequested && (
                             <div className="mt-3.5 pt-3 border-t border-indigo-400/30">
                               <img 
-                                src={msg.image.imagemUrl} 
+                                src={getProxiedImageUrl(msg.image.imagemUrl)} 
                                 alt={msg.image.titulo}
                                 className="bot-image mt-[15px] max-w-full rounded-[15px] cursor-pointer transition-transform duration-300 hover:scale-[1.02] max-h-[300px] object-contain block mx-auto shadow-md"
                                 onClick={() => setModalImage(msg.image || null)}
@@ -384,7 +390,7 @@ export default function App() {
           
           <div className="max-w-4xl w-full flex flex-col items-center">
             <img 
-              src={modalImage.imagemUrl} 
+              src={getProxiedImageUrl(modalImage.imagemUrl)} 
               alt={modalImage.titulo}
               className="max-h-[80vh] max-w-full rounded-[10px] object-contain shadow-2xl border-2 border-[#ffd700]/30"
               referrerPolicy="no-referrer"

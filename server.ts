@@ -71,11 +71,15 @@ async function buscarNaWikimedia(artistaNome: string) {
   try {
     if (!artistaNome) return null;
 
+    const userAgent = "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)";
+
     // 1. Busca específica por "artista painting" (prioriza pinturas)
     let termoBusca = `${artistaNome} painting`;
     let url = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=6&gsrsearch=${encodeURIComponent(termoBusca)}&gsrlimit=8&prop=imageinfo&iiprop=url|mime|mediatype|extmetadata&iiurlwidth=800`;
 
-    let res = await fetch(url);
+    let res = await fetch(url, {
+      headers: { "User-Agent": userAgent }
+    });
     let data: any = await res.json();
 
     if (data.query && data.query.pages) {
@@ -120,7 +124,9 @@ async function buscarNaWikimedia(artistaNome: string) {
 
     // 2. Segunda tentativa: busca mais genérica
     url = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=6&gsrsearch=${encodeURIComponent(artistaNome)}&gsrlimit=5&prop=imageinfo&iiprop=url|mime|mediatype|extmetadata&iiurlwidth=800`;
-    res = await fetch(url);
+    res = await fetch(url, {
+      headers: { "User-Agent": userAgent }
+    });
     data = await res.json();
 
     if (data.query && data.query.pages) {
@@ -326,20 +332,187 @@ async function buscarImagem(pergunta: string, matchedKey?: string, lib?: any) {
 
     if (!termo) return null;
 
-    // Busca no Wikimedia Commons seguindo filtros estritos
-    let img = await buscarNaWikimedia(termo);
-    
-    // Se não encontrou nada na Wikimedia, tenta o Pexels como último recurso
+    let img = null;
+
+    // 1. Tentar Metropolitan Museum of Art API
+    try {
+      img = await buscarMetropolitan(termo);
+    } catch (e) {
+      console.warn("Erro ao buscar no Metropolitan:", e);
+    }
+
+    // 2. Tentar Chicago Art Institute API se não encontrou ainda
     if (!img) {
-      img = await buscarNoPexels(termo);
+      try {
+        img = await buscarChicago(termo);
+      } catch (e) {
+        console.warn("Erro ao buscar no Chicago Art Institute:", e);
+      }
+    }
+
+    // 3. Tentar Wikimedia Commons se não encontrou ainda
+    if (!img) {
+      try {
+        img = await buscarNaWikimedia(termo);
+      } catch (e) {
+        console.warn("Erro ao buscar na Wikimedia:", e);
+      }
     }
     
+    // 4. Se não encontrou nada, tenta o Pexels como último recurso
+    if (!img) {
+      try {
+        img = await buscarNoPexels(termo);
+      } catch (e) {
+        console.warn("Erro ao buscar no Pexels:", e);
+      }
+    }
+
     return img;
   } catch (e) {
     console.error("Erro na busca de imagem:", e);
   }
   return null;
 }
+
+// --- BUSCADORES DE MUSEUS (METROPOLITAN & CHICAGO ART INSTITUTE) ---
+export async function buscarMetropolitan(termo: string) {
+  try {
+    // 1. Procurar obras com imagens no Met
+    const searchResponse = await fetch(
+      `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(termo)}`,
+      {
+        headers: {
+          "User-Agent": "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)"
+        }
+      }
+    );
+
+    const searchData: any = await searchResponse.json();
+
+    // Se não encontrou nada na busca
+    if (!searchData.objectIDs || searchData.objectIDs.length === 0) {
+      return null;
+    }
+
+    // Pega o primeiro ID de obra encontrado
+    const objectId = searchData.objectIDs[0];
+
+    // 2. Buscar detalhes específicos da obra
+    const detailResponse = await fetch(
+      `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`,
+      {
+        headers: {
+          "User-Agent": "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)"
+        }
+      }
+    );
+
+    const obra: any = await detailResponse.json();
+    const imgUrl = obra.primaryImageSmall || obra.primaryImage || null;
+    if (!imgUrl) return null;
+
+    return {
+      imagemUrl: imgUrl,
+      titulo: obra.title || "Sem título",
+      credito: `${obra.artistDisplayName || "Autor desconhecido"} (${obra.objectDate || "Data desconhecida"}) / Metropolitan Museum of Art`
+    };
+  } catch (erro) {
+    console.error("Erro ao buscar no Metropolitan:", erro);
+    return null;
+  }
+}
+
+export async function buscarChicago(termo: string) {
+  try {
+    const res = await fetch(
+      `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(termo)}`,
+      {
+        headers: {
+          "User-Agent": "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)"
+        }
+      }
+    );
+
+    const data: any = await res.json();
+
+    if (!data.data || data.data.length === 0) {
+      return null;
+    }
+
+    const obra = data.data[0];
+
+    const detalhe = await fetch(
+      `https://api.artic.edu/api/v1/artworks/${obra.id}`,
+      {
+        headers: {
+          "User-Agent": "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)"
+        }
+      }
+    );
+
+    const detalheJson: any = await detalhe.json();
+    const art = detalheJson.data;
+
+    const imagem = art.image_id
+      ? `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`
+      : null;
+
+    if (!imagem) return null;
+
+    return {
+      imagemUrl: imagem,
+      titulo: art.title || "Sem título",
+      credito: `${art.artist_title || "Autor desconhecido"} (${art.date_display || "Data desconhecida"}) / Art Institute of Chicago`
+    };
+  } catch (erro) {
+    console.error("Erro ao buscar no Chicago Art Institute:", erro);
+    return null;
+  }
+}
+
+// --- API IMAGE PROXY ---
+app.get("/api/proxy-image", async (req: Request, res: Response) => {
+  try {
+    const imageUrl = req.query.url;
+    if (!imageUrl || typeof imageUrl !== "string") {
+      return res.status(400).send("Falta a URL da imagem");
+    }
+
+    // Permitido qualquer domínio seguro HTTPS (imagem artística)
+    if (!imageUrl.startsWith("https://") && !imageUrl.startsWith("http://")) {
+      return res.status(400).send("Apenas protocolos de imagem seguros permitidos");
+    }
+
+    const parsedUrl = new URL(imageUrl);
+    const domain = parsedUrl.hostname;
+
+    // Use a robust User-Agent matching modern browsers
+    const response = await fetch(imageUrl, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Referer": `https://${domain}/`,
+        "Accept": "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+      }
+    });
+
+    if (!response.ok) {
+      console.warn(`Erro do provedor externo ao obter imagem ${imageUrl}: ${response.status} ${response.statusText}`);
+      return res.status(response.status).send(`Erro ao obter a imagem: ${response.statusText}`);
+    }
+
+    const contentType = response.headers.get("content-type") || "image/jpeg";
+    res.setHeader("Content-Type", contentType);
+    res.setHeader("Cache-Control", "public, max-age=86400"); // Cache por 24 horas
+
+    const arrayBuffer = await response.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+    res.send(buffer);
+  } catch (error) {
+    console.error("Erro interno no proxy-image:", error);
+    res.status(500).send("Erro interno ao buscar a imagem");
+  }
+});
 
 // --- API CHAT HANDLER (ALIASES AS /api/groq FOR BACKWARDS COMPATIBILITY) ---
 app.post("/api/groq", async (req: Request, res: Response) => {
