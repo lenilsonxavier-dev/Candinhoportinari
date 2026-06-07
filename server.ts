@@ -142,8 +142,8 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     credito: "Vincent van Gogh"
   },
   pablo_picasso: {
-    imagemUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Pablo_Picasso%2C_1907%2C_Self-portrait%2C_oil_on_canvas%2C_50_x_46_cm%2C_National_National_Gallery_of_Prague.jpg/640px-Pablo_Picasso%2C_1907%2C_Self-portrait%2C_oil_on_canvas%2C_50_x_46_cm%2C_National_National_Gallery_of_Prague.jpg",
-    titulo: "Auto-retrato de Picasso (1907)",
+    imagemUrl: "https://i.imgur.com/Ie9Nmjv.jpeg",
+    titulo: "Auto-retrato de Picasso",
     credito: "Pablo Picasso"
   },
   leonardo_da_vinci: {
@@ -197,8 +197,8 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     credito: "Victor Meirelles"
   },
   adriana_varejao: {
-    imagemUrl: "blob:https://imgur.com/607ebe41-b876-4c7d-b247-58db4830024a",
-    titulo: "Obra de Adriana Varejão",
+    imagemUrl: "https://upload.wikimedia.org/wikipedia/commons/2/29/Inhotim_-_Adriana_Varej%C3%A3o.jpg",
+    titulo: "Varal (Instalação de Azulejos no Pavilhão Adriana Varejão em Inhotim)",
     credito: "Adriana Varejão"
   },
   paul_klee: {
@@ -350,6 +350,51 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     imagemUrl: "https://i.imgur.com/nAIOLBB.jpg",
     titulo: "A Splash of Love",
     credito: "Romero Britto"
+  },
+  helio_oiticica: {
+    imagemUrl: "https://i.imgur.com/dntJxrC.jpeg",
+    titulo: "Metaesquema Nº 244",
+    credito: "Hélio Oiticica"
+  },
+  ivan_cruz: {
+    imagemUrl: "https://i.imgur.com/EVd2Kx6.jpg",
+    titulo: "Brincadeiras de Criança",
+    credito: "Ivan Cruz"
+  },
+  alfredo_volpi: {
+    imagemUrl: "https://i.imgur.com/L2D835h.jpeg",
+    titulo: "Bandeirinhas",
+    credito: "Alfredo Volpi"
+  },
+  djanira: {
+    imagemUrl: "https://i.imgur.com/9akQOju.jpeg",
+    titulo: "Trabalhadores / Cenas do Cotidiano",
+    credito: "Djanira Motta e Silva"
+  },
+  georgina_de_albuquerque: {
+    imagemUrl: "https://i.imgur.com/Uz9RvpD.jpeg",
+    titulo: "Sessão do Conselho de Estado",
+    credito: "Georgina de Albuquerque"
+  },
+  arthur_bispo_do_rosario: {
+    imagemUrl: "https://i.imgur.com/1YzV3xX.jpeg",
+    titulo: "Manto da Apresentação",
+    credito: "Arthur Bispo do Rosário"
+  },
+  heitor_dos_prazeres: {
+    imagemUrl: "https://i.imgur.com/C5JLFAo.jpeg",
+    titulo: "Festa no Terreiro / Samba",
+    credito: "Heitor dos Prazeres"
+  },
+  carybe: {
+    imagemUrl: "https://i.imgur.com/uQeNwXq.png",
+    titulo: "Candomblé / Viva a Bahia",
+    credito: "Carybé"
+  },
+  joan_miro: {
+    imagemUrl: "https://i.imgur.com/DUWOyat.jpeg",
+    titulo: "O Ouro do Azul / Pintura de Miró",
+    credito: "Joan Miró"
   }
 };
 
@@ -489,6 +534,33 @@ async function buscarImagem(pergunta: string, matchedKey?: string, lib?: any) {
     }
     if (lowerQuery.includes("romero britto") || lowerQuery.includes("romero brito") || lowerQuery.includes("britto") || lowerQuery.includes("brito")) {
       return ARTISTS_GUARANTEED_IMAGES.romero_britto;
+    }
+    if (lowerQuery.includes("helio oiticica") || lowerQuery.includes("oiticica")) {
+      return ARTISTS_GUARANTEED_IMAGES.helio_oiticica;
+    }
+    if (lowerQuery.includes("ivan cruz")) {
+      return ARTISTS_GUARANTEED_IMAGES.ivan_cruz;
+    }
+    if (lowerQuery.includes("alfredo volpi") || lowerQuery.includes("volpi")) {
+      return ARTISTS_GUARANTEED_IMAGES.alfredo_volpi;
+    }
+    if (lowerQuery.includes("djanira")) {
+      return ARTISTS_GUARANTEED_IMAGES.djanira;
+    }
+    if (lowerQuery.includes("georgina de albuquerque") || lowerQuery.includes("georgina albuquerque")) {
+      return ARTISTS_GUARANTEED_IMAGES.georgina_de_albuquerque;
+    }
+    if (lowerQuery.includes("arthur bispo") || lowerQuery.includes("bispo do rosario") || lowerQuery.includes("bispo do rosário")) {
+      return ARTISTS_GUARANTEED_IMAGES.arthur_bispo_do_rosario;
+    }
+    if (lowerQuery.includes("heitor dos prazeres")) {
+      return ARTISTS_GUARANTEED_IMAGES.heitor_dos_prazeres;
+    }
+    if (lowerQuery.includes("carybe") || lowerQuery.includes("carybé")) {
+      return ARTISTS_GUARANTEED_IMAGES.carybe;
+    }
+    if (lowerQuery.includes("miro") || lowerQuery.includes("miró") || lowerQuery.includes("joan miro") || lowerQuery.includes("joan miró")) {
+      return ARTISTS_GUARANTEED_IMAGES.joan_miro;
     }
 
     let termo = "";

@@ -322,6 +322,7 @@ export const PORTINARI_INTENTS = [
 interface ConhecimentoItem {
   palavras: string[];
   resposta: string | (() => string);
+  matchedKey?: string;
 }
 
 const atividadesTriste = [
@@ -666,30 +667,23 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   { palavras: ['raffaello sanzio', 'rafael', 'quem foi rafael'], resposta: 'Raffaello Sanzio (1483–1520), conhecido como Rafael, foi um dos grandes nomes do Renascimento. Famoso por suas Madonas e pela obra “A Escola de Atenas”. Destacou-se pela harmonia e equilíbrio nas composições. 👼' },
   { palavras: ['leonardo da vinci', 'leonardo', 'da vinci', 'quem foi leonardo'], resposta: 'Leonardo da Vinci (1452–1519) foi um gênio multifacetado do Renascimento. Pintor da “Mona Lisa” e de “A Última Ceia”, também foi cientista, inventor e anatomista. Uniu arte e ciência como poucos na história. 🔍' },
   { palavras: ['romero britto', 'britto', 'quem é romero britto'], resposta: 'Romero Britto (1963– ) é um artista brasileiro contemporâneo conhecido por seu estilo colorido, alegre e inspirado na pop art. Suas obras têm traços marcantes e padrões vibrantes. 🎈' },
-  { palavras: ['djanira', 'djanira da motta e silva', 'quem foi djanira'], resposta: 'Djanira da Motta e Silva (1914–1979) foi uma pintora brasileira modernista. Retratou cenas do cotidiano, trabalhadores e manifestações culturais do Brasil com cores fortes e composição simples. 🇧🇷' },
-  { palavras: ['frida kahlo', 'kahlo', 'frida', 'quem foi frida kahlo'], resposta: 'Frida Kahlo (1907–1954) foi uma artista mexicana famosa por autorretratos intensos. Suas pinturas abordam identidade, cultura mexicana e experiências pessoais marcantes. 🌺' },
+  { palavras: ['djanira', 'djanira da motta e silva', 'quem foi djanira'], resposta: 'Djanira da Motta e Silva (1914–1979) foi uma pintora brasileira modernista. Retratou cenas do cotidiano, trabalhadores e manifestações culturais do Brasil com cores fortes e composição simples. 🇧🇷', matchedKey: 'djanira' },
+  { palavras: ['frida kahlo', 'kahlo', 'frida', 'quem foi frida kahlo'], resposta: 'Frida Kahlo (1907–1954) foi uma artist mexicana famosa por autorretratos intensos. Suas pinturas abordam identidade, cultura mexicana e experiências pessoais marcantes. 🌺' },
   { palavras: ['salvador dalí', 'dalí', 'quem foi salvador dalí'], resposta: 'Salvador Dalí (1904–1989) foi o principal nome do Surrealismo espanhol. Criou imagens oníricas e provocativas, como os relógios derretendo em “A Persistência da Memória”. ⏰' },
   { palavras: ['caravaggio', 'quem foi caravaggio'], resposta: 'Caravaggio (1571–1610) foi um pintor italiano do Barroco. Revolucionou a arte com o uso dramático de luz e sombra, técnica conhecida como claro-escuro. 🔦' },
   { palavras: ['tarsila do amaral', 'tarsila', 'quem foi tarsila'], resposta: 'Tarsila do Amaral (1886–1973) foi uma das principais artistas do Modernismo brasileiro. Criadora de “Abaporu”, contribuiu para o movimento antropofágico. 🎨' },
-  { palavras: ['ivan cruz', 'quem foi ivan cruz'], resposta: 'Ivan Cruz (1947–2023) foi um artista brasileiro conhecido por retratar brincadeiras infantis tradicionais, valorizando a cultura popular. 🪁' },
+  { palavras: ['ivan cruz', 'quem foi ivan cruz'], resposta: 'Ivan Cruz (1947–2023) foi um artista brasileiro conhecido por retratar brincadeiras infantis tradicionais, valorizando a cultura popular. 🪁', matchedKey: 'ivan_cruz' },
   { palavras: ['candido portinari', 'portinari', 'quem foi portinari'], resposta: 'Candido Portinari (1903–1962) foi um pintor brasileiro que retratou temas sociais e o povo trabalhador. Destacam-se os painéis “Guerra e Paz”. 👨‍🌾' },
   { palavras: ['henri matisse', 'matisse', 'quem foi matisse'], resposta: 'Henri Matisse (1869–1954) foi um artista francês do Fauvismo. Explorou cores vibrantes e formas simplificadas, criando composições alegres e decorativas. ✂️' },
   { palavras: ['rené magritte', 'magritte', 'quem foi magritte'], resposta: 'René Magritte (1898–1967) foi um pintor surrealista belga. Suas obras brincam com a percepção e a realidade, como em “Isto não é um cachimbo”. 🧐' },
-  { palavras: ['claude monet', 'monet', 'quem foi monet'], resposta: 'Claude Monet (1840–1926) foi um dos fundadores do Impressionismo. Pintou séries sobre a luz e a natureza, como as “Ninféias”. ☀️' },
+  { palavras: ['claude monet', 'monet', 'quem foi monet'], resposta: 'Claude Monet (1840–1926) foi um dos fundadores do Impressionismo. Pintou séries sobre a light e a natureza, como as “Ninféias”. ☀️' },
   { palavras: ['georges seurat', 'seurat', 'quem foi seurat'], resposta: 'Georges Seurat (1859–1891) foi o criador do pontilhismo. Utilizava pequenos pontos de cor para formar imagens, como em “Tarde de Domingo na Ilha de Grande Jatte”. 🔵' },
   { palavras: ['edgar degas', 'degas', 'quem foi degas'], resposta: 'Edgar Degas (1834–1917) foi um impressionista francês conhecido por retratar bailarinas e cenas do cotidiano urbano. 🩰' },
   { palavras: ['edvard munch', 'munch', 'quem foi munch'], resposta: 'Edvard Munch (1863–1944) foi um pintor norueguês expressionista. Criador de “O Grito”, explorou emoções humanas intensas. 😱' },
   { palavras: ['rembrandt', 'quem foi rembrandt'], resposta: 'Rembrandt (1606–1669) foi um mestre holandês do Barroco. Famoso por autorretratos e pelo domínio da luz e sombra. 🎭' },
-  { palavras: ['hélio oiticica', 'oiticica', 'quem foi hélio oiticica'], resposta: 'Hélio Oiticica (1937–1980) foi um artista brasileiro inovador. Criou obras interativas e experiências sensoriais no movimento neoconcreto. 🕺' },
-  { palavras: ['di cavalcanti', 'cavalcanti', 'quem foi di cavalcanti'], resposta: 'Di Cavalcanti (1897–1976) foi um modernista brasileiro que retratou o samba, a vida urbana e a cultura popular. 🎉' },
-  { palavras: ['almeida júnior', 'almeida jr', 'quem foi almeida júnior'], resposta: 'José Ferraz de Almeida Júnior (1850–1899), conhecido como Almeida Jr., destacou-se por retratar o interior paulista com realismo. 🌾' },
-  { palavras: ['georgina de albuquerque', 'georgina', 'quem foi georgina de albuquerque'], resposta: 'Georgina de Albuquerque (1885–1962) foi uma pintora brasileira pioneira, abordou temas históricos e cenas do cotidiano. 📜' },
-  { palavras: ['pedro américo', 'quem foi pedro américo'], resposta: 'Pedro Américo (1843–1905) foi um pintor acadêmico brasileiro, autor de grandes cenas históricas como “Independência ou Morte”. ⚔️' },
-  { palavras: ['lasar segall', 'segall', 'quem foi lasar segall'], resposta: 'Lasar Segall (1891–1957) foi um artista lituano naturalizado brasileiro. Retratou temas sociais, imigração e sofrimento humano. 🌍' },
-  { palavras: ['alfredo volpi', 'volpi', 'quem foi alfredo volpi'], resposta: 'Alfredo Volpi (1896–1988) foi conhecido pelas “bandeirinhas” coloridas, explorou formas geométricas e cores suaves. 🏠' },
-  { palavras: ['beatriz milhazes', 'milhazes', 'quem é beatriz milhazes'], resposta: 'Beatriz Milhazes (1960– ) é uma artista contemporânea brasileira. Mistura cores intensas, padrões decorativos e referências à cultura popular. 🌼' },
-
-  // ===== ARTES INDÍGENAS E AFRICANAS =====
+  { palavras: ['hélio oiticica', 'oiticica', 'quem foi hélio oiticica'], resposta: 'Hélio Oiticica (1937–1980) foi um artista brasileiro inovador. Criou obras interativas e experiências sensoriais no movimento neoconcreto. 🕺', matchedKey: 'helio_oiticica' },
+  { palavras: ['alfredo volpi', 'volpi', 'quem foi alfredo volpi'], resposta: 'Alfredo Volpi (1896–1988) foi conhecido pelas “bandeirinhas” coloridas, explorou formas geométricas e cores suaves. 🏠', matchedKey: 'alfredo_volpi' },
+  { palavras: ['georgina de albuquerque', 'georgina', 'quem foi georgina de albuquerque'], resposta: 'Georgina de Albuquerque (1885–1962) foi uma pintora brasileira pioneira, abordou temas históricos e cenas do cotidiano. 📜', matchedKey: 'georgina_de_albuquerque' },
   { 
     palavras: ['arte indígena', 'arte indigena', 'arte dos índios', 'cultura indígena'], 
     resposta: '🪶 A arte indígena está presente na pintura corporal, na cerâmica, na cestaria, na arte plumária (enfeites de penas) e na música. Cada etnia tem seus próprios desenhos e significados, ligados à natureza e aos ancestrais. É uma arte cheia de símbolos e tradição!' 
@@ -723,15 +717,18 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   // ===== PINTORES ADICIONAIS =====
   { 
     palavras: ['pablo picasso', 'picasso', 'quem foi picasso'], 
-    resposta: 'Pablo Picasso foi um pintor espanhol, criador do Cubismo. 🖼️ Ele desenhava pessoas e objetos com formas diferentes e divertidas. O que ele ensina: que não existe só um jeito de desenhar.' 
+    resposta: 'Pablo Picasso foi um pintor espanhol, criador do Cubismo. 🖼️ Ele desenhava pessoas e objetos com formas diferentes e divertidas. O que ele ensina: que não existe só um jeito de desenhar.',
+    matchedKey: 'pablo_picasso'
   },
   { 
     palavras: ['joan miró', 'miró', 'quem foi joan miró'], 
-    resposta: 'Joan Miró foi um pintor espanhol de arte moderna. ✨ Ele usava formas simples como estrelas e linhas. O que ele ensina: a brincar com formas.' 
+    resposta: 'Joan Miró foi um pintor espanhol de arte moderna. ✨ Ele usava formas simples como estrelas e linhas. O que ele ensina: a brincar com formas.',
+    matchedKey: 'joan_miro'
   },
   { 
     palavras: ['paul klee', 'klee', 'quem foi paul klee'], 
-    resposta: 'Paul Klee foi um pintor suíço de arte moderna. 🖍️ Ele desenhava como se fosse uma criança curiosa. O que ele ensina: liberdade para criar.' 
+    resposta: 'Paul Klee foi um pintor suíço de arte moderna. 🖍️ Ele desenhava como se fosse uma child curiosa. O que ele ensina: liberdade para criar.',
+    matchedKey: 'paul_klee'
   },
   { 
     palavras: ['anita malfatti', 'malfatti', 'quem foi anita malfatti'], 
@@ -739,51 +736,63 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   },
   { 
     palavras: ['vik muniz', 'muniz', 'quem é vik muniz'], 
-    resposta: 'Vik Muniz é um artista brasileiro contemporâneo. ♻️ Ele cria arte com objetos diferentes, como lixo e doces. O que ele ensina: criar com qualquer material.' 
+    resposta: 'Vik Muniz é um artista brasileiro contemporâneo. ♻️ Ele cria arte com objetos diferentes, como lixo e doces. O que ele ensina: criar com qualquer material.',
+    matchedKey: 'vik_muniz'
   },
   { 
     palavras: ['carybé', 'quem foi carybé'], 
-    resposta: 'Carybé foi um artista argentino-brasileiro de arte moderna. 🥁 Ele desenhava festas, danças e cultura popular. O que ele ensina: valorizar a cultura.' 
+    resposta: 'Carybé foi um artista argentino-brasileiro de arte moderna. 🥁 Ele desenhava festas, danças e cultura popular. O que ele ensina: valorizar a cultura.',
+    matchedKey: 'carybe'
   },
   { 
     palavras: ['heitor dos prazeres', 'heitor', 'quem foi heitor dos prazeres'], 
-    resposta: 'Heitor dos Prazeres foi um pintor, compositor e sambista brasileiro. 🎶 Ele pintava festas, samba e alegria. O que ele ensina: arte nasce da vida.' 
+    resposta: 'Heitor dos Prazeres foi um pintor, compositor e sambista brasileiro. 🎶 Ele pintava festas, samba e alegria. O que ele ensina: arte nasce da vida.',
+    matchedKey: 'heitor_dos_prazeres'
   },
   { 
     palavras: ['adriana varejão', 'varejão', 'quem é adriana varejão'], 
-    resposta: 'Adriana Varejão é uma artista brasileira contemporânea. 🏛️ Ela mistura história e imaginação em suas obras. O que ela ensina: arte também faz pensar.' 
+    resposta: 'Adriana Varejão é uma artista brasileira contemporânea. 🏛️ Ela mistura história e imaginação em suas obras. O que ela ensina: arte também faz pensar.',
+    matchedKey: 'adriana_varejao'
   },
   { 
     palavras: ['arthur bispo do rosário', 'bispo', 'quem foi arthur bispo do rosário'], 
-    resposta: 'Arthur Bispo do Rosário foi um artista brasileiro de arte singular. 🧵 Ele criava arte com objetos do dia a dia, como tecidos e linhas. O que ele ensina: tudo pode virar arte.' 
+    resposta: 'Arthur Bispo do Rosário foi um artista brasileiro de arte singular. 🧵 Ele criava arte com objetos do dia a dia, como tecidos e linhas. O que ele ensina: tudo pode virar arte.',
+    matchedKey: 'arthur_bispo_do_rosario'
   },
   { 
     palavras: ['silvana mendes', 'silvia mendes', 'silvana', 'silvia', 'quem e silvana mendes', 'quem e silvia mendes'], 
-    resposta: 'Silvana Mendes (nascida em 1980, no Maranhão) é uma artista visual, fotógrafa e pesquisadora brasileira. 📸 Ela trabalha com colagens, pinturas e fotografias que celebram a memória, ancestralidade e identidade afro-brasileira! O que ela ensina: a beleza de honrar nossa história e identidade.' 
+    resposta: 'Silvana Mendes (nascida em 1980, no Maranhão) é uma artista visual, fotógrafa e pesquisadora brasileira. 📸 Ela trabalha com colagens, pinturas e fotografias que celebram a memória, ancestralidade e identidade afro-brasileira! O que ela ensina: a beleza de honrar nossa história e identidade.',
+    matchedKey: 'silvana_mendes'
   },
   { 
     palavras: ['arjan martins', 'arjan', 'quem e arjan martins'], 
-    resposta: 'Arjan Martins (nascido em 1960, no Rio de Janeiro) é um pintor e escultor brasileiro. ⛴️ Suas obras retratam a história marítima, a diáspora africana e as migrações com cores e traços incríveis. O que ele ensina: nossa história tem muitas vozes importantes.' 
+    resposta: 'Arjan Martins (nascido em 1960, no Rio de Janeiro) é um pintor e escultor brasileiro. ⛴️ Suas obras retratam a história marítima, a diáspora africana e as migrações com cores e traços incríveis. O que ele ensina: nossa história tem muitas vozes importantes.',
+    matchedKey: 'arjan_martins'
   },
   { 
     palavras: ['maxwell alexandre', 'maxwell', 'quem e maxwell alexandre'], 
-    resposta: 'Maxwell Alexandre (nascido em 1990, no Rio de Janeiro) é um artista contemporâneo super descolado! 🥤 Ele pinta em grandes telas que retratam a vida nas periferias, o cotidiano e a força da juventude negra brasileira. O que ele ensina: a dar voz à nossa realidade com orgulho.' 
+    resposta: 'Maxwell Alexandre (nascido em 1990, no Rio de Janeiro) é um artista contemporâneo super descolado! 🥤 Ele pinta em grandes telas que retratam a vida nas periferias, o cotidiano e a força da juventude negra brasileira. O que ele ensina: a dar voz à nossa reality com orgulho.',
+    matchedKey: 'maxwell_alexandre'
   },
   { 
     palavras: ['rosana paulino', 'rosana', 'quem e rosana paulino'], 
-    resposta: 'Rosana Paulino (nascida em 1967, em São Paulo) é artista visual, curadora e educadora. 🧵 Ela usa tecidos, costuras, linhas e fotos antigas para falar sobre memória, identidade e o respeito à mulher negra. O que ela ensina: a costurar nossas memórias com amor e reflexão.' 
+    resposta: 'Rosana Paulino (nascida em 1967, em São Paulo) é artista visual, curadora e educadora. 🧵 Ela usa tecidos, costuras, linhas e fotos antigas para falar sobre memória, identidade e o respeito à mulher negra. O que ela ensina: a costurar nossas memórias com amor e reflexão.',
+    matchedKey: 'rosana_paulino'
   },
   { 
     palavras: ['eduardo kobra', 'kobra', 'quem e eduardo kobra'], 
-    resposta: 'Eduardo Kobra (nascido em 1975, em São Paulo) é um dos maiores muralistas do mundo! 🌈 Ele pinta prédios inteiros com desenhos geométricos super coloridos que trazem mensagens de paz, tolerância e muito amor. O que ele ensina: colorir o mundo com mensagens de paz.' 
+    resposta: 'Eduardo Kobra (nascido em 1975, em São Paulo) é um dos maiores muralistas do mundo! 🌈 Ele pinta prédios inteiros com desenhos geométricos super coloridos que trazem mensagens de paz, tolerância e muito amor. O que ele ensina: colorir o mundo com mensagens de paz.',
+    matchedKey: 'eduardo_kobra'
   },
   { 
     palavras: ['os gemeos', 'os gêmeos', 'gemeos', 'gêmeos', 'quem sao os gemeos'], 
-    resposta: 'Os Gêmeos (Otávio e Gustavo Pandolfo, nascidos em 1974, em São Paulo) são irmãos que grafitam juntos! 💛 Eles criam um mundo de fantasia repleto de personagens amarelinhos super divertidos em muros pelo mundo todo. O que eles ensinam: a imaginação de irmãos pode conquistar as ruas.' 
+    resposta: 'Os Gêmeos (Otávio e Gustavo Pandolfo, nascidos em 1974, em São Paulo) são irmãos que grafitam juntos! 💛 Eles criam um mundo de fantasia repleto de personagens amarelinhos super divertidos em muros pelo mundo todo. O que eles ensinam: a imaginação de irmãos pode conquistar as ruas.',
+    matchedKey: 'os_gemeos'
   },
   { 
     palavras: ['romero britto', 'romero brito', 'britto', 'brito', 'quem e romero britto'], 
-    resposta: 'Romero Britto (nascido em 1963, em Recife) é um pintor e escultor que faz muito sucesso mundialmente! ❤️ Ele cria desenhos de bichinhos, flores e corações misturando listras, círculos e cores neon super vibrantes. O que ele ensina: espalhar sorrisos e alegria através da arte.' 
+    resposta: 'Romero Britto (nascido em 1963, em Recife) é um pintor e escultor que faz muito sucesso mundialmente! ❤️ Ele cria desenhos de bichinhos, flores e corações misturando listras, círculos e cores neon super vibrantes. O que ele ensina: espalhar sorrisos e alegria através da arte.',
+    matchedKey: 'romero_britto'
   }
 ];
 
@@ -814,7 +823,8 @@ export function resolverMensagemLocalmente(mensagem: string, lib: Record<string,
     const resp = bestConhecimentoMatch.resposta;
     const finalReply = typeof resp === "function" ? resp() : resp;
     return {
-      reply: finalReply
+      reply: finalReply,
+      matchedKey: bestConhecimentoMatch.matchedKey
     };
   }
 
