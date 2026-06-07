@@ -1,5 +1,5 @@
 import { bibliotecaCultural } from "../src/data/bibliotecaCultural.js";
-import { resolverMensagemLocalmente, sugerirTemasAlternativos } from "../src/utils/conversationalEngine.js";
+import { resolverMensagemLocalmente, sugerirTemasAlternativos, extrairNome } from "../src/utils/conversationalEngine.js";
 
 const GITHUB_BASE = "https://raw.githubusercontent.com/lenilsonxavier-dev/Candinho2.0/main/data/";
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
@@ -7,153 +7,860 @@ const GROQ_API_KEY = process.env.GROQ_API_KEY;
 let bibliotecaCache: any = null;
 
 async function carregarBiblioteca() {
-    if (bibliotecaCache) return bibliotecaCache;
-    try {
-        const res = await fetch(`${GITHUB_BASE}bibliotecaCultural.json`);
-        const libGitHub = res.ok ? await res.json() : {};
-        bibliotecaCache = { ...bibliotecaCultural, ...libGitHub };
-    } catch (e) { 
-        bibliotecaCache = bibliotecaCultural; 
-    }
-    return bibliotecaCache;
+  if (bibliotecaCache) return bibliotecaCache;
+  try {
+    const res = await fetch(`${GITHUB_BASE}bibliotecaCultural.json`);
+    const libGitHub = res.ok ? await res.json() : {};
+    bibliotecaCache = { ...bibliotecaCultural, ...libGitHub };
+  } catch (e) {
+    bibliotecaCache = bibliotecaCultural;
+  }
+  return bibliotecaCache;
 }
 
-function pediuImagem(mensagem: string): boolean {
-    const palavrasImagem = ["imagem", "foto", "mostre", "obra", "ver", "desenho", "quadro", "pintura", "ilustração", "retrato"];
-    return palavrasImagem.some(p => mensagem.toLowerCase().includes(p));
+// --- IMAGENS GARANTIDAS DE ALTA QUALIDADE PARA ARTISTAS ---
+const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: string; credito: string }> = {
+  vincent_van_gogh: {
+    imagemUrl: "https://i.imgur.com/V0qviLK.jpg",
+    titulo: "A Noite Estrelada",
+    credito: "Vincent van Gogh"
+  },
+  pablo_picasso: {
+    imagemUrl: "https://i.imgur.com/Ie9Nmjv.jpeg",
+    titulo: "Auto-retrato de Picasso",
+    credito: "Pablo Picasso"
+  },
+  leonardo_da_vinci: {
+    imagemUrl: "https://i.imgur.com/4gNICnX.jpeg",
+    titulo: "Mona Lisa",
+    credito: "Leonardo da Vinci"
+  },
+  claude_monet: {
+    imagemUrl: "https://i.imgur.com/M2ox2Sa.jpeg",
+    titulo: "Lago de Lírios d'Água",
+    credito: "Claude Monet"
+  },
+  tarsila: {
+    imagemUrl: "https://i.imgur.com/y6dYEau.jpg",
+    titulo: "Abaporu (1928)",
+    credito: "Tarsila do Amaral"
+  },
+  portinari: {
+    imagemUrl: "https://i.imgur.com/8DIvcRC.jpg",
+    titulo: "Cândido Portinari (Retrato)",
+    credito: "Cândido Portinari"
+  },
+  salvador_dali: {
+    imagemUrl: "https://i.imgur.com/9HjrQgD.jpeg",
+    titulo: "A Persistência da Memória",
+    credito: "Salvador Dalí"
+  },
+  fridakahlo: {
+    imagemUrl: "https://i.imgur.com/kKoUCO0.jpeg",
+    titulo: "Frida Kahlo (Auto-retrato)",
+    credito: "Frida Kahlo"
+  },
+  frida_kahlo: {
+    imagemUrl: "https://i.imgur.com/kKoUCO0.jpeg",
+    titulo: "Frida Kahlo (Auto-retrato)",
+    credito: "Frida Kahlo"
+  },
+  almeida_junior: {
+    imagemUrl: "https://i.imgur.com/lOQ142t.jpeg",
+    titulo: "Caipira Picando Fumo",
+    credito: "Almeida Júnior"
+  },
+  aua_mendes: {
+    imagemUrl: "https://i.imgur.com/WYHe4ES.png",
+    titulo: "Obra de Auá Mendes",
+    credito: "Auá Mendes"
+  },
+  victor_meirelles: {
+    imagemUrl: "https://i.imgur.com/UuUcxTI.jpeg",
+    titulo: "Batalha dos Guararapes",
+    credito: "Victor Meirelles"
+  },
+  adriana_varejao: {
+    imagemUrl: "https://upload.wikimedia.org/wikipedia/commons/2/29/Inhotim_-_Adriana_Varej%C3%A3o.jpg",
+    titulo: "Varal (Instalação de Azulejos no Pavilhão Adriana Varejão em Inhotim)",
+    credito: "Adriana Varejão"
+  },
+  paul_klee: {
+    imagemUrl: "https://i.imgur.com/5XqkLGP.jpeg",
+    titulo: "Senecio",
+    credito: "Paul Klee"
+  },
+  kandinsky: {
+    imagemUrl: "https://i.imgur.com/nQtTIFw.jpeg",
+    titulo: "Obra abstrata de Wassily Kandinsky",
+    credito: "Wassily Kandinsky"
+  },
+  pedro_americo: {
+    imagemUrl: "https://i.imgur.com/DqvcMzT.jpeg",
+    titulo: "Independência ou Morte",
+    credito: "Pedro Américo"
+  },
+  magritte: {
+    imagemUrl: "https://i.imgur.com/6k2E9xw.png",
+    titulo: "A Traição das Imagens",
+    credito: "René Magritte"
+  },
+  daiara_tukano: {
+    imagemUrl: "https://i.imgur.com/R3art8h.jpeg",
+    titulo: "A Presença Invisível",
+    credito: "Daiara Tukano"
+  },
+  paul_cezanne: {
+    imagemUrl: "https://i.imgur.com/76oTs3Y.jpeg",
+    titulo: "Os Jogadores de Cartas / Prato de Maçãs",
+    credito: "Paul Cézanne"
+  },
+  raphael: {
+    imagemUrl: "https://i.imgur.com/dQfpGnt.jpeg",
+    titulo: "A Escola de Atenas",
+    credito: "Raphael Sanzio"
+  },
+  gustav_klimt: {
+    imagemUrl: "https://i.imgur.com/O4bN5yR.jpeg",
+    titulo: "O Beijo",
+    credito: "Gustav Klimt"
+  },
+  o_grito: {
+    imagemUrl: "https://i.imgur.com/Rm1sgLg.jpeg",
+    titulo: "O Grito",
+    credito: "Edvard Munch"
+  },
+  degas: {
+    imagemUrl: "https://i.imgur.com/wnJMDAO.jpeg",
+    titulo: "A Classe de Dança",
+    credito: "Edgar Degas"
+  },
+  di_cavalcanti: {
+    imagemUrl: "https://i.imgur.com/y2bIl3C.jpeg",
+    titulo: "As Cinco Moças de Guaratinguetá",
+    credito: "Di Cavalcanti"
+  },
+  donatello: {
+    imagemUrl: "https://i.imgur.com/kQ6cTVn.jpeg",
+    titulo: "David (Escultura em bronze)",
+    credito: "Donatello"
+  },
+  yayoi_kusama: {
+    imagemUrl: "https://i.imgur.com/bPnsLsc.jpeg",
+    titulo: "Ponto Infinito / Sala de Espelhos",
+    credito: "Yayoi Kusama"
+  },
+  jaider_esbell: {
+    imagemUrl: "https://i.imgur.com/xgQ4zaO.jpeg",
+    titulo: "Cosmologia Makuxi",
+    credito: "Jaider Esbell"
+  },
+  chagall: {
+    imagemUrl: "https://i.imgur.com/DshJfTG.jpeg",
+    titulo: "Eu e a Aldeia",
+    credito: "Marc Chagall"
+  },
+  duchamp: {
+    imagemUrl: "https://i.imgur.com/lWLyQDa.jpeg",
+    titulo: "A Fonte",
+    credito: "Marcel Duchamp"
+  },
+  matisse: {
+    imagemUrl: "https://i.imgur.com/HuQoofw.jpeg",
+    titulo: "A Dança",
+    credito: "Henri Matisse"
+  },
+  vik_muniz: {
+    imagemUrl: "https://i.imgur.com/fOCKz7O.jpeg",
+    titulo: "Retrato de Lixo (Marat)",
+    credito: "Vik Muniz"
+  },
+  michelangelo: {
+    imagemUrl: "https://i.imgur.com/5pUkwMB.jpeg",
+    titulo: "A Criação de Adão",
+    credito: "Michelangelo Buonarroti"
+  },
+  gauguin: {
+    imagemUrl: "https://i.imgur.com/udgstNF.jpeg",
+    titulo: "De Onde Viemos? Quem Somos? Para Onde Vamos?",
+    credito: "Paul Gauguin"
+  },
+  goya: {
+    imagemUrl: "https://i.imgur.com/8WlovoC.jpeg",
+    titulo: "O Três de Maio de 1808",
+    credito: "Francisco de Goya"
+  },
+  renoir: {
+    imagemUrl: "https://i.imgur.com/jX0irGW.jpeg",
+    titulo: "O Baile no Moulin de la Galette",
+    credito: "Pierre-Auguste Renoir"
+  },
+  rembrandt: {
+    imagemUrl: "https://i.imgur.com/pvqxSJq.jpeg",
+    titulo: "A Ronda Noturna",
+    credito: "Rembrandt van Rijn"
+  },
+  silvana_mendes: {
+    imagemUrl: "https://i.imgur.com/2PpjDBb.jpeg",
+    titulo: "Obra de Silvana Mendes",
+    credito: "Silvana Mendes"
+  },
+  arjan_martins: {
+    imagemUrl: "https://i.imgur.com/qQnFyUc.jpeg",
+    titulo: "Obra de Arjan Martins",
+    credito: "Arjan Martins"
+  },
+  maxwell_alexandre: {
+    imagemUrl: "https://i.imgur.com/UbmbG5U.jpeg",
+    titulo: "Obra de Maxwell Alexandre",
+    credito: "Maxwell Alexandre"
+  },
+  rosana_paulino: {
+    imagemUrl: "https://i.imgur.com/fZRSRnd.jpeg",
+    titulo: "Obra de Rosana Paulino",
+    credito: "Rosana Paulino"
+  },
+  eduardo_kobra: {
+    imagemUrl: "https://i.imgur.com/ZaO8F4u.jpeg",
+    titulo: "Mural de Eduardo Kobra",
+    credito: "Eduardo Kobra"
+  },
+  os_gemeos: {
+    imagemUrl: "https://i.imgur.com/jDf8dcd.jpeg",
+    titulo: "Mural de Os Gêmeos",
+    credito: "Os Gêmeos"
+  },
+  romero_britto: {
+    imagemUrl: "https://i.imgur.com/nAIOLBB.jpg",
+    titulo: "A Splash of Love",
+    credito: "Romero Britto"
+  },
+  helio_oiticica: {
+    imagemUrl: "https://i.imgur.com/dntJxrC.jpeg",
+    titulo: "Metaesquema Nº 244",
+    credito: "Hélio Oiticica"
+  },
+  ivan_cruz: {
+    imagemUrl: "https://i.imgur.com/EVd2Kx6.jpg",
+    titulo: "Brincadeiras de Criança",
+    credito: "Ivan Cruz"
+  },
+  alfredo_volpi: {
+    imagemUrl: "https://i.imgur.com/L2D835h.jpeg",
+    titulo: "Bandeirinhas",
+    credito: "Alfredo Volpi"
+  },
+  djanira: {
+    imagemUrl: "https://i.imgur.com/9akQOju.jpeg",
+    titulo: "Trabalhadores / Cenas do Cotidiano",
+    credito: "Djanira Motta e Silva"
+  },
+  georgina_de_albuquerque: {
+    imagemUrl: "https://i.imgur.com/Uz9RvpD.jpeg",
+    titulo: "Sessão do Conselho de Estado",
+    credito: "Georgina de Albuquerque"
+  },
+  arthur_bispo_do_rosario: {
+    imagemUrl: "https://i.imgur.com/1YzV3xX.jpeg",
+    titulo: "Manto da Apresentação",
+    credito: "Arthur Bispo do Rosário"
+  },
+  heitor_dos_prazeres: {
+    imagemUrl: "https://i.imgur.com/C5JLFAo.jpeg",
+    titulo: "Festa no Terreiro / Samba",
+    credito: "Heitor dos Prazeres"
+  },
+  carybe: {
+    imagemUrl: "https://i.imgur.com/uQeNwXq.png",
+    titulo: "Candomblé / Viva a Bahia",
+    credito: "Carybé"
+  },
+  joan_miro: {
+    imagemUrl: "https://i.imgur.com/DUWOyat.jpeg",
+    titulo: "O Ouro do Azul / Pintura de Miró",
+    credito: "Joan Miró"
+  }
+};
+
+// --- BUSCA NO PEXELS (FALLBACK) ---
+async function buscarNoPexels(termo: string) {
+  const pexelsKey = process.env.PEXELS_API_KEY;
+  if (!pexelsKey) return null;
+  try {
+    const url = `https://api.pexels.com/v1/search?query=${encodeURIComponent(termo + " painting art")}&per_page=1&orientation=square`;
+    const res = await fetch(url, {
+      headers: { Authorization: pexelsKey }
+    });
+    if (res.ok) {
+      const data: any = await res.json();
+      if (data.photos && data.photos.length > 0) {
+        const photo = data.photos[0];
+        return {
+          imagemUrl: photo.src.medium,
+          titulo: `Arte de ${termo}`,
+          credito: `${photo.photographer} / Pexels`
+        };
+      }
+    }
+  } catch (e) {
+    console.error("Erro Pexels:", e);
+  }
+  return null;
 }
 
-function extrairNomeArtista(mensagem: string): string {
-    const stopWords = ["quem", "foi", "fale", "sobre", "ver", "obra", "quando", "nasceu", "morreu", "mostre", "imagem", "foto", "pintura", "desenho", "quadro", "retrato", "ilustração"];
-    let texto = mensagem.replace(/[?!.,]/g, "").toLowerCase();
-    let palavras = texto.split(/\s+/);
-    let partes: string[] = [];
-    for (let i = 0; i < palavras.length; i++) {
-        let p = palavras[i];
-        if (p.length > 1 && !stopWords.includes(p)) {
-            if (mensagem.split(/\s+/)[i] && mensagem.split(/\s+/)[i][0] === mensagem.split(/\s+/)[i][0].toUpperCase()) {
-                partes.push(p);
-            } else if (p === "van" || p === "da" || p === "de" || p === "do" || p === "dos") {
-                partes.push(p);
-            } else if (partes.length === 0 && i === palavras.length - 1) {
-                partes = [p];
-            }
-        }
+// --- BUSCA NA WIKIMEDIA (ORDEM 1 DOS MUSEUS) ---
+export async function buscarWikimedia(artistaNome: string) {
+  try {
+    if (!artistaNome) return null;
+
+    const userAgent = "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)";
+
+    // 1. Tentar primeiro busca com "painting" para focar em pinturas
+    let termoBusca = `${artistaNome} painting`;
+    let url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(termoBusca)}&gsrnamespace=6&prop=imageinfo&iiprop=url|mime|mediatype|extmetadata&format=json&origin=*`;
+
+    let res = await fetch(url, { headers: { "User-Agent": userAgent } });
+    let data: any = await res.json();
+
+    let pages = Object.values(data.query?.pages || {});
+
+    // Se não encontrou, tenta a busca genérica com o nome puro
+    if (pages.length === 0) {
+      termoBusca = artistaNome;
+      url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(termoBusca)}&gsrnamespace=6&prop=imageinfo&iiprop=url|mime|mediatype|extmetadata&format=json&origin=*`;
+      res = await fetch(url, { headers: { "User-Agent": userAgent } });
+      data = await res.json();
+      pages = Object.values(data.query?.pages || {});
     }
-    let nome = partes.join(" ").replace(/\b\w/g, l => l.toUpperCase());
-    return nome || mensagem.slice(0, 40);
-}
 
-// Busca Wikimedia Commons
-async function buscarWikimedia(artistaNome: string) {
-    try {
-        let termoBusca = `${artistaNome} painting`;
-        let url = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=6&gsrsearch=${encodeURIComponent(termoBusca)}&gsrlimit=8&prop=imageinfo&iiprop=url|mime|mediatype&iiurlwidth=800`;
+    if (!pages.length) return null;
 
-        let res = await fetch(url);
-        let data: any = await res.json();
+    // Filtra para garantir que seja uma imagem válida (evitando áudios, PDFs, etc.)
+    const imagensValidas = pages.filter((p: any) => {
+      if (!p.imageinfo || !p.imageinfo[0]) return false;
+      const info = p.imageinfo[0];
+      const mime = (info.mime || "").toLowerCase();
+      const media = (info.mediatype || "").toUpperCase();
+      return (media === "BITMAP" || media === "DRAWING") &&
+             (mime.includes("jpeg") || mime.includes("jpg") || mime.includes("png") || mime.includes("webp"));
+    });
 
-        if (data.query && data.query.pages) {
-            let pages = Object.values(data.query.pages);
-            let imagensKey = pages.filter((p: any) => {
-                if (!p.imageinfo || !p.imageinfo[0]) return false;
-                const info = p.imageinfo[0];
-                const mime = (info.mime || "").toLowerCase();
-                const media = (info.mediatype || "").toUpperCase();
-                return (media === "BITMAP" || media === "DRAWING") &&
-                       (mime.includes("jpeg") || mime.includes("jpg") || mime.includes("png") || mime.includes("gif") || mime.includes("webp"));
-            });
+    const imagemPage: any = imagensValidas.length > 0 ? imagensValidas[0] : pages[0];
+    const info = imagemPage.imageinfo?.[0];
+    if (!info || !info.url) return null;
 
-            if (imagensKey.length > 0) {
-                const imgPage: any = imagensKey[0];
-                const info = imgPage.imageinfo[0];
-                const imgUrl = info.thumburl || info.url;
-                return {
-                    imagemUrl: imgUrl,
-                    titulo: imgPage.title.replace("File:", "").split('.')[0],
-                    credito: "Wikimedia Commons (obra de arte)"
-                };
-            }
-        }
-    } catch (e) {
-        console.error("Erro no Wikimedia:", e);
+    let credito = "Wikimedia Commons";
+    if (info.extmetadata) {
+      if (info.extmetadata.Artist?.value) {
+        credito = info.extmetadata.Artist.value.replace(/<[^>]*>/g, "").trim();
+      } else if (info.extmetadata.Credit?.value) {
+        credito = info.extmetadata.Credit.value.replace(/<[^>]*>/g, "").trim();
+      }
     }
+    if (credito.length > 50) {
+      credito = credito.substring(0, 47) + "...";
+    }
+
+    let titleRaw = imagemPage.title || "File:Obra";
+    let tituloOriginal = titleRaw.replace("File:", "").split(".")[0];
+    let titulo = decodeURIComponent(tituloOriginal).replace(/_/g, " ");
+
+    return {
+      imagemUrl: info.url,
+      titulo: titulo || "Obra de arte",
+      credito: credito || "Wikimedia Commons"
+    };
+  } catch (error) {
+    console.error("Erro buscarWikimedia:", error);
     return null;
+  }
+}
+
+// --- BUSCADORES DE MUSEUS (METROPOLITAN & CHICAGO ART INSTITUTE) ---
+export async function buscarMetropolitan(termo: string) {
+  try {
+    const searchResponse = await fetch(
+      `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&q=${encodeURIComponent(termo)}`,
+      {
+        headers: {
+          "User-Agent": "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)"
+        }
+      }
+    );
+
+    const searchData: any = await searchResponse.json();
+
+    if (!searchData.objectIDs || searchData.objectIDs.length === 0) {
+      return null;
+    }
+
+    const objectId = searchData.objectIDs[0];
+
+    const detailResponse = await fetch(
+      `https://collectionapi.metmuseum.org/public/collection/v1/objects/${objectId}`,
+      {
+        headers: {
+          "User-Agent": "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)"
+        }
+      }
+    );
+
+    const obra: any = await detailResponse.json();
+    const imgUrl = obra.primaryImageSmall || obra.primaryImage || null;
+    if (!imgUrl) return null;
+
+    return {
+      imagemUrl: imgUrl,
+      titulo: obra.title || "Sem título",
+      credito: `${obra.artistDisplayName || "Autor desconhecido"} (${obra.objectDate || "Data desconhecida"}) / Metropolitan Museum of Art`
+    };
+  } catch (erro) {
+    console.error("Erro ao buscar no Metropolitan:", erro);
+    return null;
+  }
+}
+
+export async function buscarChicago(termo: string) {
+  try {
+    const res = await fetch(
+      `https://api.artic.edu/api/v1/artworks/search?q=${encodeURIComponent(termo)}`,
+      {
+        headers: {
+          "User-Agent": "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)"
+        }
+      }
+    );
+
+    const data: any = await res.json();
+
+    if (!data.data || data.data.length === 0) {
+      return null;
+    }
+
+    const obra = data.data[0];
+
+    const detalhe = await fetch(
+      `https://api.artic.edu/api/v1/artworks/${obra.id}`,
+      {
+        headers: {
+          "User-Agent": "CandinhoArtApp/2.0 (lenilsonxavier@gmail.com; educational art app)"
+        }
+      }
+    );
+
+    const detalheJson: any = await detalhe.json();
+    const art = detalheJson.data;
+
+    const imagem = art.image_id
+      ? `https://www.artic.edu/iiif/2/${art.image_id}/full/843,/0/default.jpg`
+      : null;
+
+    if (!imagem) return null;
+
+    return {
+      imagemUrl: imagem,
+      titulo: art.title || "Sem título",
+      credito: `${art.artist_title || "Autor desconhecido"} (${art.date_display || "Data desconhecida"}) / Art Institute of Chicago`
+    };
+  } catch (erro) {
+    console.error("Erro ao buscar no Chicago Art Institute:", erro);
+    return null;
+  }
+}
+
+// --- BUSCANTE UNIFICADO DE IMAGEM ---
+async function buscarImagem(pergunta: string, matchedKey?: string, lib?: any) {
+  try {
+    // Primeiro tenta correspondência direta com as imagens garantidas por chave identificada
+    if (matchedKey && ARTISTS_GUARANTEED_IMAGES[matchedKey]) {
+      return ARTISTS_GUARANTEED_IMAGES[matchedKey];
+    }
+
+    // Também verifica se a própria pergunta contém o nome de qualquer um de nossos artistas prioritários
+    const lowerQuery = pergunta.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    
+    if (lowerQuery.includes("van gogh") || lowerQuery.includes("van goh")) {
+      return ARTISTS_GUARANTEED_IMAGES.vincent_van_gogh;
+    }
+    if (lowerQuery.includes("picasso")) {
+      return ARTISTS_GUARANTEED_IMAGES.pablo_picasso;
+    }
+    if (lowerQuery.includes("da vinci") || lowerQuery.includes("leonardo")) {
+      return ARTISTS_GUARANTEED_IMAGES.leonardo_da_vinci;
+    }
+    if (lowerQuery.includes("monet") || lowerQuery.includes("claude monet")) {
+      return ARTISTS_GUARANTEED_IMAGES.claude_monet;
+    }
+    if (lowerQuery.includes("tarsila") || lowerQuery.includes("abaporu")) {
+      return ARTISTS_GUARANTEED_IMAGES.tarsila;
+    }
+    if (lowerQuery.includes("portinari") || lowerQuery.includes("candinho") || lowerQuery.includes("candido portinari")) {
+      return ARTISTS_GUARANTEED_IMAGES.portinari;
+    }
+    if (lowerQuery.includes("dali") || lowerQuery.includes("salvador dali")) {
+      return ARTISTS_GUARANTEED_IMAGES.salvador_dali;
+    }
+    if (lowerQuery.includes("frida") || lowerQuery.includes("kahlo")) {
+      return ARTISTS_GUARANTEED_IMAGES.frida_kahlo;
+    }
+    if (lowerQuery.includes("almeida junior") || lowerQuery.includes("almeida jr")) {
+      return ARTISTS_GUARANTEED_IMAGES.almeida_junior;
+    }
+    if (lowerQuery.includes("aua mendes")) {
+      return ARTISTS_GUARANTEED_IMAGES.aua_mendes;
+    }
+    if (lowerQuery.includes("victor meirelles") || lowerQuery.includes("victor meireles") || lowerQuery.includes("vitor meirelles")) {
+      return ARTISTS_GUARANTEED_IMAGES.victor_meirelles;
+    }
+    if (lowerQuery.includes("adriana varejao")) {
+      return ARTISTS_GUARANTEED_IMAGES.adriana_varejao;
+    }
+    if (lowerQuery.includes("paul klee") || lowerQuery.includes("klee")) {
+      return ARTISTS_GUARANTEED_IMAGES.paul_klee;
+    }
+    if (lowerQuery.includes("kandinsky") || lowerQuery.includes("kadinski") || lowerQuery.includes("kandinski")) {
+      return ARTISTS_GUARANTEED_IMAGES.kandinsky;
+    }
+    if (lowerQuery.includes("pedro americo")) {
+      return ARTISTS_GUARANTEED_IMAGES.pedro_americo;
+    }
+    if (lowerQuery.includes("magritte") || lowerQuery.includes("rene magritte")) {
+      return ARTISTS_GUARANTEED_IMAGES.magritte;
+    }
+    if (lowerQuery.includes("daiara tukano") || lowerQuery.includes("tukano")) {
+      return ARTISTS_GUARANTEED_IMAGES.daiara_tukano;
+    }
+    if (lowerQuery.includes("cezzane") || lowerQuery.includes("cezanne") || lowerQuery.includes("paul cezanne")) {
+      return ARTISTS_GUARANTEED_IMAGES.paul_cezanne;
+    }
+    if (lowerQuery.includes("raphael") || lowerQuery.includes("rafael")) {
+      return ARTISTS_GUARANTEED_IMAGES.raphael;
+    }
+    if (lowerQuery.includes("beijo") || lowerQuery.includes("klimt") || lowerQuery.includes("gustav klimt")) {
+      return ARTISTS_GUARANTEED_IMAGES.gustav_klimt;
+    }
+    if (lowerQuery.includes("grito") || lowerQuery.includes("edvard munch")) {
+      return ARTISTS_GUARANTEED_IMAGES.o_grito;
+    }
+    if (lowerQuery.includes("degas") || lowerQuery.includes("edgar degas")) {
+      return ARTISTS_GUARANTEED_IMAGES.degas;
+    }
+    if (lowerQuery.includes("di cavalcanti") || lowerQuery.includes("cavalcanti")) {
+      return ARTISTS_GUARANTEED_IMAGES.di_cavalcanti;
+    }
+    if (lowerQuery.includes("donatello")) {
+      return ARTISTS_GUARANTEED_IMAGES.donatello;
+    }
+    if (lowerQuery.includes("yayoi") || lowerQuery.includes("kusama")) {
+      return ARTISTS_GUARANTEED_IMAGES.yayoi_kusama;
+    }
+    if (lowerQuery.includes("jaider esbell") || lowerQuery.includes("esbell")) {
+      return ARTISTS_GUARANTEED_IMAGES.jaider_esbell;
+    }
+    if (lowerQuery.includes("chagall") || lowerQuery.includes("chaggal") || lowerQuery.includes("marc chagall")) {
+      return ARTISTS_GUARANTEED_IMAGES.chagall;
+    }
+    if (lowerQuery.includes("duchamp") || lowerQuery.includes("marcel duchamp")) {
+      return ARTISTS_GUARANTEED_IMAGES.duchamp;
+    }
+    if (lowerQuery.includes("matisse") || lowerQuery.includes("henri matisse")) {
+      return ARTISTS_GUARANTEED_IMAGES.matisse;
+    }
+    if (lowerQuery.includes("vik muniz") || lowerQuery.includes("vic muniz")) {
+      return ARTISTS_GUARANTEED_IMAGES.vik_muniz;
+    }
+    if (lowerQuery.includes("michelangelo")) {
+      return ARTISTS_GUARANTEED_IMAGES.michelangelo;
+    }
+    if (lowerQuery.includes("gauguin") || lowerQuery.includes("gaugin") || lowerQuery.includes("paul gauguin")) {
+      return ARTISTS_GUARANTEED_IMAGES.gauguin;
+    }
+    if (lowerQuery.includes("goya") || lowerQuery.includes("francisco goya")) {
+      return ARTISTS_GUARANTEED_IMAGES.goya;
+    }
+    if (lowerQuery.includes("renoir") || lowerQuery.includes("pierre-auguste renoir")) {
+      return ARTISTS_GUARANTEED_IMAGES.renoir;
+    }
+    if (lowerQuery.includes("rembrandt")) {
+      return ARTISTS_GUARANTEED_IMAGES.rembrandt;
+    }
+    if (lowerQuery.includes("silvana mendes") || lowerQuery.includes("silvia mendes")) {
+      return ARTISTS_GUARANTEED_IMAGES.silvana_mendes;
+    }
+    if (lowerQuery.includes("arjan martins") || lowerQuery.includes("arjan")) {
+      return ARTISTS_GUARANTEED_IMAGES.arjan_martins;
+    }
+    if (lowerQuery.includes("maxwell alexandre") || lowerQuery.includes("maxwell")) {
+      return ARTISTS_GUARANTEED_IMAGES.maxwell_alexandre;
+    }
+    if (lowerQuery.includes("rosana paulino") || lowerQuery.includes("rosana")) {
+      return ARTISTS_GUARANTEED_IMAGES.rosana_paulino;
+    }
+    if (lowerQuery.includes("eduardo kobra") || lowerQuery.includes("kobra")) {
+      return ARTISTS_GUARANTEED_IMAGES.eduardo_kobra;
+    }
+    if (lowerQuery.includes("os gemeos") || lowerQuery.includes("os gêmeos") || lowerQuery.includes("gemeos") || lowerQuery.includes("gêmeos")) {
+      return ARTISTS_GUARANTEED_IMAGES.os_gemeos;
+    }
+    if (lowerQuery.includes("romero britto") || lowerQuery.includes("romero brito") || lowerQuery.includes("britto") || lowerQuery.includes("brito")) {
+      return ARTISTS_GUARANTEED_IMAGES.romero_britto;
+    }
+    if (lowerQuery.includes("helio oiticica") || lowerQuery.includes("oiticica")) {
+      return ARTISTS_GUARANTEED_IMAGES.helio_oiticica;
+    }
+    if (lowerQuery.includes("ivan cruz")) {
+      return ARTISTS_GUARANTEED_IMAGES.ivan_cruz;
+    }
+    if (lowerQuery.includes("alfredo volpi") || lowerQuery.includes("volpi")) {
+      return ARTISTS_GUARANTEED_IMAGES.alfredo_volpi;
+    }
+    if (lowerQuery.includes("djanira")) {
+      return ARTISTS_GUARANTEED_IMAGES.djanira;
+    }
+    if (lowerQuery.includes("georgina de albuquerque") || lowerQuery.includes("georgina albuquerque")) {
+      return ARTISTS_GUARANTEED_IMAGES.georgina_de_albuquerque;
+    }
+    if (lowerQuery.includes("arthur bispo") || lowerQuery.includes("bispo do rosario") || lowerQuery.includes("bispo do rosário")) {
+      return ARTISTS_GUARANTEED_IMAGES.arthur_bispo_do_rosario;
+    }
+    if (lowerQuery.includes("heitor dos prazeres")) {
+      return ARTISTS_GUARANTEED_IMAGES.heitor_dos_prazeres;
+    }
+    if (lowerQuery.includes("carybe") || lowerQuery.includes("carybé")) {
+      return ARTISTS_GUARANTEED_IMAGES.carybe;
+    }
+    if (lowerQuery.includes("miro") || lowerQuery.includes("miró") || lowerQuery.includes("joan miro") || lowerQuery.includes("joan miró")) {
+      return ARTISTS_GUARANTEED_IMAGES.joan_miro;
+    }
+
+    let termo = "";
+
+    // 1. Se encontramos uma correspondência exata na biblioteca local, usamos o termo limpo dela
+    if (matchedKey && lib && lib[matchedKey]) {
+      const item = lib[matchedKey];
+      if (item.subtema) {
+        termo = item.subtema.replace(/_/g, " ");
+      } else if (item.palavras_chave && item.palavras_chave.length > 0) {
+        termo = item.palavras_chave[0];
+      }
+    }
+
+    // 2. Se não temos matchedKey ou para refinamento inteligente, mapeamos nomes de artistas ou obras famosas
+    if (!termo) {
+      const queryLower = pergunta.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      
+      if (queryLower.includes("van gogh") || queryLower.includes("vincent van gogh")) {
+        termo = "Vincent van Gogh";
+      } else if (queryLower.includes("da vinci") || queryLower.includes("leonardo da vinci") || queryLower.includes("leonardo")) {
+        termo = "Leonardo da Vinci";
+      } else if (queryLower.includes("picasso") || queryLower.includes("pablo picasso")) {
+        termo = "Pablo Picasso";
+      } else if (queryLower.includes("tarsila") || queryLower.includes("tarsila do amaral")) {
+        termo = "Tarsila do Amaral";
+      } else if (queryLower.includes("monet") || queryLower.includes("claude monet")) {
+        termo = "Claude Monet";
+      } else if (queryLower.includes("mona lisa")) {
+        termo = "Mona Lisa";
+      } else if (queryLower.includes("noite estrelada")) {
+        termo = "The Starry Night Vincent van Gogh";
+      } else if (queryLower.includes("abaporu")) {
+        termo = "Abaporu Tarsila do Amaral";
+      } else if (queryLower.includes("guernica")) {
+        termo = "Guernica Pablo Picasso";
+      } else if (queryLower.includes("machado de assis")) {
+        termo = "Machado de Assis";
+      } else if (queryLower.includes("lima barreto")) {
+        termo = "Lima Barreto";
+      } else if (queryLower.includes("conceicao evaristo")) {
+        termo = "Conceição Evaristo";
+      } else if (queryLower.includes("carolina maria de jesus")) {
+        termo = "Carolina Maria de Jesus";
+      } else if (queryLower.includes("itamar vieira")) {
+        termo = "Itamar Vieira Junior";
+      } else if (queryLower.includes("daniel munduruku")) {
+        termo = "Daniel Munduruku";
+      } else if (queryLower.includes("ailton krenak")) {
+        termo = "Ailton Krenak";
+      } else {
+        const stopWords = [
+          "quem", "foi", "fale", "sobre", "ver", "obra", "quando", "nasceu", "morreu", 
+          "mostre", "imagem", "foto", "quadro", "pintura", "desenho", "ilustração", "retrato", 
+          "quero", "queria", "gostaria", "gostava", "pode", "poderia", "me", "te", "se", "um", 
+          "uma", "do", "da", "de", "em", "na", "no", "para", "com", "onde", "como", "qual", 
+          "o que", "por que", "porque", "para", "mais", "tem", "algum", "alguma", "ilustra",
+          "desenha", "veja", "olha", "mostra", "exibir", "pinta", "pintou", "criou", "fez",
+          "uns", "umas", "dos", "das", "pelo", "pela", "por", "com", "sem", "ou"
+        ];
+        
+        const palavras = pergunta.toLowerCase()
+          .replace(/[?!.,]/g, "")
+          .split(/\s+/)
+          .filter(p => p.length > 2 && !stopWords.includes(p));
+        
+        termo = palavras.join(" ");
+      }
+    }
+
+    if (!termo) return null;
+
+    let img = null;
+
+    // 1. Tentar Wikimedia Commons
+    try {
+      img = await buscarWikimedia(termo);
+    } catch (e) {
+      console.warn("Erro ao buscar na Wikimedia:", e);
+    }
+
+    // 2. Tentar Metropolitan Museum of Art API
+    if (!img) {
+      try {
+        img = await buscarMetropolitan(termo);
+      } catch (e) {
+        console.warn("Erro ao buscar no Metropolitan:", e);
+      }
+    }
+
+    // 3. Tentar Chicago Art Institute API
+    if (!img) {
+      try {
+        img = await buscarChicago(termo);
+      } catch (e) {
+        console.warn("Erro ao buscar no Chicago Art Institute:", e);
+      }
+    }
+    
+    // 4. Fallback Pexels
+    if (!img) {
+      try {
+        img = await buscarNoPexels(termo);
+      } catch (e) {
+        console.warn("Erro ao buscar no Pexels:", e);
+      }
+    }
+
+    return img;
+  } catch (e) {
+    console.error("Erro na busca de imagem:", e);
+  }
+  return null;
 }
 
 export default async function handler(req: any, res: any) {
-    if (req.method !== 'POST') {
-        res.setHeader('Allow', ['POST']);
-        return res.status(405).end(`Método ${req.method} Não Permitido`);
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', ['POST']);
+    return res.status(405).end(`Método ${req.method} Não Permitido`);
+  }
+
+  try {
+    const { mensagem, nomeCrianca: clientNomeCrianca } = req.body;
+    if (!mensagem || typeof mensagem !== 'string') {
+      return res.status(400).json({ error: "Mensagem é obrigatória" });
     }
 
-    try {
-        const { mensagem } = req.body;
-        if (!mensagem) {
-            return res.status(400).json({ error: "Mensagem vazia" });
-        }
+    let nomeCrianca = clientNomeCrianca || null;
+    let acabouDeSeApresentar = false;
 
-        const lib = await carregarBiblioteca();
-        const textoBusca = messageToLower(mensagem);
-        let textoFinal = "";
+    // Detectar nome da criança
+    const nomeExtraido = extrairNome(mensagem);
+    if (nomeExtraido) {
+      nomeCrianca = nomeExtraido;
+      acabouDeSeApresentar = true;
+    }
 
-        // 1. PRIORIDADE TOTAL: Busca local inteligente (Dados de Curadoria de forma robusta e independente de API)
-        const localResult = resolverMensagemLocalmente(mensagem, lib);
+    const lib = await carregarBiblioteca();
+    let textoFinal = "";
+    let infoExtra = { nascimento: "", morte: "", estilo: "" };
 
-        if (localResult) {
-            textoFinal = localResult.reply;
-        }
+    // 1. PRIORIDADE TOTAL: Busca local inteligente
+    const localResult = resolverMensagemLocalmente(mensagem, lib);
 
-        // 2. Groq (IA) se necessário
-        if (!textoFinal) {
-            if (GROQ_API_KEY) {
-                try {
-                    const responseGroq = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-                        method: "POST",
-                        headers: { "Authorization": `Bearer ${GROQ_API_KEY}`, "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            model: "llama-3.1-8b-instant",
-                            messages: [
-                                { 
-                                    role: "system", 
-                                    content: "Você é o Candinho, um professor de arte para crianças de 10 anos. Responda de forma simples, gentil e muito breve (máximo 3 frases). NUNCA repita o nome do artista várias vezes. Se não souber, diga 'Não conheço esse artista ainda!'." 
-                                },
-                                { role: "user", content: mensagem }
-                            ],
-                            temperature: 0.4,
-                            max_tokens: 150
-                        })
-                    });
-                    const dataIA: any = await responseGroq.json();
-                    textoFinal = dataIA.choices?.[0]?.message?.content?.trim() || "";
-                } catch (e) {
-                    console.error("Erro na chamada Groq, usando fallback de sugestões locais:", e);
-                    textoFinal = sugerirTemasAlternativos();
-                }
-            } else {
-                // Fallback local rico e interativo sem chaves de API: o Candinho apresenta seus temas de forma amigável!
-                textoFinal = sugerirTemasAlternativos();
+    if (localResult) {
+      textoFinal = localResult.reply;
+      
+      if (localResult.matchedKey) {
+        const item = lib[localResult.matchedKey];
+        infoExtra = {
+          nascimento: item.ano_nascimento || "---",
+          morte: item.ano_falecimento || "---",
+          estilo: item.categoria || "Arte"
+        };
+      }
+    }
+
+    // 2. IA / Groq (se necessário)
+    if (!textoFinal) {
+      if (GROQ_API_KEY) {
+        try {
+          let systemInstruction = 
+            "Você é o Candinho, um professor de arte e pintor muito simpático e acolhedor para crianças de 10 anos. " +
+            "Responda sempre em português de forma simples, alegre e muito breve (máximo 3 frases). " +
+            "Sempre use uma linguagem positiva e entusiasmada, usando analogias de pintura e pinceladas. " +
+            "NUNCA repita o nome do artista mais de duas vezes. " +
+            "Se não descobrir sobre quem é o artista, responda gentilmente: 'Não conheço esse artista ainda, mas vou pesquisar na minha paleta! 🎨'. " +
+            "Diga se o artista nasceu ou faleceu em tal época de forma amigável no corpo do texto, sem criar listas ou cabeçalhos.";
+
+          if (nomeCrianca) {
+            systemInstruction += ` O nome da criança que está conversando com você é ${nomeCrianca}. Trate-a com muito carinho e use o nome dela em suas respostas de forma natural e fofa para manter uma conversa acolhedora e focar na arte.`;
+            if (acabouDeSeApresentar) {
+              systemInstruction += ` IMPORTANTE: A criança acabou de falar o nome dela pela primeira vez (${nomeCrianca}). Seja extremamente simpático, comemore saber o nome dela e dê as boas-vindas calorosamente!`;
             }
-        }
+          }
 
-        // 3. Busca imagem sob demanda (só Wikimedia)
-        let imagemResult = null;
-        if (pediuImagem(mensagem)) {
-            const nomeArtista = extrairNomeArtista(mensagem);
-            imagemResult = await buscarWikimedia(nomeArtista);
-        }
+          const responseGroq = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: { "Authorization": `Bearer ${GROQ_API_KEY}`, "Content-Type": "application/json" },
+            body: JSON.stringify({
+              model: "llama-3.1-8b-instant",
+              messages: [
+                { role: "system", content: systemInstruction },
+                { role: "user", content: mensagem }
+              ],
+              temperature: 0.5,
+              max_tokens: 200
+            })
+          });
 
-        return res.status(200).json({
-            reply: textoFinal || "Que pergunta curiosa! Vamos descobrir juntos? 🎨",
-            image: imagemResult
-        });
-    } catch (error) {
-        console.error("Erro Geral:", error);
-        return res.status(200).json({ reply: "Ops! Minhas tintas secaram. Pode repetir? 🎨" });
+          const dataIA: any = await responseGroq.json();
+          textoFinal = dataIA.choices?.[0]?.message?.content?.trim() || "";
+        } catch (e) {
+          console.error("Erro na chamada Groq, usando fallback de sugestões locais:", e);
+          textoFinal = sugerirTemasAlternativos();
+        }
+      } else {
+        textoFinal = sugerirTemasAlternativos();
+      }
     }
-}
 
-function messageToLower(msg: any): string {
-    if (!msg) return "";
-    return String(msg).toLowerCase();
+    // Customização de nome
+    if (nomeCrianca && (localResult || !GROQ_API_KEY)) {
+      if (acabouDeSeApresentar) {
+        textoFinal = `Que espetáculo de nome, **${nomeCrianca}**! 🎨 Que alegria gigante ter você aqui comigo na minha paleta de descobertas! ✨\n\n${textoFinal}`;
+      } else if (Math.random() < 0.35) {
+        const nameIntros = [
+          `Veja só, **${nomeCrianca}**: `,
+          `Sabe, **${nomeCrianca}**, `,
+          `Olha que interessante, **${nomeCrianca}**! `,
+          `Que pergunta fantástica, **${nomeCrianca}**! `
+        ];
+        const chosenIntro = nameIntros[Math.floor(Math.random() * nameIntros.length)];
+        textoFinal = `${chosenIntro}${textoFinal}`;
+      }
+    }
+
+    // 3. Busca Imagem Unificada
+    const imagemResult = await buscarImagem(mensagem, localResult?.matchedKey, lib);
+
+    return res.status(200).json({
+      reply: textoFinal || "Que pergunta curiosa! Vamos descobrir juntos sobre arte? 🎨",
+      image: imagemResult,
+      info: infoExtra.nascimento || infoExtra.morte || infoExtra.estilo ? infoExtra : null,
+      googleArts: { url: `https://artsandculture.google.com/search?q=${encodeURIComponent(mensagem)}` },
+      matchedKey: localResult?.matchedKey,
+      nomeCrianca: nomeCrianca
+    });
+  } catch (error) {
+    console.error("Erro Geral:", error);
+    return res.status(200).json({ reply: "Ops! Minhas tintas secaram um pouquinho. Pode repetir o que disse? 🎨" });
+  }
 }
