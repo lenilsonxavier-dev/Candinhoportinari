@@ -45,6 +45,78 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
     ano_falecimento: "1973",
     categoria: "Modernismo"
   },
+  silvana_mendes: {
+    palavras_chave: ["silvana mendes", "silvia mendes", "silvana", "silvia"],
+    inicio: [
+      "Silvana Mendes (nascida em 1980, no Maranhão) é uma maravilhosa artista visual, fotógrafa e pesquisadora brasileira! Viva."
+    ],
+    explicacao_curta: [
+      "Ela trabalha com fotografia, colagem e pintura, explorando de forma poética e sensível a ancestralidade, a memória e a identidade afro-brasileira!"
+    ],
+    ano_nascimento: "1980",
+    ano_falecimento: "Viva",
+    categoria: "Arte Contemporânea"
+  },
+  arjan_martins: {
+    palavras_chave: ["arjan martins", "arjan"],
+    inicio: [
+      "Arjan Martins (nascido em 1960, em Mesquita, RJ) é um importantíssimo pintor e escultor brasileiro vivo!"
+    ],
+    explicacao_curta: [
+      "Sua belíssima obra aborda temas profundos como a diáspora africana, migrações coloniais e a nossa herança histórica, com trabalhos expostos em grandes museus pelo mundo inteiro."
+    ],
+    ano_nascimento: "1960",
+    ano_falecimento: "Vivo",
+    categoria: "Arte Contemporânea"
+  },
+  rosana_paulino: {
+    palavras_chave: ["rosana paulino", "rosana"],
+    inicio: [
+      "Rosana Paulino (nascida em 1967, em São Paulo) é uma influente artista visual, educadora e curadora brasileira viva!"
+    ],
+    explicacao_curta: [
+      "Suas ricas produções artísticas, que misturam gravura, desenho e costura, trazem grandes discussões sobre a memória social, identidade, o racismo e a condição da mulher negra no Brasil."
+    ],
+    ano_nascimento: "1967",
+    ano_falecimento: "Viva",
+    categoria: "Arte Contemporânea"
+  },
+  eduardo_kobra: {
+    palavras_chave: ["eduardo kobra", "kobra"],
+    inicio: [
+      "Eduardo Kobra (nascido em 1975, em São Paulo) é um lendário muralista e artista urbano brasileiro!"
+    ],
+    explicacao_curta: [
+      "Seus gigantescos murais coloridos, que misturam xadrez de cores e realismo, tomam as fachadas de prédios de dezenas de países para retratar personalidades históricas e inspirar harmonia, paz e amor!"
+    ],
+    ano_nascimento: "1975",
+    ano_falecimento: "Vivo",
+    categoria: "Muralismo"
+  },
+  os_gemeos: {
+    palavras_chave: ["os gemeos", "os gêmeos", "gemeos", "gêmeos"],
+    inicio: [
+      "Os Gêmeos são os incríveis irmãos parceiros Otávio e Gustavo Pandolfo, nascidos em 1974 em São Paulo!"
+    ],
+    explicacao_curta: [
+      "Eles conquistaram o mundo com seus murais urbanos e grafites mágicos povoados por caricatos personagens amarelos que contam histórias do folclore e da cultura de rua do Brasil."
+    ],
+    ano_nascimento: "1974",
+    ano_falecimento: "Vivos",
+    categoria: "Grafite / Street Art"
+  },
+  romero_britto: {
+    palavras_chave: ["romero britto", "romero brito", "britto"],
+    inicio: [
+      "Romero Britto (nascido em 1963, em Recife, PE) é um celebérrimo pintor e escultor brasileiro vivo!"
+    ],
+    explicacao_curta: [
+      "Suas criações repletas de cores brilhantes, traços pretos marcantes e padrões geométricos misturam cubismo e pop art para retratar sentimentos de pura felicidade, amor e esperança!"
+    ],
+    ano_nascimento: "1963",
+    ano_falecimento: "Vivo",
+    categoria: "Pop Art"
+  },
 
   // --- 1. CULTURA AFRO-BRASILEIRA ---
   afro_o_que_e: {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 interface TypewriterProps {
   text: string;
@@ -6,9 +6,14 @@ interface TypewriterProps {
   onFinished?: () => void;
 }
 
-export default function Typewriter({ text, speed = 12, onFinished }: TypewriterProps) {
+export default function Typewriter({ text, speed = 40, onFinished }: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState("");
   const [isCompleted, setIsCompleted] = useState(false);
+
+  const onFinishedRef = useRef(onFinished);
+  useEffect(() => {
+    onFinishedRef.current = onFinished;
+  }, [onFinished]);
 
   useEffect(() => {
     let index = 0;
@@ -21,14 +26,14 @@ export default function Typewriter({ text, speed = 12, onFinished }: TypewriterP
     const tick = () => {
       if (index < text.length) {
         // Increment index by 1 (or 2 for extremely long texts to keep it nimble)
-        const step = text.length > 500 ? 2 : 1;
+        const step = text.length > 1000 ? 2 : 1;
         setDisplayedText(text.slice(0, index + step));
         index += step;
         timer = setTimeout(tick, speed);
       } else {
         setDisplayedText(text);
         setIsCompleted(true);
-        if (onFinished) onFinished();
+        if (onFinishedRef.current) onFinishedRef.current();
       }
     };
 
@@ -37,7 +42,7 @@ export default function Typewriter({ text, speed = 12, onFinished }: TypewriterP
     return () => {
       clearTimeout(timer);
     };
-  }, [text, speed, onFinished]);
+  }, [text, speed]);
 
   // Allow clicking the message bubble to immediately complete the text
   const handleSkip = () => {
