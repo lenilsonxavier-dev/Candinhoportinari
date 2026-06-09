@@ -225,21 +225,21 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(135deg,_#1a1a2e_0%,_#16213e_100%)] p-[15px] flex flex-col justify-center items-center overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-[linear-gradient(135deg,_#1a1a2e_0%,_#16213e_100%)] p-2 sm:p-[15px] flex flex-col justify-center items-center overflow-x-hidden font-sans">
       
       {/* Main Beautiful Container */}
-      <div className="w-full max-w-[800px] bg-[rgba(22,_33,_62,_0.95)] backdrop-blur-[15px] rounded-[30px] p-[25px] shadow-[0_15px_50px_rgba(0,0,0,0.6)] border border-[rgba(255,_215,_0,_0.2)] flex flex-col">
+      <div className="w-full max-w-[800px] bg-[rgba(22,_33,_62,_0.95)] backdrop-blur-[15px] rounded-[24px] sm:rounded-[30px] p-3.5 sm:p-[25px] shadow-[0_15px_50px_rgba(0,0,0,0.6)] border border-[rgba(255,_215,_0,_0.2)] flex flex-col">
         
         {/* Header matching HTML precisely */}
-        <header className="flex items-center gap-5 mb-5 pb-[15px] border-b-2 border-[#e94560] relative">
+        <header className="flex items-center gap-3 sm:gap-5 mb-4 sm:mb-5 pb-3 sm:pb-[15px] border-b-2 border-[#e94560] relative">
           <img 
             src="https://i.imgur.com/fnMYS0Z.png" 
             alt="Candinho" 
-            className="w-[110px] h-[110px] rounded-full object-cover border-3 border-[#ffd700] animate-float flex-shrink-0"
+            className="w-[60px] h-[60px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px] rounded-full object-cover border-2 sm:border-3 border-[#ffd700] animate-float flex-shrink-0"
           />
-          <div className="flex-1">
-            <h1 className="text-[1.8rem] tracking-wider font-bold text-white leading-tight">Candinho</h1>
-            <p className="text-[#ffd700] italic opacity-90 text-sm mt-0.5">
+          <div className="flex-1 min-w-0 pr-16 sm:pr-0">
+            <h1 className="text-lg sm:text-[1.8rem] tracking-wider font-bold text-white leading-tight truncate">Candinho</h1>
+            <p className="text-[#ffd700] italic opacity-90 text-xs sm:text-sm mt-0.5 truncate">
               {nomeCrianca ? `Conversando com ${nomeCrianca} 🧑‍🎨` : "Seu amigo artista 🎨"}
             </p>
           </div>
@@ -257,7 +257,7 @@ export default function App() {
         {/* Custom scrollbar Chat area with optimized height */}
         <div 
           id="chat"
-          className="h-[320px] overflow-y-auto bg-[rgba(15,_52,_96,_0.4)] p-5 rounded-[20px] mb-5 flex flex-col gap-[15px] scroll-behavior-smooth custom-scrollbar"
+          className="h-[340px] sm:h-[420px] overflow-y-auto bg-[rgba(15,_52,_96,_0.4)] p-3 sm:p-5 rounded-[20px] mb-4 sm:mb-5 flex flex-col gap-3 sm:gap-[15px] scroll-behavior-smooth custom-scrollbar"
         >
           <AnimatePresence initial={false}>
             {messages.map((msg, idx) => {
@@ -265,25 +265,25 @@ export default function App() {
               return (
                 <div
                   key={msg.id}
-                  className={`flex flex-col max-w-[85%] ${
+                  className={`flex flex-col max-w-[92%] sm:max-w-[85%] ${
                     msg.sender === "user" ? "self-end" : "self-start"
                   }`}
                 >
                   <div
-                    className={`msg p-[12px_18px] rounded-[20px] text-base leading-[1.5] shadow-md transition-all duration-300 ${
+                    className={`msg p-[10px_14px] sm:p-[12px_18px] rounded-[20px] text-sm sm:text-base leading-[1.5] shadow-md transition-all duration-300 ${
                       msg.sender === "user" 
                         ? "bg-[#4834d4] text-white rounded-br-[4px] self-end" 
                         : "bg-[#686de0] text-white rounded-bl-[4px] self-start"
                     }`}
                   >
                     {msg.sender === "bot" ? (
-                      <div className="bot-message-wrapper flex items-start gap-[15px]">
+                      <div className="bot-message-wrapper flex items-start gap-2.5 sm:gap-[15px]">
                         <img 
                           src="https://i.imgur.com/UDl1c5j.png" 
                           alt="Bot icon" 
-                          className="bot-icon w-[55px] h-[55px] rounded-full object-cover mt-1 flex-shrink-0"
+                          className="bot-icon w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[55px] md:h-[55px] rounded-full object-cover mt-1 flex-shrink-0"
                         />
-                        <div className="bot-text flex-1">
+                        <div className="bot-text flex-1 min-w-0">
                           {isLatestBotMessage ? (
                             <Typewriter text={msg.text} onFinished={scrollToBottom} />
                           ) : (
@@ -292,10 +292,10 @@ export default function App() {
                           
                           {/* Display "Ver Ilustração/Obra 🖼️" button under message if image exists and wasn't loaded */}
                           {msg.image && !msg.isImageRequested && (
-                            <div className="mt-3.5 pt-3 border-t border-indigo-400/30">
+                            <div className="mt-3 pt-2.5 border-t border-indigo-400/30">
                               <button
                                 onClick={() => handleRequestImage(msg.id)}
-                                className="bg-[#ffd700] hover:bg-yellow-300 text-slate-900 px-4 py-2 rounded-full text-xs font-bold transition-all shadow hover:scale-105 cursor-pointer flex items-center gap-1.5"
+                                className="bg-[#ffd700] hover:bg-yellow-300 text-slate-900 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold transition-all shadow hover:scale-105 cursor-pointer flex items-center gap-1.5"
                               >
                                 <Palette size={13} />
                                 Ver Ilustração/Obra 🖼️
@@ -305,15 +305,15 @@ export default function App() {
 
                           {/* Renders image inline under request */}
                           {msg.image && msg.isImageRequested && (
-                            <div className="mt-3.5 pt-3 border-t border-indigo-400/30">
+                            <div className="mt-3 pt-2.5 border-t border-indigo-400/30">
                               <img 
                                 src={getProxiedImageUrl(msg.image.imagemUrl)} 
                                 alt={msg.image.titulo}
-                                className="bot-image mt-[15px] max-w-full rounded-[15px] cursor-pointer transition-transform duration-300 hover:scale-[1.02] max-h-[300px] object-contain block mx-auto shadow-md"
+                                className="bot-image mt-[10px] sm:mt-[15px] max-w-full rounded-[15px] cursor-pointer transition-transform duration-300 hover:scale-[1.02] max-h-[220px] sm:max-h-[300px] object-contain block mx-auto shadow-md"
                                 onClick={() => setModalImage(msg.image || null)}
                                 referrerPolicy="no-referrer"
                               />
-                              <div className="image-credit text-[0.65rem] text-[#ffd700] mt-[5px] text-center opacity-80 font-medium">
+                              <div className="image-credit text-[0.6rem] sm:text-[0.65rem] text-[#ffd700] mt-[5px] text-center opacity-80 font-medium whitespace-normal break-all">
                                 📷 Fonte: {msg.image.credito || 'Wikimedia Commons'}
                               </div>
                             </div>
@@ -330,16 +330,16 @@ export default function App() {
 
             {/* Loading animator matching */}
             {isProcessing && (
-              <div className="self-start max-w-[85%]">
-                <div className="msg bot p-[12px_18px] rounded-[20px] rounded-bl-[4px] text-base leading-[1.5] shadow-md bg-[#686de0] text-white">
-                  <div className="bot-message-wrapper flex items-start gap-[15px]">
+              <div className="self-start max-w-[92%] sm:max-w-[85%]">
+                <div className="msg bot p-[10px_14px] sm:p-[12px_18px] rounded-[20px] rounded-bl-[4px] text-sm sm:text-base leading-[1.5] shadow-md bg-[#686de0] text-white">
+                  <div className="bot-message-wrapper flex items-start gap-2.5 sm:gap-[15px]">
                     <img 
                       src="https://i.imgur.com/UDl1c5j.png" 
                       alt="Bot icon" 
-                      className="bot-icon w-[55px] h-[55px] rounded-full object-cover mt-1 flex-shrink-0"
+                      className="bot-icon w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[55px] md:h-[55px] rounded-full object-cover mt-1 flex-shrink-0"
                     />
-                    <div className="bot-text flex-1 py-3">
-                      <span className="italic opacity-80 font-medium">Candinho está escolhendo as cores da tela... 🎨</span>
+                    <div className="bot-text flex-1 py-2 sm:py-3 min-w-0">
+                      <span className="italic opacity-80 font-medium text-xs sm:text-sm">Candinho está escolhendo as cores da tela... 🎨</span>
                     </div>
                   </div>
                 </div>
@@ -350,7 +350,7 @@ export default function App() {
         </div>
 
         {/* Input Area */}
-        <div className="input-area flex gap-2.5">
+        <div className="input-area flex gap-2 sm:gap-2.5 w-full">
           <input 
             ref={inputRef}
             type="text" 
@@ -360,12 +360,12 @@ export default function App() {
             placeholder="Pergunte sobre um artista..." 
             disabled={isProcessing}
             autoComplete="off"
-            className="flex-1 p-[15px_25px] border-2 border-[#e94560] rounded-[30px] bg-[rgba(255,255,255,0.05)] text-white text-base outline-none focus:border-[#ffd700] focus:bg-[rgba(255,255,255,0.1)] transition-all placeholder-slate-500 disabled:opacity-50"
+            className="flex-1 min-w-0 p-[12px_18px] sm:p-[15px_25px] border-2 border-[#e94560] rounded-[30px] bg-[rgba(255,255,255,0.05)] text-white text-sm sm:text-base outline-none focus:border-[#ffd700] focus:bg-[rgba(255,255,255,0.1)] transition-all placeholder-slate-500 disabled:opacity-50"
           />
           <button 
             onClick={() => handleSend(inputValue)}
             disabled={!inputValue.trim() || isProcessing}
-            className="bg-[#e94560] text-white border-none p-[0_30px] rounded-[30px] font-bold cursor-pointer hover:bg-[#d6344d] transition-colors disabled:opacity-50 flex items-center justify-center gap-1.5 select-none"
+            className="bg-[#e94560] text-white border-none px-4 sm:px-[30px] rounded-[30px] font-bold cursor-pointer hover:bg-[#d6344d] transition-colors disabled:opacity-50 flex items-center justify-center gap-1.5 select-none shrink-0 text-sm sm:text-base h-auto"
           >
             <span>Enviar</span>
             <Send size={15} />
