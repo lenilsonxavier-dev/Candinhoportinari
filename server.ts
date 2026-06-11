@@ -982,8 +982,26 @@ app.post("/api/groq", async (req: Request, res: Response) => {
       }
     }
 
-    // 3. Busca Imagem Unificada (Wikimedia com fallback para Pexels)
-    const imagemResult = await buscarImagem(mensagem, localResult?.matchedKey, lib);
+    // 3. Busca Imagem Unificada (Se acabou de se apresentar, retorna uma das 5 imagens fofas do Candinho fornecidas pela criança)
+    let imagemResult = null;
+    if (acabouDeSeApresentar) {
+      const CANDINHO_GREETINGS_IMAGES = [
+        "https://i.imgur.com/PYAYlUY.jpg",
+        "https://i.imgur.com/UDl1c5j.png",
+        "https://i.imgur.com/Le0VpzC.jpg",
+        "https://i.imgur.com/iWmEdZz.jpg",
+        "https://i.imgur.com/REfhO7r.jpg"
+      ];
+      // Escolhe uma imagem aleatória das fornecidas pelo usuário
+      const idx = Math.floor(Math.random() * CANDINHO_GREETINGS_IMAGES.length);
+      imagemResult = {
+        imagemUrl: CANDINHO_GREETINGS_IMAGES[idx],
+        titulo: `Bem-vindo ao Ateliê, ${nomeCrianca || 'Pequeno Artista'}! 🎨`,
+        credito: "Ilustração do Candinho"
+      };
+    } else {
+      imagemResult = await buscarImagem(mensagem, localResult?.matchedKey, lib);
+    }
 
     // 4. Retorno Unificado
     return res.status(200).json({
