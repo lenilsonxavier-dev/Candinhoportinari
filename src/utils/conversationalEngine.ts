@@ -383,6 +383,7 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   // ===== ELEMENTOS DAS ARTES VISUAIS =====
   { palavras: ['ponto', 'o que é ponto'], resposta: 'O ponto é a menor marca no desenho! Sozinho chama atenção, mas muitos pontos juntos podem formar linhas, formas e até texturas. No pontilhismo, os pontos criam imagens incríveis! Seurat usou isso em "Tarde de domingo na Ilha de Grande Jatte". 🔴' },
   { palavras: ['linha', 'o que é linha'], resposta: 'A linha é como um ponto que saiu passeando! Pode ser reta, curva, fina ou grossa. Linhas retas parecem firmes; curvas são mais suaves. Dürer e Kandinsky adoravam brincar com linhas! 📏' },
+  { palavras: ['forma', 'formas', 'o que e forma', 'o que sao formas', 'o que e uma forma'], resposta: 'Formas são as figuras que criamos quando fechamos uma linha! 🔺🔵🟩 Elas podem ser geométricas (como círculos, quadrados e triângulos) ou orgânicas (com formatos livres e naturais, como uma nuvem ou uma folha). Joan Miró e Pablo Picasso amavam brincar com formas!' },
   { palavras: ['cores primárias', 'primarias', 'o que são cores primárias'], resposta: 'Cores primárias ou puras são aquelas que não podem ser obtidas por meio de outras misturas. Elas são: amarelo, azul e vermelho. Com elas, podemos criar todas as outras cores! 🔴🔵🟡' },
   { palavras: ['cores secundárias', 'secundarias', 'o que são cores secundárias'], resposta: 'Cores secundárias são geradas por meio da mistura de duas cores primárias. 🌈 Amarelo + vermelho = laranja 🟠, vermelho + azul = roxo ou violeta 🟣, azul + amarelo = verde 🟢. Que combinação legal!' },
   { palavras: ['cores terciárias', 'terciarias', 'o que são cores terciárias'], resposta: 'Cores terciárias são geradas pela mistura de uma cor primária com uma cor secundária. São elas: vermelho-arroxeado (vinho), vermelho-alaranjado, amarelo-esverdeado, amarelo-alaranjado (bege), azul-arroxeado e azul-esverdeado (verde-água). Um montão de cores! 🌈' },
@@ -845,6 +846,14 @@ export function resolverMensagemLocalmente(mensagem: string, lib: Record<string,
     const matched = intent.keywords.some(keyword => {
       const nKw = normalizarTexto(keyword);
       if (!nKw) return false;
+
+      // If it's a bare short/common keyword like "candinho", "portinari", or "candido",
+      // only match if the entire query is exactly that keyword or very close to it.
+      // This prevents the bot from introducing itself every time the child just addresses him (e.g. "Candinho, o que é forma?").
+      if (nKw === "candinho" || nKw === "portinari" || nKw === "candido") {
+        return normalizedMsg === nKw;
+      }
+
       const escapedKeyword = nKw.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
       const regex = new RegExp(`\\b${escapedKeyword}\\b`, "i");
       return regex.test(normalizedMsg);
