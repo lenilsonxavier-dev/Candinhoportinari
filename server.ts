@@ -287,8 +287,8 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     credito: "Henri Matisse"
   },
   vik_muniz: {
-    imagemUrl: "https://i.imgur.com/fOCKz7O.jpeg",
-    titulo: "Retrato de Lixo (Marat)",
+    imagemUrl: "https://i.imgur.com/S8PEvsX.jpeg",
+    titulo: "Vik Muniz - Retrato com materiais recicláveis",
     credito: "Vik Muniz"
   },
   michelangelo: {
@@ -377,18 +377,18 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     credito: "Georgina de Albuquerque"
   },
   arthur_bispo_do_rosario: {
-    imagemUrl: "https://i.imgur.com/1YzV3xX.jpeg",
-    titulo: "Manto da Apresentação",
+    imagemUrl: "https://i.imgur.com/jHweTgn.jpeg",
+    titulo: "Arthur Bispo do Rosário",
     credito: "Arthur Bispo do Rosário"
   },
   heitor_dos_prazeres: {
-    imagemUrl: "https://i.imgur.com/C5JLFAo.jpeg",
-    titulo: "Festa no Terreiro / Samba",
+    imagemUrl: "https://i.imgur.com/9uwc2v9.jpeg",
+    titulo: "Heitor dos Prazeres - Roda de Samba",
     credito: "Heitor dos Prazeres"
   },
   carybe: {
-    imagemUrl: "https://i.imgur.com/uQeNwXq.png",
-    titulo: "Candomblé / Viva a Bahia",
+    imagemUrl: "https://i.imgur.com/nfSAuTr.jpeg",
+    titulo: "Carybé - Arte e Capoeira",
     credito: "Carybé"
   },
   joan_miro: {
@@ -1190,90 +1190,95 @@ app.post("/api/groq", async (req: Request, res: Response) => {
 
     let textoFinal = "";
     let infoExtra = { nascimento: "", morte: "", estilo: "" };
+    let localResult = null;
 
-    const containsImageKeywords = 
-      mensagem.toLowerCase().includes("mostra") ||
-      mensagem.toLowerCase().includes("mostre") ||
-      mensagem.toLowerCase().includes("ver") ||
-      mensagem.toLowerCase().includes("veja") ||
-      mensagem.toLowerCase().includes("imagem") ||
-      mensagem.toLowerCase().includes("foto") ||
-      mensagem.toLowerCase().includes("quadro") ||
-      mensagem.toLowerCase().includes("pintura") ||
-      mensagem.toLowerCase().includes("desenho") ||
-      mensagem.toLowerCase().includes("retrat") ||
-      mensagem.toLowerCase().includes("ilustra");
+    if (acabouDeSeApresentar && nomeCrianca) {
+      const saudacoes = [
+        `É um prazer estar aqui para falarmos de Arte! Bem-vindo, Artista **${nomeCrianca}**! 🎨`,
+        `Olá, **${nomeCrianca}**! É um prazer estar aqui para falarmos de Arte! 🌟`,
+        `Oi, **${nomeCrianca}**! É um prazer estar aqui para falarmos de Arte! 🤩`
+      ];
+      textoFinal = saudacoes[Math.floor(Math.random() * saudacoes.length)];
+    } else {
+      const containsImageKeywords = 
+        mensagem.toLowerCase().includes("mostra") ||
+        mensagem.toLowerCase().includes("mostre") ||
+        mensagem.toLowerCase().includes("ver") ||
+        mensagem.toLowerCase().includes("veja") ||
+        mensagem.toLowerCase().includes("imagem") ||
+        mensagem.toLowerCase().includes("foto") ||
+        mensagem.toLowerCase().includes("quadro") ||
+        mensagem.toLowerCase().includes("pintura") ||
+        mensagem.toLowerCase().includes("desenho") ||
+        mensagem.toLowerCase().includes("retrat") ||
+        mensagem.toLowerCase().includes("ilustra");
 
-    // 1. PRIORIDADE TOTAL: Busca local inteligente (Dados de Curadoria de forma robusta e independente de API)
-    const localResult = resolverMensagemLocalmente(mensagem, lib);
+      // 1. PRIORIDADE TOTAL: Busca local inteligente (Dados de Curadoria de forma robusta e independente de API)
+      localResult = resolverMensagemLocalmente(mensagem, lib);
 
-    if (localResult) {
-      if (containsImageKeywords && localResult.matchedKey) {
-        const item = lib[localResult.matchedKey];
-        const nomeFormatado = item.palavras_chave?.[0]
-          ? item.palavras_chave[0].replace(/\b\w/g, (l: string) => l.toUpperCase())
-          : "Carolina Maria de Jesus";
-        textoFinal = `Com certeza! Preparei a tela para você ver a imagem de **${nomeFormatado}**! 🖼️✨`;
-      } else {
-        textoFinal = localResult.reply;
+      if (localResult) {
+        if (containsImageKeywords && localResult.matchedKey) {
+          const item = lib[localResult.matchedKey];
+          const nomeFormatado = item.palavras_chave?.[0]
+            ? item.palavras_chave[0].replace(/\b\w/g, (l: string) => l.toUpperCase())
+            : "Carolina Maria de Jesus";
+          textoFinal = `Com certeza! Preparei a tela para você ver a imagem de **${nomeFormatado}**! 🖼️✨`;
+        } else {
+          textoFinal = localResult.reply;
+        }
+        
+        // Se encontrou um item específico na biblioteca, enriquece a extra info
+        if (localResult.matchedKey) {
+          const item = lib[localResult.matchedKey];
+          infoExtra = {
+            nascimento: item.ano_nascimento || "---",
+            morte: item.ano_falecimento || "---",
+            estilo: item.categoria || "Arte"
+          };
+        }
       }
-      
-      // Se encontrou um item específico na biblioteca, enriquece a extra info
-      if (localResult.matchedKey) {
-        const item = lib[localResult.matchedKey];
-        infoExtra = {
-          nascimento: item.ano_nascimento || "---",
-          morte: item.ano_falecimento || "---",
-          estilo: item.categoria || "Arte"
-        };
-      }
-    }
 
-    // 2. Se não achou resposta local e houver IA ativa, chama o Gemini.
-    // Se a IA NÃO estiver ativa (ou se a requisição de API falhar), provê sugestões inteligentes interativas!
-    if (!textoFinal) {
-      if (ai) {
-        try {
-          let systemInstruction = 
-            "Você é o Candinho, um professor de arte e pintor muito simpático e acolhedor para crianças de 10 anos. " +
-            "Responda sempre em português de forma simples, alegre e muito breve (máximo 3 frases). " +
-            "Sempre use uma linguagem positiva e entusiasmada, usando analogias de pintura e pinceladas. " +
-            "NUNCA repita o nome do artista mais de duas vezes. " +
-            "Se não descobrir sobre quem é o artista, responda gentilmente: 'Não conheço esse artista ainda, mas vou pesquisar na minha paleta! 🎨'. " +
-            "Diga se o artista nasceu ou faleceu em tal época de forma amigável no corpo do texto, sem criar listas ou cabeçalhos.";
+      // 2. Se não achou resposta local e houver IA ativa, chama o Gemini.
+      // Se a IA NÃO estiver ativa (ou se a requisição de API falhar), provê sugestões inteligentes interativas!
+      if (!textoFinal) {
+        if (ai) {
+          try {
+            let systemInstruction = 
+              "Você é o Candinho, um professor de arte e pintor muito simpático e acolhedor para crianças de 10 anos. " +
+              "Responda sempre em português de forma simples, alegre e muito breve (máximo 3 frases). " +
+              "Sempre use uma linguagem positiva e entusiasmada, usando analogias de pintura e pinceladas. " +
+              "NUNCA repita o nome do artista mais de duas vezes. " +
+              "Se não descobrir sobre quem é o artista, responda gentilmente: 'Não conheço esse artista ainda, mas vou pesquisar na minha paleta! 🎨'. " +
+              "Diga se o artista nasceu ou faleceu em tal época de forma amigável no corpo do texto, sem criar listas ou cabeçalhos.";
 
-          if (nomeCrianca) {
-            systemInstruction += ` O nome da criança que está conversando com você é ${nomeCrianca}. Trate-a com muito carinho e use o nome dela em suas respostas de forma natural e fofa para manter uma conversa acolhedora e focar na arte (por exemplo, chamando-a de 'meu amigo ${nomeCrianca}' ou '${nomeCrianca}').`;
-            if (acabouDeSeApresentar) {
-              systemInstruction += ` IMPORTANTE: A criança acabou de falar o nome dela pela primeira vez (${nomeCrianca}). Seja extremamente simpático, comemore saber o nome dela e dê as boas-vindas calorosamente!`;
+            if (nomeCrianca) {
+              systemInstruction += ` O nome da criança que está conversando com você é ${nomeCrianca}. Trate-a com muito carinho e use o nome dela em suas respostas de forma natural e fofa para manter uma conversa acolhedora e focar na arte (por exemplo, chamando-a de 'meu amigo ${nomeCrianca}' ou '${nomeCrianca}').`;
             }
-          }
 
-          const responseGemini = await ai.models.generateContent({
-            model: "gemini-3.5-flash",
-            contents: mensagem,
-            config: {
-              systemInstruction: systemInstruction,
-              temperature: 0.5,
-            },
-          });
-          textoFinal = responseGemini.text || "";
-        } catch (e) {
-          console.error("Erro na chamada Gemini, usando fallback de sugestões locais:", e);
+            const responseGemini = await ai.models.generateContent({
+              model: "gemini-3.5-flash",
+              contents: mensagem,
+              config: {
+                systemInstruction: systemInstruction,
+                temperature: 0.5,
+              },
+            });
+            textoFinal = responseGemini.text || "";
+          } catch (e) {
+            console.error("Erro na chamada Gemini, usando fallback de sugestões locais:", e);
+            textoFinal = sugerirTemasAlternativos();
+          }
+        } else {
+          // Fallback local rico e guiado sem chaves de API: o Candinho apresenta seus temas de forma interativa e amigável!
           textoFinal = sugerirTemasAlternativos();
         }
-      } else {
-        // Fallback local rico e guiado sem chaves de API: o Candinho apresenta seus temas de forma interativa e amigável!
-        textoFinal = sugerirTemasAlternativos();
       }
     }
 
     // Se temos o nome da criança E usamos as respostas do dicionário local/fallback (que não passam pelo Gemini),
     // nós personalizamos e tecemos o nome neles de forma dinâmica!
-    if (nomeCrianca && (localResult || !ai)) {
-      if (acabouDeSeApresentar) {
-        textoFinal = `Que espetáculo de nome, **${nomeCrianca}**! 🎨 Que alegria gigante ter você aqui comigo na minha paleta de descobertas! ✨\n\n${textoFinal}`;
-      } else if (Math.random() < 0.35) {
+    if (nomeCrianca && !acabouDeSeApresentar && (localResult || !ai)) {
+      if (Math.random() < 0.35) {
         // 35% chance of inserting the child's name in standard local replies so it feels organic
         const nameIntros = [
           `Veja só, **${nomeCrianca}**: `,

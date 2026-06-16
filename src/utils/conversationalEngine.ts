@@ -50,6 +50,9 @@ function getRandomElement(arr?: string[] | null): string {
 
 // 3. Builds a customized, structured conversational response natively using metadata parameters
 export function construirRespostaLocal(item: any, mensagemOriginal: string): string {
+  if (item && item.resposta_direta) {
+    return item.resposta_direta;
+  }
   const msgNorm = normalizarTexto(mensagemOriginal);
   const msgLower = mensagemOriginal.toLowerCase();
   

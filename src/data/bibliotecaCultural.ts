@@ -3630,101 +3630,6 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
     emocao: "animacao",
     nivel: "leve"
   },
-  danca_tango: {
-    tema: "dancas",
-    subtema: "tango",
-    palavras_chave: [
-      "tango",
-      "dança tango"
-    ],
-    inicio: [
-      "O Tango é uma dança cheia de expressão e muita elegância! 💃"
-    ],
-    explicacao_curta: [
-      "O Tango surgiu na Argentina, principalmente na cidade de Buenos Aires, há mais de 100 anos."
-    ],
-    explicacao_aprofundada: [
-      "É uma dança feita em dupla, com movimentos elegantes, passos marcados e muita expressão. Os dançarinos costumam dançar bem próximos um do outro."
-    ],
-    curiosidade: [
-      "O Tango começou nos bairros populares e hoje é famoso no mundo inteirinho! 🌍"
-    ],
-    interacao: [
-      "Você já viu dançarinos de tango caminhando de um jeito dramático e chique?"
-    ],
-    atividade: [
-      "Tente caminhar com elegância dando passos longos e bem firmes como um dançarino de tango! 🕺💃"
-    ],
-    final: [
-      "O tango é pura emoção e passos elegantes! ✨"
-    ],
-    emocao: "expressao",
-    nivel: "leve"
-  },
-  danca_salsa: {
-    tema: "dancas",
-    subtema: "salsa",
-    palavras_chave: [
-      "salsa",
-      "dança salsa"
-    ],
-    inicio: [
-      "A Salsa é uma dança super alegre e contagiante! 🌶️"
-    ],
-    explicacao_curta: [
-      "A Salsa surgiu da mistura de ritmos caribenhos, especialmente em Cuba, e ficou muito popular em vários países da América Latina."
-    ],
-    explicacao_aprofundada: [
-      "É uma dança alegre e animada, com passos rápidos, giros e muito ritmo. Geralmente é dançada em dupla ao som de músicas vibrantes."
-    ],
-    curiosidade: [
-      "O nome 'Salsa' significa tempero em espanhol, mostrando como essa dança é caliente e cheia de sabor! 🌶️"
-    ],
-    interacao: [
-      "Gosta de ritmos rápidos e giros animados na hora de dançar?"
-    ],
-    atividade: [
-      "Coloque uma música bem alegre e tente dar giros rápidos com os braços levantados! 🎶🤩"
-    ],
-    final: [
-      "Dançar salsa colore o dia de alegria! 🌈"
-    ],
-    emocao: "alegria",
-    nivel: "leve"
-  },
-  danca_valsa: {
-    tema: "dancas",
-    subtema: "valsa",
-    palavras_chave: [
-      "valsa",
-      "dança valsa"
-    ],
-    inicio: [
-      "A Valsa é uma das danças mais suaves e clássicas do mundo! 👑"
-    ],
-    explicacao_curta: [
-      "A Valsa nasceu na Áustria e na Alemanha no século XVIII."
-    ],
-    explicacao_aprofundada: [
-      "É uma dança suave e elegante, realizada em dupla. Seus movimentos são circulares e acompanham o compasso de três tempos da música, dando a sensação de que os dançarinos estão deslizando pelo salão."
-    ],
-    curiosidade: [
-      "O ritmo da valsa é de 1-2-3, 1-2-3 (um compasso ternário), que parece um barquinho deslizando na água! 🚣"
-    ],
-    interacao: [
-      "Qual música suave faz você querer deslizar pela sala?"
-    ],
-    atividade: [
-      "Dê três passos suaves em círculo contando: um, dois, três... parecendo deslizar no salão! 🏰"
-    ],
-    final: [
-      "A valsa nos faz flutuar na música com elegância! 👑"
-    ],
-    emocao: "harmonia",
-    nivel: "leve"
-  },
-
-  // --- HISTÓRIA DA ARTE ---
   arte_rupestre: {
     tema: "historia_arte",
     subtema: "arte_rupestre",
@@ -3742,7 +3647,7 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
   arte_egipcia: {
     tema: "historia_arte",
     subtema: "arte_egipcia",
-    palavras_chave: ["arte egipcia", "egito antigo", "hieroglifo", "piramide"],
+    palavras_chave: ["arte egipcia", "egito antigo", "hieroglifo", "piramide", "egito", "egipcio", "egipcia"],
     inicio: ["A arte egípcia nasceu às margens do rio Nilo 🏺"],
     explicacao_curta: ["Ela aparece em pirâmides, templos e pinturas cheias de símbolos."],
     explicacao_aprofundada: ["Os egípcios desenhavam pessoas de lado e utilizavam hieróglifos para registrar histórias e crenças."],
@@ -3751,12 +3656,27 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
     atividade: ["Desenhe uma pirâmide com símbolos inventados ✏️"],
     final: ["A arte egípcia mistura mistério, história e símbolos 🌞"],
     emocao: "misterio",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🏺 **Arte Egípcia**
+
+📅 **Período**: c. 3000 a.C. a 30 a.C.
+
+🎨 **Principais Artistas**: Os artistas geralmente não assinavam suas obras.
+
+🌟 **Características**:
+• Ligada à religião e aos faraós.
+• Figuras desenhadas de perfil.
+• Hierarquia de tamanho (o faraó aparecia maior).
+• Pinturas, esculturas e pirâmides.
+
+🖼️ **Obras Importantes**:
+• Máscara de Tutancâmon.
+• Pirâmides de Gizé.`
   },
   arte_grega: {
     tema: "historia_arte",
     subtema: "arte_grega",
-    palavras_chave: ["arte grega", "grecia antiga", "escultura grega"],
+    palavras_chave: ["arte grega", "grecia antiga", "escultura grega", "grecia", "grego", "grega", "fidias", "miron", "policleto", "discobolo"],
     inicio: ["Os gregos valorizavam equilíbrio e beleza 🏛️"],
     explicacao_curta: ["A arte grega mostrava esculturas e construções harmoniosas."],
     explicacao_aprofundada: ["Os artistas gregos estudavam o corpo humano e criavam obras com proporção e movimento."],
@@ -3765,12 +3685,26 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
     atividade: ["Crie uma construção usando formas simétricas ✏️"],
     final: ["A arte grega influenciou artistas do mundo inteiro 🌍"],
     emocao: "admiracao",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🏛️ **Arte Grega**
+
+📅 **Período**: c. 800 a.C. a 146 a.C.
+
+🎨 **Principais Artistas**: Fídias, Míron, Policleto.
+
+🌟 **Características**:
+• Busca da beleza e proporção do corpo humano.
+• Temas mitológicos.
+• Esculturas realistas.
+
+🖼️ **Obras Importantes**:
+• Discóbolo (Míron).
+• Estátua de Atena (Fídias).`
   },
   arte_romana: {
     tema: "historia_arte",
     subtema: "arte_romana",
-    palavras_chave: ["arte romana", "roma antiga", "coliseu"],
+    palavras_chave: ["arte romana", "roma antiga", "coliseu", "romano", "romana", "roma", "panteao"],
     inicio: ["Os romanos construíram obras gigantescas 🏟️"],
     explicacao_curta: ["A arte romana se inspirou nos gregos e mostrava cenas do cotidiano."],
     explicacao_aprofundada: ["Os romanos criaram estradas, arcos e anfiteatros famosos, como o Coliseu."],
@@ -3779,26 +3713,107 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
     atividade: ["Desenhe um arco inspirado na arquitetura romana ✏️"],
     final: ["A arte romana uniu força, arquitetura e história 🏛️"],
     emocao: "grandiosidade",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🏛️ **Arte Romana**
+
+📅 **Período**: c. 509 a.C. a 476 d.C.
+
+🎨 **Principais Artistas**: Muitos permanecem desconhecidos.
+
+🌟 **Características**:
+• Influência grega.
+• Realismo nos retratos.
+• Grandes construções públicas.
+
+🖼️ **Obras Importantes**:
+• Coliseu de Roma.
+• Panteão de Roma.`
   },
-  arte_medieval: {
+  arte_bizantina: {
     tema: "historia_arte",
-    subtema: "arte_medieval",
-    palavras_chave: ["arte medieval", "idade media", "arte religiosa antiga"],
-    inicio: ["A arte medieval aparece em castelos e igrejas 🏰"],
-    explicacao_curta: ["Muitas obras medievais mostravam histórias religiosas."],
-    explicacao_aprofundada: ["Pinturas, esculturas e vitrais ajudavam as pessoas a conhecer histórias importantes daquela época."],
-    curiosidade: ["Os vitrais coloridos iluminavam as igrejas com muitas cores 🌈"],
-    interacao: ["Você prefere castelos ou igrejas antigas?"],
-    atividade: ["Crie um desenho inspirado em vitrais coloridos 🎨"],
-    final: ["A arte medieval mistura história, fé e imaginação ✨"],
-    emocao: "misterio",
-    nivel: "leve"
+    subtema: "arte_bizantina",
+    palavras_chave: ["arte bizantina", "imperio bizantino", "bizantino", "bizantina", "santa sofia", "mosaico", "mosaicos", "fundo dourado"],
+    inicio: ["A arte bizantina brilha com fundos dourados e mosaicos religiosos 🏰"],
+    explicacao_curta: ["Ela foi muito marcante nos séculos V ao XV, cheia de cores brilhantes."],
+    explicacao_aprofundada: ["Os ícones e painéis bizantinos decoravam catedrais do Império Romano do Oriente com cores vibrantes e pedras reluzentes."],
+    curiosidade: ["A Basílica de Santa Sofia já foi uma igreja, uma mesquita e hoje é um museu fantástico na Turquia! ⭐"],
+    interacao: ["Você já viu desenhos montados com pequenos quadradinhos coloridos?"],
+    atividade: ["Crie um mosaico usando pedacinhos de papéis coloridos colados ✏️"],
+    final: ["Os mosaicos bizantinos brilham como joias da história ✨"],
+    emocao: "admiracao",
+    nivel: "leve",
+    resposta_direta: `🏰 **Arte Bizantina**
+
+📅 **Período**: Séculos V a XV
+
+🎨 **Principais Artistas**: A maioria dos criadores de mosaicos de temas religiosos permanece anônima.
+
+🌟 **Características**:
+• Temas religiosos e divinos.
+• Fundo dourado reluzente que traz um ar celestial.
+• Ícones rígidos, formais e mosaicos ricos em detalhes geométricos.
+
+🖼️ **Obra Marcante**:
+• Basílica de Santa Sofia.`
+  },
+  arte_romanica: {
+    tema: "historia_arte",
+    subtema: "arte_romanica",
+    palavras_chave: ["arte romanica", "romanico", "romanica", "idade media romanica", "santiago de compostela"],
+    inicio: ["A arte românica é forte, robusta e cheia de mistérios medievais 🏰"],
+    explicacao_curta: ["Ela dominou nos séculos XI e XII na Idade Média, com catedrais parecidas com castelos."],
+    explicacao_aprofundada: ["As construções românicas tinham paredes muito grossas para resistirem ao tempo e portais esculpidos com monstros e seres bíblicos."],
+    curiosidade: ["As igrejas eram chamadas de 'fortalezas espirituais' e serviam de abrigo contra perigos físicos! ⚔️"],
+    interacao: ["Você gostaria de morar em um castelo com muralhas fortificadas?"],
+    atividade: ["Desenhe uma igreja forte com uma porta em formato de arco redondo ✏️"],
+    final: ["A arte românica mostra toda a força medieval na pedra 🏛️"],
+    emocao: "grandiosidade",
+    nivel: "leve",
+    resposta_direta: `🏰 **Arte Românica**
+
+📅 **Período**: Séculos XI e XII
+
+🎨 **Principais Artistas**: Criada por corporações coletivas de artesãos e pedreiros.
+
+🌟 **Características**:
+• Igrejas com paredes grossas e maciças protetoras.
+• Arcos redondos e poucas e pequenas janelas.
+• Esculturas religiosas integradas nas fachadas e colunas.
+
+🖼️ **Obra Marcante**:
+• Catedral de Santiago de Compostela.`
+  },
+  arte_gotica: {
+    tema: "historia_arte",
+    subtema: "arte_gotica",
+    palavras_chave: ["arte gotica", "gotica", "gotico", "notre dame", "notre-dame", "vitrais", "arco pontiagudo"],
+    inicio: ["A arte gótica se estica até o céu com grandes vitrais e arcos pontiagudos! 🏰"],
+    explicacao_curta: ["Surgiu nos séculos XII a XVI com catedrais muito altas e janelas iluminadas e coloridas."],
+    explicacao_aprofundada: ["Grandes arcos em ogiva e contrafortes permitiram que as paredes fossem finas e cheias de vitrais que contavam histórias com luz natural!"],
+    curiosidade: ["Catedral de Notre-Dame de Paris levou mais de 180 anos inteiros para ser finalizada! 😮"],
+    interacao: ["Você já reparou como a luz do sol brilha em vidros de cores diferentes?"],
+    atividade: ["Faça uma linda janela gótica em papel preto e cole celofane colorido nela 🎨"],
+    final: ["Nas catedrais góticas, a luz de cores era a própria pintura ✨"],
+    emocao: "leveza",
+    nivel: "leve",
+    resposta_direta: `🏰 **Arte Gótica**
+
+📅 **Período**: Séculos XII a XVI
+
+🎨 **Principais Artistas**: Mestres construtores de catedrais e vidreiros antigos.
+
+🌟 **Características**:
+• Vitrais coloridos que deixam a luz do sol inundar o ambiente de cor.
+• Grandes e altíssimas catedrais que apontavam diretamente para o céu.
+• Arcos pontiagudos (ogivais) e gárgulas divertidas e misteriosas esculpidas.
+
+🖼️ **Obra Marcante**:
+• Catedral de Notre-Dame.`
   },
   renascimento: {
     tema: "historia_arte",
     subtema: "renascimento",
-    palavras_chave: ["renascimento", "arte renascentista"],
+    palavras_chave: ["renascimento", "arte renascentista", "renascentista", "da vinci", "leonardo da vinci", "michelangelo", "rafael sanzio", "mona lisa", "capela sistina", "ultima ceia"],
     inicio: ["O Renascimento trouxe novas formas de observar o mundo 🌞"],
     explicacao_curta: ["Os artistas buscavam criar obras mais realistas."],
     explicacao_aprofundada: ["Eles estudavam luz, perspectiva, anatomia e natureza para melhorar suas pinturas e esculturas."],
@@ -3807,12 +3822,27 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
     atividade: ["Faça um desenho usando profundidade e perspectiva ✏️"],
     final: ["O Renascimento aproximou arte, ciência e observação 🌍"],
     emocao: "descoberta",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🎨 **Renascimento**
+
+📅 **Período**: Séculos XIV a XVI
+
+🎨 **Principais Artistas**: Leonardo da Vinci, Michelangelo, Rafael Sanzio.
+
+🌟 **Características**:
+• Valorização da ciência, anatomia e inteligência humana.
+• Perspectiva tridimensional realista para dar profundidade.
+• Realismo expressivo nas formas e rostos.
+
+🖼️ **Obras Importantes**:
+• Mona Lisa
+• A Última Ceia
+• Teto da Capela Sistina.`
   },
   barroco: {
     tema: "historia_arte",
     subtema: "barroco",
-    palavras_chave: ["barroco", "luz e sombra forte"],
+    palavras_chave: ["barroco", "luz e sombra forte", "caravaggio", "rembrandt", "aleijadinho", "profetas de congonhas", "vocacao de sao mateus"],
     inicio: ["O Barroco é cheio de emoção e dramaticidade ✨"],
     explicacao_curta: ["As obras usam contrastes fortes de luz e sombra."],
     explicacao_aprofundada: ["Os artistas barrocos criavam movimento e intensidade para impressionar quem observava."],
@@ -3821,77 +3851,326 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
     atividade: ["Faça uma pintura usando áreas bem claras e bem escuras 🎨"],
     final: ["O Barroco transforma emoção em arte 🌙"],
     emocao: "intensidade",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🎨 **Barroco**
+
+📅 **Período**: Séculos XVII e XVIII
+
+🎨 **Principais Artistas**: Caravaggio, Rembrandt, Aleijadinho.
+
+🌟 **Características**:
+• Emoção intensa, paixão e sensação de movimento teatral.
+• Contraste agudo de luz e sombra (efeito tenebrista).
+• Movimento dramático das figuras.
+
+🖼️ **Obras Importantes**:
+• Vocação de São Mateus.
+• Profetas de Congonhas (Aleijadinho).`
+  },
+  rococo: {
+    tema: "historia_arte",
+    subtema: "rococo",
+    palavras_chave: ["rococo", "jean-honore fragonard", "fragonard", "o balanco", "balanco", "estilo delicado"],
+    inicio: ["O Rococó é o reino das cores suaves, conchas decoradas e jardins de elegância! 🎨"],
+    explicacao_curta: ["Foi um estilo de 1700 a 1780 com muita delicadeza, focado na leveza e diversão."],
+    explicacao_aprofundada: ["Os pintores criavam cenas festivas, piqueniques nos jardins reais e usavam conchas, flores espiraladas e dourados sobre tons claros."],
+    curiosidade: ["O nome Rococó vem da palavra francesa 'rocaille', que significa desenhos moldados como conchas ornamentais! 🐚"],
+    interacao: ["Você prefere pintar com cores fortes e fortes ou cores clarinhas e pastéis?"],
+    atividade: ["Desenhe uma moldura de espelho cheia de florzinhas de tons pastéis ✏️"],
+    final: ["O Rococó celebra a alegria de viver com extrema doçura e graça ✨"],
+    emocao: "leveza",
+    nivel: "leve",
+    resposta_direta: `🎨 **Rococó**
+
+📅 **Período**: 1700 - 1780
+
+🎨 **Principais Artistas**: Jean-Honoré Fragonard.
+
+🌟 **Características**:
+• Cores suaves (tons pastéis e rosa/azul bebê).
+• Elegância, curvas leves e ornamentação ricamente graciosa.
+• Temas leves, românticos, de lazer e festas na natureza.
+
+🖼️ **Obra Importante**:
+• O Balanço.`
+  },
+  neoclassicismo: {
+    tema: "historia_arte",
+    subtema: "neoclassicismo",
+    palavras_chave: ["neoclassicismo", "neoclassico", "jacques-louis david", "david", "juramento dos horacios", "horacios"],
+    inicio: ["O Neoclassicismo se inspira na lógica, racionalidade e harmonia da Grécia e Roma! 🏛️"],
+    explicacao_curta: ["Surgiu entre 1760 e 1850 como uma volta triunfal ao equilíbrio clássico."],
+    explicacao_aprofundada: ["Os artistas criavam composições limpas, heróis corajosos e poses perfeitas imitando estátuas de mármore antigo."],
+    curiosidade: ["Jacques-Louis David foi o pintor oficial de Napoleão Bonaparte e organizou grandes festas heroicas na França! ⚔️"],
+    interacao: ["Você gosta de histórias sobre heróis antigos de Roma ou da Grécia?"],
+    atividade: ["Desenhe uma cena de alguém em pose de atleta vitorioso com poses simétricas ✏️"],
+    final: ["O Neoclassicismo provou que o equilíbrio e a beleza clássica são eternos ✨"],
+    emocao: "grandiosidade",
+    nivel: "leve",
+    resposta_direta: `🏭 **Neoclassicismo**
+
+📅 **Período**: 1760 - 1850
+
+🎨 **Artista Principal**: Jacques-Louis David.
+
+🌟 **Características**:
+• Inspiração nos ideais da Grécia e Roma Antigas (perfeição clássica).
+• Extremo equilíbrio, controle emocional e racionalidade visual.
+• Figuras nítidas e temas solenes ou históricos.
+
+🖼️ **Obra Importante**:
+• Juramento dos Horácios.`
+  },
+  romantismo: {
+    tema: "historia_arte",
+    subtema: "romantismo",
+    palavras_chave: ["romantismo", "romantico", "eugene delacroix", "delacroix", "liberdade guiando o povo", "natureza dramatica"],
+    inicio: ["O Romantismo é a explosão de emoção intensa, cores fortes e ventanias selvagens! 🌪️"],
+    explicacao_curta: ["Esteve em alta de 1800 a 1850, celebrando a paixão, a liberdade e o heroísmo nacional."],
+    explicacao_aprofundada: ["Os pintores românticos queriam emocionar o observador. Pintavam barcos em mares revoltos, revoluções do povo e heróis entusiasmados."],
+    curiosidade: ["Eugène Delacroix usava cores tão misturadas de perto que pareciam pinceladas soltas, antecipando o próprio impressionismo! 🖌️"],
+    interacao: ["Que música intensa você colocaria como trilha de fundo para uma tempestade gigantesca na floresta?"],
+    atividade: ["Pinte um céu tempestuoso usando vermelho, azul escuro e amarelo misturados com vivacidade 🎨"],
+    final: ["O Romantismo liberta a imaginação e a emoção de vento em popa ✨"],
+    emocao: "intensidade",
+    nivel: "leve",
+    resposta_direta: `🏭 **Romantismo**
+
+📅 **Período**: 1800 - 1850
+
+🎨 **Artistas Principais**: Eugène Delacroix.
+
+🌟 **Características**:
+• Exaltação da emoção forte, paixão e liberdade de espírito.
+• Paisagens naturais imensas, dramáticas, indomáveis e selvagens.
+• Pinceladas carregadas de cores vibrantes e contrastes expressivos.
+
+🖼️ **Obra Importante**:
+• A Liberdade Guiando o Povo.`
+  },
+  realismo: {
+    tema: "historia_arte",
+    subtema: "realismo",
+    palavras_chave: ["realismo", "realista", "gustave courbet", "courbet", "quebradores de pedra", "vida cotidiana", "sem idealizacao"],
+    inicio: ["O Realismo mostra o mundo exatamente como ele é, com toda a sua simplicidade do dia a dia! 🌾"],
+    explicacao_curta: ["Dominou entre 1840 e 1880, retratando o trabalho árduo, pessoas normais e o cotidiano sem disfarces."],
+    explicacao_aprofundada: ["Em vez de heróis da mitologia ou reis elegantes, os realistas pintavam camponeses, sapateiros e mineradores com grande dignidade e respeito."],
+    curiosidade: ["Gustave Courbet declarou certa vez: 'Mostre-me um anjo e eu pintarei um anjo!' — reforçando que só pintava o palpável! 👼"],
+    interacao: ["O que há de mais legal em observar as pessoas fazendo suas tarefas diárias comuns na rua?"],
+    atividade: ["Desenhe alguém de sua família de forma muito simples fazendo uma atividade comum como cozinhar ou limpar ✏️"],
+    final: ["O Realismo resgata a poesia escondida nas coisas mais simples da nossa vida real ✨"],
+    emocao: "observacao",
+    nivel: "leve",
+    resposta_direta: `🏭 **Realismo**
+
+📅 **Período**: 1840 - 1880
+
+🎨 **Artista Principal**: Gustave Courbet.
+
+🌟 **Características**:
+• Foco total na vida cotidiana realista do trabalho doméstico.
+• Engajamento crítico com causas e questões sociais do povo operário.
+• Rejeição de idealizações românticas ou figuras enfeitadas artificiais.
+
+🖼️ **Obra Importante**:
+• Os Quebradores de Pedra.`
   },
   impressionismo: {
     tema: "historia_arte",
     subtema: "impressionismo",
-    palavras_chave: ["impressionismo", "luz painting", "monet"],
-    inicio: ["Os impressionistas adoravam pintar luz e movimento ☀️"],
-    explicacao_curta: ["Eles registravam momentos rápidos usando pinceladas leves."],
-    explicacao_aprofundada: ["Os artistas impressionistas buscavam captar a sensação do momento e das mudanças da luz."],
-    curiosidade: ["Claude Monet pintou várias vezes o mesmo lugar em horários diferentes 🌤️"],
-    interacao: ["Você já observou como o céu muda de cor ao longo do dia?"],
-    atividade: ["Pinte uma paisagem usando pinceladas rápidas 🎨"],
-    final: ["A luz pode transformar completamente uma pintura ✨"],
+    palavras_chave: ["impressionismo", "impressionista", "claude monet", "monet", "edgar degas", "degas", "impressao nascer do sol"],
+    inicio: ["Os impressionistas adoravam pintar luz, vento e o movimento das águas em tempo real! ☀️"],
+    explicacao_curta: ["Eles registravam momentos rápidos usando pinceladas leves diretamente ao ar livre."],
+    explicacao_aprofundada: ["Os artistas impressionistas buscavam captar a sensação do momento e das mudanças da luz nas coisas."],
+    curiosidade: ["Claude Monet pintou várias vezes a mesma catedral em horários diferentes para ver como o sol mudava suas cores! 🌤️"],
+    interacao: ["Você já observou como o céu muda de color ao longo do dia?"],
+    atividade: ["Pinte uma paisagem usando pequenas pinceladas soltas e rápidas 🎨"],
+    final: ["A luz do sol e das cores pode transformar completamente uma pintura ✨"],
     emocao: "leveza",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🎨 **Impressionismo**
+
+📅 **Período**: aproximadamente de 1874 a 1886, na França.
+
+🌟 **O que é o Impressionismo?**
+
+O Impressionismo foi um movimento artístico que buscava retornar as impressões visuais de um momento, principalmente os efeitos da luz e das cores na natureza.
+
+Os artistas impressionisas preferiam pintar ao ar livre para observar as mudanças da luz ao longo do dia. Eles não se preocupavam em fazer desenhos perfeitos, mas em registrar aquilo que viam e sentiam naquele instante.
+
+🎨 **Artistas Principais**: Claude Monet, Edgar Degas.
+
+🌟 **Características**:
+• Captura da luz natural em constante transformação.
+• Pinceladas rápidas, visíveis e texturas soltas de pura cor.
+• Pintura executada diretamente ao ar livre (plein air).
+
+🖼️ **Obra Inaugural**:
+• Impressão, Nascer do Sol (1872), que deu nome ao movimento.`
   },
-  modernismo: {
+  pos_impressionismo: {
     tema: "historia_arte",
-    subtema: "modernismo",
-    palavras_chave: ["modernismo", "arte moderna brasil", "1922"],
-    inicio: ["O Modernismo trouxe novas ideias para a arte brasileira 🇧🇷"],
-    explicacao_curta: ["Os artistas modernistas queriam criar algo diferente e inovador."],
-    explicacao_aprofundada: ["Eles misturavam cores, formas e temas brasileiros de maneiras criativas e ousadas."],
-    curiosidade: ["A Semana de Arte Moderna de 1922 marcou o Modernismo no Brasil ✨"],
-    interacao: ["Que tipo de arte diferente você gostaria de inventar?"],
-    atividade: ["Crie uma arte usando formas e cores livres 🎨"],
-    final: ["O Modernismo incentivou liberdade e criatividade 🌈"],
-    emocao: "criatividade",
-    nivel: "leve"
+    subtema: "pos_impressionismo",
+    palavras_chave: ["pos impressionismo", "pos-impressionismo", "pos impressionista", "vincent van gogh", "van gogh", "paul cezanne", "cezanne", "noite estrelada", "jogadores de cartas"],
+    inicio: ["O Pós-Impressionismo colore tudo com muito mais força, contornos e sentimentos profundos! 🎨"],
+    explicacao_curta: ["Foi ativo de 1886 a 1905, abrindo as portas do estilo pessoal íntimo e expressivo."],
+    explicacao_aprofundada: ["Vincent van Gogh usava pinceladas onduladas cheias de energia, e Paul Cézanne usava planos geométricos para dar volume às frutas e montanhas."],
+    curiosidade: ["Van Gogh usava tanta tinta em suas telas que suas pinturas continuavam secando muito tempo depois de prontas! 🌻"],
+    interacao: ["Como seria pintar uma noite cheia de estrelas que giram espiralando no céu, igual a de Van Gogh?"],
+    atividade: ["Pinte uma árvore ou flor usando linhas onduladas cheias de vigor e curvas expressivas 🎨"],
+    final: ["O Pós-Impressionismo transformou a pintura em um confessionário de cores e vibrações ✨"],
+    emocao: "sentimento",
+    nivel: "leve",
+    resposta_direta: `🎨 **Pós-Impressionismo**
+
+📅 **Período**: 1886 - 1905
+
+🎨 **Artistas Principais**: Vincent van Gogh, Paul Cézanne.
+
+🌟 **Características**:
+• Cores intensas, quentes e altamente expressivas das emoções.
+• Liberdade de estilo pessoal marcante para distorcer texturas ou tonalidades.
+• Foco nas formas geométricas estruturais subjacentes da natureza.
+
+🖼️ **Obras Importantes**:
+• Noite Estrelada.
+• Os Jogadores de Cartas.`
+  },
+  expressionismo: {
+    tema: "historia_arte",
+    subtema: "expressionismo",
+    palavras_chave: ["expressionismo", "expressionista", "edvard munch", "munch", "o grito", "grito", "cores intensas", "distorção"],
+    inicio: ["O Expressionismo grita as emoções de dentro para fora na tela da pintura! 🎨🕹️"],
+    explicacao_curta: ["Aconteceu de 1905 a 1920, focando em expressar o que sentimos de forma intensa."],
+    explicacao_aprofundada: ["Os expressionistas usavam distorções de corpos, cores agressivas não-reais e linhas fortes para mostrar sentimentos como medo, ansiedade e empolgação."],
+    curiosidade: ["A obra 'O Grito' de Edvard Munch foi feita em quatro versões diferentes com tintas, giz e pastel sobre papelão! 😱"],
+    interacao: ["Se o vento ou a natureza estivessem muito bravos, que cores você usaria para exprimir isso?"],
+    atividade: ["Desenhe uma figura expressando uma emoção extrema usando apenas giz de cera colorido bem forte ✏️"],
+    final: ["O Expressionismo dá voz visual para as emoções humanas mais marcantes 🌍"],
+    emocao: "intensidade",
+    nivel: "leve",
+    resposta_direta: `🎨 **Expressionismo**
+
+📅 **Período**: 1905 - 1920
+
+🎨 **Artista Principal**: Edvard Munch.
+
+🌟 **Características**:
+• Transmissão visceral de emoções internas subjetivas (medo, angústia).
+• Distorções caricaturais expressivas das figuras e paisagens.
+• Cores intensas, simbólicas e de alto contraste.
+
+🖼️ **Obra Importante**:
+• O Grito.`
   },
   cubismo: {
     tema: "historia_arte",
     subtema: "cubismo",
-    palavras_chave: ["cubismo", "formas geometricas", "picasso"],
-    inicio: ["O Cubismo transforma objetos em formas geométricas 🟦🔺"],
-    explicacao_curta: ["Os artistas mostravam vários lados do objeto ao mesmo tempo."],
-    explicacao_aprofundada: ["As imagens pareciam quebradas e reorganizadas em diferentes ângulos."],
-    curiosidade: ["Pablo Picasso foi um dos artistas cubistas mais famosos 🎨"],
-    interacao: ["Você conseguiria desenhar um rosto usando formas geométricas?"],
-    atividade: ["Monte um desenho usando quadrados, triângulos e círculos ✏️"],
-    final: ["O Cubismo mostra que a arte pode olhar o mundo de muitos jeitos 🌍"],
+    palavras_chave: ["cubismo", "cubista", "pablo picasso", "picasso", "georges braque", "braque", "formas geometricas", "les demoiselles d avignon"],
+    inicio: ["O Cubismo transforma objetos e pessoas em blocos de formas geométricas! 🟦🔺"],
+    explicacao_curta: ["Os artists mostravam vários lados e ângulos do objeto ao mesmo tempo planos."],
+    explicacao_aprofundada: ["As imagens pareciam quebradas e reorganizadas em diferentes ângulos geométricos simultâneos inspiradores."],
+    curiosidade: ["Pablo Picasso pintou algumas de suas obras mais fantásticas inspirado no estilo esculpido das velhas máscaras de madeira africanas! 🎭"],
+    interacao: ["Você conseguiria desenhar um bicho ou um vaso usando só quadrados, círculos e triângulos?"],
+    atividade: ["Monte um desenho usando recortes colados de cilindros, triângulos e retângulos recortados de revistas ✂️"],
+    final: ["O Cubismo transformou o espaço plano da tela em um espelho partido que cria novos mundos 🟦"],
     emocao: "criatividade",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🎨 **Cubismo**
+
+📅 **Período**: 1907 - 1914
+
+🎨 **Artistas Principais**: Pablo Picasso, Georges Braque.
+
+🌟 **Características**:
+• Formas geométricas nítidas fracionando o espaço visual.
+• Vários pontos de vista planos observados na mesma tela ao mesmo tempo.
+• Desconstrução geométrica da imagem sem ilusão de profundidade tradicional.
+
+🖼️ **Obra Inaugural**:
+• Les Demoiselles d'Avignon (1907).`
   },
   surrealismo: {
     tema: "historia_arte",
     subtema: "surrealismo",
-    palavras_chave: ["surrealismo", "sonho arte", "dali"],
-    inicio: ["O Surrealismo mistura sonho e imaginação 🌙"],
-    explicacao_curta: ["As obras surrealistas parecem cenas de sonhos estranhos."],
-    explicacao_aprofundada: ["Os artistas criavam imagens inesperadas para explorar ideias e pensamentos imaginativos."],
-    curiosidade: ["Salvador Dalí ficou famoso por relógios derretendo ⏰"],
-    interacao: ["Qual sonho estranho você transformaria em desenho?"],
-    atividade: ["Misture objetos diferentes em uma mesma cena 🎨"],
-    final: ["A imaginação pode criar mundos surpreendentes ✨"],
+    palavras_chave: ["surrealismo", "surrealista", "salvador dali", "dali", "rene magritte", "magritte", "sonho arte", "a persistencia da memoria"],
+    inicio: ["O Surrealismo mistura sonho e imaginação onde nada é de verdade impossível! 🌙"],
+    explicacao_curta: ["As obras surrealistas parecem cenas saídas diretamente de sonhos estranhos e divertidos."],
+    explicacao_aprofundada: ["Os artistas combinavam objetos absurdos (como relógios moles ou elefantes com pernas longas de girafa) para desafiar a lógica comum."],
+    curiosidade: ["Salvador Dalí andava com um tamanduá de estimação pela rua em Paris e tinha fetiche por costurar pãezinhos no chapéu! 🐜🎩"],
+    interacao: ["Que sonho estranho seu você gostaria de ilustrar em papel hoje?"],
+    atividade: ["Misture do avesso três objetos que não combinam (por exemplo: um peixinho de patins voando!) em uma linda paisagem 🎨"],
+    final: ["A nossa imaginação é um baú sem chaves de mundos surpreendentes de fantasia ✨"],
     emocao: "imaginacao",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🎨 **Surrealismo**
+
+📅 **Período**: 1924 - 1940
+
+🎨 **Artistas Principais**: Salvador Dalí, René Magritte.
+
+🌟 **Características**:
+• Inspiração profunda nos mistérios dos sonhos e da mente inconsciente.
+• Fantasia, surpresa, absurdo e justaposições inesperadas e bizarras.
+• Realismo técnico minucioso aplicado a cenas fantásticas e impossíveis.
+
+🖼️ **Obra Importante**:
+• A Persistência da Memória.`
+  },
+  pop_art: {
+    tema: "historia_arte",
+    subtema: "pop_art",
+    palavras_chave: ["pop art", "popart", "andy warhol", "warhol", "roy lichtenstein", "lichtenstein", "marilyn diptych", "cultura popular", "latas de sopa"],
+    inicio: ["A Pop Art traz a publicidade, os gibis, brinquedos e o cotidiano moderno direto para as galerias de arte! 🥫💥"],
+    explicacao_curta: ["Explodiu de 1950 a 1970, transformando coisas do consumo do povo em belas obras de cores puras."],
+    explicacao_aprofundada: ["Com cores super brilhantes, telas repetidas em série e imitação de quadrinhos gigantescos, ela criticava e se divertia com a cultura das celebridades."],
+    curiosidade: ["Andy Warhol era obcecado por latas de Sopa de Tomate Campbell's, fazendo dezenas de quadros lindos mostrando apenas a lata da comida! 🥫🎨"],
+    interacao: ["Se você fosse fazer um quadro de um lanche do McDonald's ou do seu salgadinho favorito, como ele seria?"],
+    atividade: ["Desenhe um herói ou objeto de sua cozinha de forma repetida com cores fluorescentes vivas em quadrículas 🎨"],
+    final: ["A Pop Art prova que até o objeto de supermercado mais comum tem sua beleza pop única ⭐"],
+    emocao: "criatividade",
+    nivel: "leve",
+    resposta_direta: `🎨 **Pop Art**
+
+📅 **Período**: 1950 - 1970
+
+🎨 **Artistas Principais**: Andy Warhol, Roy Lichtenstein.
+
+🌟 **Características**:
+• Foco em símbolos da cultura popular de consumo de massa.
+• Temas extraídos de gibis de quadrinhos, celebridades e campanhas publicitárias.
+• Cores chapadas e vibrantes com uso de repetições gráficas seriadas.
+
+🖼️ **Obra Importante**:
+• Marilyn Diptych.`
   },
   arte_contemporanea: {
     tema: "historia_arte",
     subtema: "arte_contemporanea",
-    palavras_chave: ["arte contemporanea", "arte atual"],
-    inicio: ["A arte contemporânea é a arte dos dias atuais 🌍"],
-    explicacao_curta: ["Ela mistura materiais, ideias e formas diferentes."],
-    explicacao_aprofundada: ["Os artistas contemporâneos usam pintura, tecnologia, fotografia, objetos e até performances."],
-    curiosidade: ["Na arte contemporânea, quase qualquer material pode virar arte ✨"],
-    interacao: ["O que você transformaria em obra de arte?"],
+    palavras_chave: ["arte contemporanea", "arte atual", "yayoi kusama", "kusama", "vik muniz", "adriana varejao", "tecnologia e ia", "arte digital", "instalações"],
+    inicio: ["A arte contemporânea junta pintura, sucata, telas gigantes e até inteligência artificial sem barreiras! 🌍✨"],
+    explicacao_curta: ["Mistura e explora técnicas e ideias nos dias de hoje livres de limites formais."],
+    explicacao_aprofundada: ["Os artistas de hoje criam ambientes onde o visitante entra, toca nos objetos e usa os cinco sentidos, abraçando a diversidade tecnológica."],
+    curiosidade: ["Yayoi Kusama faz espaços incríveis forrados com bolinhas coloridas e espelhos repetindo as luzes ao infinito pelo teto! 🔴🌌"],
+    interacao: ["Que barulho, cheiro ou material surpreendente você traria para o centro de um museu?"],
     atividade: ["Crie uma arte usando materiais recicláveis ♻️"],
-    final: ["A arte contemporânea incentiva liberdade de criação 🌈"],
+    final: ["A arte de hoje vive para o interagir e nos conectar livremente em múltiplos mundos 🎨"],
     emocao: "exploracao",
-    nivel: "leve"
+    nivel: "leve",
+    resposta_direta: `🎨 **Arte Contemporânea**
+
+📅 **Período**: 1970 até hoje
+
+🎨 **Artistas Principais**: Yayoi Kusama, Vik Muniz, Adriana Varejão.
+
+🌟 **Características**:
+• Mistura de ferramentas e suportes (telas digitais, esculturas de lixo, instalações de vidro).
+• Salas imersivas e instalações gigantes que convidam à participação.
+• Forte uso de recursos digitais e inteligências interativas modernas.
+
+🖼️ **Obras Marcantes**:
+• Infinity Mirror Rooms (Yayoi Kusama).
+• Imagens de Lixo (Vik Muniz).`
   },
 
   // --- LITERATURA ---
@@ -6753,5 +7032,105 @@ export const bibliotecaCultural: Record<string, BibliotecaItem> = {
     onde_nasceu_resposta: "Kaká Werá Jecupé nasceu em São Paulo, em 1964.",
     ano_nascimento_resposta: "Kaká Werá Jecupé nasceu no ano de 1964.",
     ano_falecimento_resposta: "Kaká Werá Jecupé continua vivo e escrevendo até hoje."
+  },
+  vik_muniz: {
+    tema: "biografias",
+    subtema: "vik_muniz",
+    palavras_chave: ["vik muniz", "vic muniz", "muniz"],
+    inicio: ["Vik Muniz é um artista brasileiro contemporâneo extremamente criativo! ♻️🎨"],
+    explicacao_curta: ["Vik Muniz nasceu em 20 de dezembro de 1961, em São Paulo, e cria imagens usando materiais super diferentes como chocolate, brinquedos, sucata e até lixo reciclável!"],
+    explicacao_aprofundada: ["Vik Muniz monta suas esculturas e desenhos gigantes usando esses materiais do cotidiano, e depois fotografa o resultado final para mostrar ao público. Ele nos prova que com imaginação tudo pode virar arte."],
+    curiosidade: ["Ele fez obras incríveis usando toneladas de materiais recicláveis de um dos maiores lixões do mundo, ajudando os catadores de lixo de lá! 🌍♻️"],
+    interacao: ["Se você pudesse desenhar com doces ou chocolate, o que você pintaria primeiro?"],
+    atividade: ["Que tal colagem? Pegue pedacinhos de papéis velhos ou folhas secas do quintal para criar o desenho de um animal mágico! ✂️🍂"],
+    final: ["Podemos fazer arte usando a imaginação e materiais simples! ♻️"],
+    emocao: "criatividade",
+    nivel: "leve",
+    ano_nascimento: "1961",
+    ano_falecimento: "",
+    local_nascimento: "São Paulo, São Paulo, Brasil",
+    o_que_ele_fez: [
+      "Cria imagens fantásticas usando materiais inovadores como açúcar, chocolate e lixo reciclável.",
+      "Fotografa suas criações em grande formato, vendendo suas obras no mundo todo.",
+      "Liderou projetos sociais usando a arte para apoiar catadores de materiais recicláveis."
+    ],
+    onde_nasceu_resposta: "Vik Muniz nasceu em São Paulo, em 1961.",
+    ano_nascimento_resposta: "Vik Muniz nasceu no ano de 1961.",
+    ano_falecimento_resposta: "Vik Muniz continua vivo e criando suas incríveis obras até hoje."
+  },
+  arthur_bispo_do_rosario: {
+    tema: "biografias",
+    subtema: "arthur_bispo_do_rosario",
+    palavras_chave: ["arthur bispo do rosário", "bispo do rosario", "arthur bispo", "bispo do rosário"],
+    inicio: ["Arthur Bispo do Rosário foi um artista brasileiro que bordou seus sonhos e transformou objetos comuns do dia a dia em pura poesia! 🧵✨"],
+    explicacao_curta: ["Arthur Bispo do Rosário nasceu em 16 de março de 1909, em Japaratuba, Sergipe, e ficou famoso por criar obras de arte com tecidos, fios, bordados e objetos descartados."],
+    explicacao_aprofundada: ["Ele viveu grande parte de sua vida em um hospital e passava os dias desfiando o azul de uniformes velhos para bordar mantos majestosos, estandartes e coleções de objetos do cotidiano. Ele organizava garrafas, sapatos e botões como se fossem um lindo acervo de memórias do mundo."],
+    curiosidade: ["Sua obra mais famosa é o 'Manto da Apresentação', um casaco inteiro bordado por dentro e por fora com nomes e palavras misteriosas! 🧵👘"],
+    interacao: ["Você já tentou costurar ou bordar algum desenho com linha e agulha?"],
+    atividade: ["Junte 3 objetos pequenos diferentes (como tampinhas, colheres ou chaves) e tente combiná-los em cima de uma mesa para formar um bonequinho divertido! 🔑🎨"],
+    final: ["Esses artistas nos mostram que tudo ao nosso redor pode se transformar em arte! 🧶"],
+    emocao: "sensibilidade",
+    nivel: "leve",
+    ano_nascimento: "1909",
+    ano_falecimento: "1989",
+    local_nascimento: "Japaratuba, Sergipe, Brasil",
+    o_que_ele_fez: [
+      "Criou uma coleção impressionante de mais de 800 peças de arte usando bordados e materiais do cotidiano.",
+      "Bordou o famoso Manto da Apresentação desfiando tecidos de roupas velhas.",
+      "Sua obra foi exposta em grandes bienais de arte, influenciando gerações de artistas brasileiros."
+    ],
+    onde_nasceu_resposta: "Arthur Bispo do Rosário nasceu em Japaratuba, Sergipe, em 1909.",
+    ano_nascimento_resposta: "Arthur Bispo do Rosário nasceu no ano de 1909.",
+    ano_falecimento_resposta: "Arthur Bispo do Rosário faleceu no ano de 1989."
+  },
+  heitor_dos_prazeres: {
+    tema: "biografias",
+    subtema: "heitor_dos_prazeres",
+    palavras_chave: ["heitor dos prazeres", "heitor dos praseres"],
+    inicio: ["Heitor dos Prazeres foi um grande pintor, compositor de samba e sambista de alma vibrante! 🎶🎨"],
+    explicacao_curta: ["Heitor dos Prazeres nasceu em 23 de setembro de 1898, no Rio de Janeiro, e retratava com cores brilhantes a vida, a alegria e as rodas de samba de seu povo."],
+    explicacao_aprofundada: ["Heitor foi um dos pioneiros do samba carioca e, na pintura, registrou com muita alegria as festas populares, os dançarinos de frevo, rodas de capoeira, as crianças brincando e o cotidiano das favelas do RJ. Suas obras transbordam música visual!"],
+    curiosidade: ["Heitor era tão talentoso que ajudou a fundar algumas das primeiras escolas de samba do Rio de Janeiro e também compôs canções muito famosas! 🥁🎸"],
+    interacao: ["Qual é o seu ritmo ou música favorita quando você está desenhando?"],
+    atividade: ["Desenhe várias pessoas dançando juntas em roda, usando traços coloridos e vibrantes para mostrar a alegria delas! 🕺💃🎨"],
+    final: ["Sua linda arte nos ensina que o desenho e a pintura podem contar histórias de vida e celebrar a alegria do povo! 🎶✨"],
+    emocao: "harmonia",
+    nivel: "leve",
+    ano_nascimento: "1898",
+    ano_falecimento: "1966",
+    local_nascimento: "Rio de Janeiro, Rio de Janeiro, Brasil",
+    o_que_ele_fez: [
+      "Foi um dos primeiros pintores modernos ingênuos (naïf) do Brasil, expondo na primeira Bienal de São Paulo.",
+      "Atuou brilhantemente como compositor, instrumentista e sambista no Rio de Janeiro.",
+      "Retratou o cotidiano das comunidades do Rio, as festas, o samba e a capoeira de forma única."
+    ],
+    onde_nasceu_resposta: "Heitor dos Prazeres nasceu no Rio de Janeiro, em 1898.",
+    ano_nascimento_resposta: "Heitor dos Prazeres nasceu no ano de 1898.",
+    ano_falecimento_resposta: "Heitor dos Prazeres faleceu no ano de 1966."
+  },
+  carybe: {
+    tema: "biografias",
+    subtema: "carybe",
+    palavras_chave: ["carybé", "carybe", "hector julio", "hector julio paride bernabo"],
+    inicio: ["Carybé foi um desenhista, pintor e escultor apaixonado pela mágica e pelas cores da cultura brasileira! 🎨🌊"],
+    explicacao_curta: ["O verdadeiro nome de Carybé era Hector Julio Páride Bernabó. Ele nasceu na Argentina em 7 de fevereiro de 1911, e viveu grande parte de sua vida na Bahia, tornando-se uma figura fundamental da arte brasileira."],
+    explicacao_aprofundada: ["Carybé ficou imensamente famoso por pintar o dia a dia da Bahia: as festas de rua, as rodas de capoeira, os pescadores saindo ao mar e as ricas tradições religiosas afro-brasileiras. Suas pinceladas pareciam capturar o vento e o gingado de cada movimento."],
+    curiosidade: ["Ele ganhou esse apelido 'Carybé' quando era escoteiro no Rio de Janeiro, em referência a um peixinho amazônico bem valente! Ele gostou tanto que o adotou para a vida toda. Embora tenha nascido argentino, ele se naturalizou brasileiro de coração 🇧🇷"],
+    interacao: ["Você já teve um apelido fofo ou divertido dado por amigos?"],
+    atividade: ["Faça um desenho bem azul retratando os peixinhos e barcos navegando no mar da Bahia! ⛵🐟"],
+    final: ["Carybé ensina a amar, conhecer e valorizar de verdade a cultura e história do nosso povo brasileiro! ✨"],
+    emocao: "admiracao",
+    nivel: "leve",
+    ano_nascimento: "1911",
+    ano_falecimento: "1997",
+    local_nascimento: "Lanús, Argentina (vivera na Bahia, Brasil)",
+    o_que_ele_fez: [
+      "Ilustrou livros de grandes escritores como Jorge Amado e Gabriel García Márquez.",
+      "Pintou murais históricos enormes e representou com imensa beleza festas de capoeira, pescadores e cultos afro-brasileiras.",
+      "Tornou-se cidadão brasileiro honorário, consagrando-se como grande ícone do modernismo na Bahia."
+    ],
+    onde_nasceu_resposta: "Carybé nasceu na Argentina, em 1911, mas viveu grande parte de sua vida na Bahia.",
+    ano_nascimento_resposta: "Carybé nasceu no ano de 1911.",
+    ano_falecimento_resposta: "Carybé faleceu no ano de 1997."
   }
 };
