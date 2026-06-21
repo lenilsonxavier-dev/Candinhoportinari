@@ -300,6 +300,7 @@ export default function App() {
             src="https://i.imgur.com/fnMYS0Z.png" 
             alt="Candinho" 
             className="w-[60px] h-[60px] sm:w-[90px] sm:h-[90px] md:w-[110px] md:h-[110px] rounded-full object-cover border-2 sm:border-3 border-[#ffd700] animate-float flex-shrink-0"
+            referrerPolicy="no-referrer"
           />
           <div className="flex-1 min-w-0 pr-16 sm:pr-0">
             <h1 className="text-lg sm:text-[1.8rem] tracking-wider font-bold text-white leading-tight truncate">Candinho</h1>
@@ -346,6 +347,7 @@ export default function App() {
                           src="https://i.imgur.com/UDl1c5j.png" 
                           alt="Bot icon" 
                           className="bot-icon w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[55px] md:h-[55px] rounded-full object-cover mt-1 flex-shrink-0"
+                          referrerPolicy="no-referrer"
                         />
                         <div className="bot-text flex-1 min-w-0">
                           {isLatestBotMessage ? (
@@ -401,6 +403,7 @@ export default function App() {
                       src="https://i.imgur.com/UDl1c5j.png" 
                       alt="Bot icon" 
                       className="bot-icon w-[40px] h-[40px] sm:w-[50px] sm:h-[50px] md:w-[55px] md:h-[55px] rounded-full object-cover mt-1 flex-shrink-0"
+                      referrerPolicy="no-referrer"
                     />
                     <div className="bot-text flex-1 py-2 sm:py-3 min-w-0">
                       <span className="italic opacity-80 font-medium text-xs sm:text-sm">Candinho está escolhendo as cores da tela... 🎨</span>
