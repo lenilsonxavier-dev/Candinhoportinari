@@ -409,8 +409,271 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   // ===== CONCEITOS GERAIS DE ARTE =====
   { palavras: ['arte', 'o que é arte'], resposta: 'Arte é uma forma de expressão! Pode ser um desenho, pintura, dança, música, teatro… É o jeito das pessoas mostrarem sentimentos e ideias. 🎨' },
   { palavras: ['o que e vida', 'vida', 'o que e a vida', 'significado da vida'], resposta: '🌱 A vida é o maior e mais precioso pedaço de papel em branco que recebemos! Cada dia que vivemos é como uma pincelada única que damos nesse quadro. Para os artistas, a vida é expressar amor, brincar, cantar, observar a natureza e sorrir com os amigos. Tratar a vida com carinho é o desenho mais bonito que podemos criar! 🌈✨' },
-  { palavras: ['desenho', 'o que é desenho'], resposta: 'Desenho é quando usamos lápis, caneta ou giz para criar linhas e formas. Dá para desenhar tudo o que a gente imagina! 🖍️' },
-  { palavras: ['pintura', 'técnicas de pintura'], resposta: 'Na pintura, existem várias técnicas: aquarela (tinta com água, suave), guache (tinta grossa), tinta a óleo (demora a secar) e até pintura com os dedos! 🎨' },
+  {
+    palavras: ['desenho', 'o que é desenho', 'desenhos'],
+    resposta: 'Desenho é quando usamos lápis, caneta ou giz para criar linhas e formas. Dá para desenhar tudo o que a gente imagina! Existem vários tipos fascinantes de desenho, como de observação, realismo, mangá e caricature. Quer saber mais sobre os tipos de desenho? Me pergunte: "quais os tipos de desenho?" 🖍️'
+  },
+  {
+    palavras: ['pintura', 'técnicas de pintura', 'pinturas'],
+    resposta: 'Na pintura, existem várias técnicas e estilos incríveis! Podemos pintar de forma realista, impressionista, abstrata, surrealista ou cubista, e usar tintas como guache, aquarela, acrílica ou óleo! Quer saber mais sobre estilos? Pergunte-me: "quais os estilos de pintura?" 🎨'
+  },
+
+  // ===== NOVOS FLUXOS DE MATERIAIS DE ARTE, DESIGN E PINTURA =====
+  {
+    palavras: ['materiais', 'materiais de arte', 'com o que desenhar', 'com o que pintar', 'material de pintura', 'material de desenho', 'materiais para arte', 'estojos'],
+    resposta: '🎒 **Materiais de Arte do Candinho!**\n' +
+      'Olha só que paleta incrível de ferramentas que os artistas usam para colorir e criar:\n\n' +
+      '🎨 **Tintas:**\n' +
+      '• **Tinta Guache:** É uma tinta colorida e fácil de usar. Tem boa cobertura e fica opaca quando seca. É indicada para papel, cartolina e atividades escolares! Curiosidade: pode ser misturada com outras cores para criar novas tonalidades.\n' +
+      '• **Tinta Aquarela:** É uma tinta que usa bastante água e cria efeitos suaves e transparentes. É indicada para papéis próprios para aquarela. Curiosidade: quanto mais água você usar, mais clara ficará a pintura.\n' +
+      '• **Tinta Acrílica:** É uma tinta resistente que seca rapidamente. É indicada para tela, madeira, papelão e papel. Curiosidade: depois de seca, ela não sai facilmente com água.\n' +
+      '• **Tinta a Óleo:** É uma tinta usada por muitos artistas famosos. Seca bem devagar. É indicada para telas de pintura. Curiosidade: permite misturar cores por bastante tempo antes de secar.\n' +
+      '• **Tinta para Tecido:** Foi criada especialmente para pintar roupas e tecidos. É indicada para camisetas, bolsas e panos. Curiosidade: depois de seca, a pintura resiste bravamente às lavagens!\n\n' +
+      '✏️ **Lápis:**\n' +
+      '• **Lápis Grafite:** É o lápis mais comum para escrever e desenhar. Curiosidade: existem lápis mais claros (como H ou HB) e mais escuros (como 2B, 4B ou 6B).\n' +
+      '• **Lápis de Cor:** Serve para colorir desenhos com muitas cores. Curiosidade: misturando as cores com levezas diferentes, criamos novos tons fantásticos!\n' +
+      '• **Lápis Aquarelável:** Pode ser usado como lápis de cor comum e também com água. Curiosidade: ao passar um pincel úmido pela pintura do lápis, o desenho ganha um lindo efeito de aquarela!\n' +
+      '• **Lápis Carvão:** Produz traços escuros e muito expressivos. Curiosidade: é bastante usado para fazer sombras realistas e retratos bonitos.\n\n' +
+      '✒️ **Canetas:**\n' +
+      '• **Caneta Esferográfica:** É a caneta usada para escrever no dia a dia. Curiosidade: possui uma pequena esfera giratória na ponta que espalha a tinta de maneira uniforme.\n' +
+      '• **Canetinha Hidrocor:** É colorida e ótima para desenhos infantis. Curiosidade: existem canetinhas com pontas finas para contornos e grossas para colorizar.\n' +
+      '• **Caneta Marcador:** Tem traço forte e cores vibrantes. Curiosidade: é muito usada para destacar informações importantes e fazer cartazes.\n' +
+      '• **Caneta Nanquim:** Produz linhas precisas, escuras e muito firmes. Curiosidade: é bastante utilizada em ilustrações profissionais e histórias em quadrinhos!\n\n' +
+      '🧽 **Borrachas:**\n' +
+      '• **Borracha Branca:** Apaga traços de lápis sem danificar o papel. Curiosidade: é a mais usada por estudantes de todas as idades.\n' +
+      '• **Borracha Plástica:** Apaga com imensa facilidade e deixa poucos resíduos sobre a folha. Curiosidade: é muito utilizada em desenhos técnicos e desenhos caprichados.\n' +
+      '• **Borracha Maleável (Limpa-tipos):** Pode ser moldada com as mãos como se fosse massinha. Curiosidade: serve para clarear sombras de grafite e clarear pequenos detalhes no desenho sem esfregar!\n\n' +
+      '📄 **Papéis:**\n' +
+      '• **Papel Sulfite:** É o papel mais comum para desenhos rápidos e atividades escolares de todo dia. Curiosidade: pode ser usado livremente com lápis, canetas e tinta guache.\n' +
+      '• **Cartolina:** É muito mais grossa e resistente do que o papel sulfite. Curiosidade: bastante usada em cartazes, apresentações e trabalhos artísticos maiores.\n' +
+      '• **Papel Canson:** Possui uma textura especial para desenhos artísticos profissionais. Curiosidade: é excelente para segurar a cor de lápis de cor e carvão.\n' +
+      '• **Papel para Aquarela:** É um papel bem grosso, encorpado e absorve lindamente a água. Curiosidade: foi feito especialmente para receber pinturas em aquarela sem enrugar ou estragar.\n' +
+      '• **Papel Kraft:** Tem cor marrom típica de pacotes e um aspecto natural bem rústico. Curiosidade: é sensacional para artesanatos, colagens e projetos criativos!\n\n' +
+      'Cada ferramenta traz a sua própria mágica para o papel! 🌟 Qual material você quer usar no nosso próximo desenho?'
+  },
+  {
+    palavras: ['tinta guache', 'guache'],
+    resposta: '🖌️ **Tinta Guache:** É uma tinta colorida, divertida e muito fácil de usar. Tem excelente cobertura e fica opaca (sem brilho) quando seca.\n🎯 **Indicada para:** Papel, cartolina e variadas atividades escolares.\n💡 **Curiosidade:** Pode ser misturada com outras cores para criar tonalidades totalmente novas no seu desenho! 🎨'
+  },
+  {
+    palavras: ['tinta aquarela', 'aquarela', 'aquarelas'],
+    resposta: '🖌️ **Tinta Aquarela:** É uma tinta clássica que adora água! Ela mistura-se ao pincel úmido para criar efeitos suaves, leves e transparentes na folha.\n🎯 **Indicada para:** Papéis grossos próprios para aquarela.\n💡 **Curiosidade:** Quanto mais água você colocar na mistura, mais clara e delicada ficará a sua pintura! 💧'
+  },
+  {
+    palavras: ['tinta acrilica', 'acrilica', 'acrilicas'],
+    resposta: '🖌️ **Tinta Acrílica:** É uma tinta moderna, resistente e que seca rapidamente na tela.\n🎯 **Indicada para:** Tela de pintura, madeira, papelão ou papel grosso.\n💡 **Curiosidade:** Ela brilha bastante e, depois de secar por completo, fica super resistente e não sai facilmente com água! ⚡'
+  },
+  {
+    palavras: ['tinta a oleo', 'tinta de oleo', 'pintura a oleo', 'oleo'],
+    resposta: '🖌️ **Tinta a Óleo:** É a tinta nobre e tradicional usada por muitos pintores famosos da história. Ela seca bem devagarzinho.\n🎯 **Indicada para:** Telas de pintura de algodão ou linho.\n💡 **Curiosidade:** Como demora a secar, permite que o artista faça misturas e altere a pintura por várias horas seguidas antes do trabalho secar! 🖼️'
+  },
+  {
+    palavras: ['tinta para tecido', 'tinta de tecido'],
+    resposta: '🖌️ **Tinta para Tecido:** Foi formulada especialmente para pintar roupas e panos sem desbotar.\n🎯 **Indicada para:** Camisetas, calças jeans, bolsas de lona e panos de prato.\n💡 **Curiosidade:** Depois de totalmente seca, a pintura sela nas fibras e pode resistir tranquilamente a muitas lavagens! 👕'
+  },
+  {
+    palavras: ['lapis grafite', 'grafite'],
+    resposta: '✏️ **Lápis Grafite:** É o nosso lápis tradicional cinza de todo dia para escrever e fazer rascunhos.\n💡 **Curiosidade:** Existem lápis mais claros e duros (como H) e outros muito mais escuros, macios e profundos (como 2B, 4B, 6B)! ✏️'
+  },
+  {
+    palavras: ['lapis de cor', 'lapis colorido'],
+    resposta: '✏️ **Lápis de Cor:** Serve para colorir desenhos e encher nosso mundo de fantasia com dezenas de cores.\n💡 **Curiosidade:** Se você pintar em camadas sobrepostas e com pressões delicadas, consegue misturar as cores no papel para criar tons novinhos em folha! 🌈'
+  },
+  {
+    palavras: ['lapis aquarelavel', 'aquarelavel'],
+    resposta: '✏️ **Lápis Aquarelável:** Une o melhor dos dois mundos! Funciona como um lápis de cor tradicional e também reage com água.\n💡 **Curiosidade:** Ao passar um pincel levemente úmido nos traços que você desenhou com ele, o desenho magicamente se dissolve e ganha um suave efeito de aquarela! 💧✏️'
+  },
+  {
+    palavras: ['lapis carvao', 'carvao', 'carvão'],
+    resposta: '✏️ **Lápis Carvão:** Produz traços profundamente pretos, rústicos e extremamente expressivos.\n💡 **Curiosidade:** É fantástico para fazer retratos com jogo de luz e sombras profundas, por ser fácil de esfumar com os dedos! 🖤'
+  },
+  {
+    palavras: ['caneta esferografica', 'caneta esferográfica', 'esferografica', 'esferográfica'],
+    resposta: '🖋️ **Caneta Esferográfica:** É a caneta mais comum, usada para tomar notas, fazer assinaturas e escrever todo dia na escola.\n💡 **Curiosidade:** Ela possui uma mini esfera de metal giratória na pontinha. Conforme escrevemos, a bolinha rola e espalha a tinta líquida perfeitamente sobre a folha! 🖋️'
+  },
+  {
+    palavras: ['canetinha hidrocor', 'canetinhas', 'canetinha', 'hidrocor'],
+    resposta: '🖋️ **Canetinha Hidrocor:** É colorida, divertida e as crianças adoram usar.\n💡 **Curiosidade:** Existem canetinhas com ponta bem fininha para contornos delicados e outras com ponta grossa ou chanfrada para cobrir espaços maiores! 🌈'
+  },
+  {
+    palavras: ['caneta marcador', 'marcador', 'marca texto', 'caneta de marcar'],
+    resposta: '🖋️ **Caneta Marcador:** Tem traços robustos, fortes e cores vibrantes.\n💡 **Curiosidade:** Além de marcar passagens importantes em livros, os artistas usam marcadores profissionais para letterings, cartazes e desenhos do estilo Grafite urbano! 💡'
+  },
+  {
+    palavras: ['caneta nanquim', 'nanquim'],
+    resposta: '🖋️ **Caneta Nanquim:** Produz traços pretos super precisos, escuros de alta durabilidade.\n💡 **Curiosidade:** É a caneta predileta dos ilustradores profissionais para arte-finalizar desenhos, contornar mangas japonês e desenhar quadrinhos detalhados! 📖🖤'
+  },
+  {
+    palavras: ['borracha branca'],
+    resposta: '🧽 **Borracha Branca:** Apaga traços de lápis grafite comuns com doçura e sem rasgar ou ferir o papel.\n💡 **Curiosidade:** É o tipo mais popular e amado que acompanha os estojos dos estudantes por gerações. 🏫'
+  },
+  {
+    palavras: ['borracha plastica', 'borracha plástica', 'plastica', 'plástica'],
+    resposta: '🧽 **Borracha Plástica:** Apaga com facilidade extrema e solta muito poucos resíduos (fiapos) sobre a mesa.\n💡 **Curiosidade:** É ideal para desenhos de engenharia, arquitetura e trabalhos artísticos que exigem muita limpeza! 📐'
+  },
+  {
+    palavras: ['borracha maleavel', 'borracha maleável', 'maleavel', 'maleável', 'limpa tipos', 'limpa-tipos'],
+    resposta: '🧽 **Borracha Maleável (Limpa-tipos):** Pode ser moldada e esticada com os dedos exatamente como se fosse massinha de brincar.\n💡 **Curiosidade:** Ela serve para "chupar" o excesso de pó de grafite ou carvão, clareando sombras e criando efeitos de brilho ou luz de forma super suave no desenho! 🧘‍♂️'
+  },
+  {
+    palavras: ['papel sulfite', 'sulfite', 'folha sulfite'],
+    resposta: '📄 **Papel Sulfite:** É o papel de escritório e impressora mais prático e comum que existe.\n💡 **Curiosidade:** Excelente e econômico para rabiscar ideias velozes do dia a dia, rascunhar desenhos fáceis e brincar com lápis e canetinhas! 📄'
+  },
+  {
+    palavras: ['cartolina'],
+    resposta: '📄 **Cartolina:** É uma folha bem grande e resistente, de espessura mais firme.\n💡 **Curiosidade:** Um material clássico para montar cartazes coloridos, fazer belos recortes e montar trabalhos escolares grandes. 🏫'
+  },
+  {
+    palavras: ['papel canson', 'canson'],
+    resposta: '📄 **Papel Canson:** Possui uma textura/porosidade especial perfeita para trabalhos artísticos de qualidade.\n💡 **Curiosidade:** Como possui ranhuras suaves e é fofinho, retém a poeira e pigmento de lápis de cor, giz de cera e carvão maravilhosamente bem! 🎨'
+  },
+  {
+    palavras: ['papel para aquarela'],
+    resposta: '📄 **Papel para Aquarela:** É um papel muito grosso, encorpado e com alta capacidade de absorção.\n💡 **Curiosidade:** Foi gerado especificamente para beber muita água sem enrugar e sem soltar pelinhos, segurando os tons da aquarela belos por anos. 💧📄'
+  },
+  {
+    palavras: ['papel kraft', 'kraft'],
+    resposta: '📄 **Papel Kraft:** Tem cor marrom natural, toque rústico e visual muito bonito.\n💡 **Curiosidade:** É super forte e bastante valorizado em embrulhos elegantes, artesanato criativo, colagem e desenhos com giz branco e pastel! 📦'
+  },
+
+  {
+    palavras: ['tipos de desenho', 'tipos_de_desenho', 'estilos de desenho', 'estilo de desenho', 'desenhos de arte'],
+    resposta: '✍️ **Tipos de Desenho do Candinho!**\n' +
+      'Você sabia que desenhar não é de um jeito só? Existem várias formas mágicas de colocar suas ideias no papel:\n\n' +
+      '🔍 **Desenho de Observação**: O artista desenha olhando diretamente para um objeto, pessoa ou paisagem real e tenta representar fielmente o que vê. (Ex: Desenhar uma fruta sobre a mesa! 🍎)\n' +
+      '🧠 **Desenho de Memória**: É feito usando apenas as lembranças do artista guardadas no coração, sem olhar para um modelo físico naquele momento. (Ex: Desenhar sua própria casa sem vê-la! 🏠)\n' +
+      '📸 **Desenho Realista**: Procura mostrar as pessoas e objetos com as luzes, sombras e proporções muito parecidas com a realidade. (Ex: Um lindo retrato que quase parece uma foto! 👤)\n' +
+      '✨ **Desenho Abstrato**: Usa formas livres, linhas soltas e manchas de cores vibrantes para expressar sentimentos e pensamentos, sem o compromisso de imitar o mundo real. (Ex: Círculos, listras e manchas coloridas! 🎨)\n' +
+      '👐 **Desenho à Mão Livre**: É feito sem régua, compassos ou instrumentos de precisão, usando unicamente a imaginação e a mão solta. (Ex: Rabiscos e esboços repletos de criatividade! ✍️)\n' +
+      '🌸 **Mangá**: Famoso estilo de desenho japonês com personagens carismáticos de olhos brilhantes, grandes e muito expressivos. (Ex: Histórias em quadrinhos japonesas! 📖)\n' +
+      '🤪 **Caricatura**: Exagera e brinca com traços físicos característicos de uma pessoa de maneira muito divertida e afetuosa. (Ex: Desenhar alguém com um nariz bem grande ou sorriso gigante! 😄)\n' +
+      '📖 **Histórias em Quadrinhos (HQ)**: Conta aventuras emocionantes usando uma sequência organizada de desenhos dentro de quadros e balões de diálogo. (Ex: As histórias da Turma da Mônica! 💥)\n' +
+      '👶 **Chibi**: Estilo oriental derivado de mangás com personagens super fofinhos e lindinhos de cabeça enorme e corpo pequenininho. (Ex: Versões bebês de super-heróis! 🥰)\n' +
+      '🌀 **Doodle**: Rabiscos descompromissados e divertidos que criamos de forma espontânea, sem pensar muito, enquanto relaxamos.\n' +
+      '🎬 **Cartoon**: Desenhos super expressivos, simplificados e divertidos muito usados nas tirinhas de jornal e animações. (Ex: Personagens de desenhos animados de humor! 🍿)\n' +
+      '🏰 **Estilo Disney**: Personagens desenhados com contornos sinuosos, expressões dramáticas, cores ricas e uma aura amigável e encantadora. (Ex: O camundongo Mickey ou a rainha Elsa! ❄️)\n' +
+      '🧘 **Zentangle**: Desenhos meditativos preenchidos de padrões repetidos (como ondas e tramas) para ajudar no foco, calma e estimular a imaginação.\n' +
+      '📦 **Desenho 3D**: Cria uma fantástica ilusão de óptica tridimensional que faz parecer que o desenho tem volume tridimensional e pode flutuar e sair do papel!\n' +
+      '💎 **Hiper-realismo**: Um nível ultra avançado de detalhes minuciosos (rugas, poeiras e reflexos) que faz com que a arte finalizada se assemelhe totalmente a uma fotografia real.\n\n' +
+      'Existem muitos tipos de desenho. Cada artista escolhe o estilo que mais gosta para expressar suas ideias, emoções e criatividade. Quanto mais você pratica, mais descobre qual é o seu jeito especial de desenhar! ⭐🎨'
+  },
+  {
+    palavras: ['desenho de observação', 'observacao', 'observar objeto'],
+    resposta: '🔍 **Desenho de Observação:** É quando o artista desenha olhando atentamente para um objeto, pessoa ou paisagem real e tenta representar o que vê.\n💡 **Exemplo prático:** Desenhar uma linda maçã ou banana que está colocada sobre a mesa bem na sua frente! 🍎🍊'
+  },
+  {
+    palavras: ['desenho de memória', 'memoria', 'desenho lembranca'],
+    resposta: '🧠 **Desenho de Memória:** É feito usando apenas as lembranças e sentimentos guardados na mente do artista, sem olhar para nenhum modelo.\n💡 **Exemplo prático:** Desenhar a sua própria escola ou sua casa sem olhá-la diretamente enquanto risca o papel! 🏠✨'
+  },
+  {
+    palavras: ['desenho realista', 'realismo no desenho'],
+    resposta: '📸 **Desenho Realista:** Procura mostrar as pessoas, texturas e objetos de forma muito parecida com a realidade.\n💡 **Exemplo prático:** Um retrato à mão que cuida de cada detalhe para parecer real, quase como uma foto impressa! 👤✍️'
+  },
+  {
+    palavras: ['desenho abstrato', 'abstrato desenho'],
+    resposta: '✨ **Desenho Abstrato:** Usa formas, linhas curvas, retas e cores mágicas e livres para expressar sentimentos íntimos e conceitos puros.\n💡 **Exemplo prático:** Um desenho com círculos flutuantes, listras coloridas e manchas coloridas livres na folha! 🎨🌀'
+  },
+  {
+    palavras: ['desenho à mão livre', 'mao livre', 'mão livre'],
+    resposta: '👐 **Desenho à Mão Livre:** É feito sem auxílio de réguas acadêmicas ou outros instrumentos geométricos retos, guiando-se apenas pela imaginação e pela leveza das mãos.\n💡 **Exemplo prático:** Rabiscos e esboços criativos que brotam espontaneamente da sua mente! 🖊️'
+  },
+  {
+    palavras: ['mangá', 'desenho japones', 'mangas'],
+    resposta: '🌸 **Mangá:** É o estilo clássico de desenho japonês que dá vida a lindos e expressivos heróis.\n💡 **Exemplo prático:** Personagens das famosas histórias em quadrinhos japonesas com olhos brilhantes, grandes e cabelos pontiagudos muito estilosos! 📖📺'
+  },
+  {
+    palavras: ['caricatura'],
+    resposta: '🤪 **Caricatura:** Exagera e brinca com algumas características mais marcantes de uma pessoa de uma maneira bem divertida e humorística.\n💡 **Exemplo prático:** Desenhar um amigo de forma engraçada com o nariz bem grande ou com as bochechas super infladas! 😄'
+  },
+  {
+    palavras: ['história em quadrinhos (hq)', 'historias em quadrinhos', 'hq', 'quadrinhos'],
+    resposta: '📖 **História em Quadrinhos (HQ):** Conta aventuras incríveis usando uma sequência de desenhos organizados em quadrinhos ordenados e balões de diálogo.\n💡 **Exemplo prático:** Gibis infantis super divertidos como os da Turma da Mônica ou de super-heróis de cinema! 💥'
+  },
+  {
+    palavras: ['chibi'],
+    resposta: '👶 **Chibi:** Personagens super fofos, engraçadinhos e pequeninos, derivados do estilo de mangá japonês.\n💡 **Exemplo prático:** Versões bebês de grandes heróis que possuem a cabeça gigante e o corpinho bem pequeno e delicado! 🥰'
+  },
+  {
+    palavras: ['doodle', 'doodles'],
+    resposta: '🌀 **Doodle:** São pequenos rabiscos e desenhinhos descontraídos criados de maneira espontânea na folha.\n💡 **Exemplo prático:** Desenhos rápidos de florzinhas, corações ou monstros fofos feitos enquanto você conversa ou pensa em algo! ✍️'
+  },
+  {
+    palavras: ['cartoon'],
+    resposta: '🎬 **Cartoon:** Desenhos simples, dinâmicos e muito coloridos feitos especificamente para fazer e levar humor às pessoas.\n💡 **Exemplo prático:** Personagens clássicos de desenhos animados como o Snoopy, Garfield e outros heróis brincalhões! 🍿'
+  },
+  {
+    palavras: ['estilo disney'],
+    resposta: '🏰 **Estilo Disney:** Personagens com expressões brilhantes e marcantes, gestos cheios de carisma, cores suaves e uma aura muito amigável.\n💡 **Exemplo prático:** Os amados bichinhos das fábulas como o camundongo Mickey, a rainha do gelo Elsa ou o leão Simba! 🦁❄'
+  },
+  {
+    palavras: ['zentangle'],
+    resposta: '🧘 **Zentangle:** Desenhos repletos de padrões geométricos ou orgânicos repetidos diversas vezes para estimular o foco, relaxamento e criatividade.\n💡 **Exemplo prático:** Formas abstratas preenchidas com delicadas tramas de linhas e pontinhos repetidos! 🧘‍♀️'
+  },
+  {
+    palavras: ['desenho 3d', 'desenho tridimensional'],
+    resposta: '📦 **Desenho 3D:** Cria uma fantástica ilusão de ótica que dá profundidade e volume tridimensional à imagem.\n💡 **Exemplo prático:** Um cubo desenhado com perspectiva impecável que parece real e quase flutua acima do papel! 😲'
+  },
+  {
+    palavras: ['hiper-realismo'],
+    resposta: '💎 **Hiper-realismo:** É um desenho tão incrivelmente minucioso e perfeito que engana os olhos!\n💡 **Exemplo prático:** Pinturas e retratos desenhados a lápis que são tão cheios de poros e texturas reais que parecem uma foto revelada! 📸✨'
+  },
+
+  {
+    palavras: ['estilos de pintura', 'estilos_de_pintura', 'estilo de pintura', 'tipos de pintura', 'estilos pintores'],
+    resposta: '🎨 **Estilos de Pintura do Candinho!**\n' +
+      'Cada estilo é um par de óculos mágicos que o artista usa para ver o mundo de uma forma única. Olha só esses estilos super conhecidos:\n\n' +
+      '🏠 **Realismo**: Os artistas tentam pintar as pessoas, objetos e lugares exatamente como eles são na vida real. (Ex: Personagens de Édouard Manet e Ilya Repin. Dica: Parece uma cena que você veria todo dia!).\n' +
+      '📷 **Foto-realismo**: As pinturas ficam tão detalhadas que parecem fotografias de verdade. (Ex: Obras de Richard Estes e Chuck Close. Dica: Às vezes é difícil saber se é uma foto ou uma pintura!).\n' +
+      '💥 **Expressionismo**: O artista pinta seus fortes sentimentos e emoções interiores, como alegria, medo ou tristeza. (Ex: O clássico de Edvard Munch. Dica: As cores fortes e formas distorcidas ajudam a mostrar sentimentos!).\n' +
+      '🌅 **Impressionismo**: Os artistas adoravam pintar ao ar livre, retratando a luz natural, as cores e as impressões de um instante especial. (Ex: As paisagens de Claude Monet e Pierre Renoir. Dica: De pertinho são só manchas de pincel; de longe formam uma imagem linda!).\n' +
+      '🌀 **Arte Abstrata**: Não tenta mostrar objetos reais. Prefere usar cores, formas livres e listras para transmitir ideias livres. (Ex: Telas de Wassily Kandinsky e Mark Rothko. Dica: Cada pessoa pode imaginar algo diferente ao olhar!).\n' +
+      '🌙 **Surrealismo**: Mistura o mundo de sonhos divertidos e realidade de maneiras inesperadas e criativas. (Ex: Mundos fantásticos do Salvador Dalí e René Magritte. Dica: É como mergulhar em um sonho estranho e engraçado!).\n' +
+      '🥤 **Pop Art**: Transforma objetos do dia a dia, latas de refrigerante e produtos de mercado em obras coloridas e chamativas. (Ex: Estética inovadora do Andy Warhol e Roy Lichtenstein. Dica: Latas, gibis e anúncios viram arte vibrante!).\n' +
+      '👁️ **Simbolismo**: Usa imagens misteriosas e símbolos secretos para contar uma história e transmitir mensagens escondidas. (Ex: Obras de Gustave Moreau e Mikhail Vrubel. Dica: Cada elemento do quadro pode ter um significado profundo!).\n' +
+      '📦 **Cubismo**: Os objetos e pessoas são desenhados desmontados em formas geométricas, como cubos, triângulos e cilindros. (Ex: Ideias de Pablo Picasso e Georges Braque. Dica: Parece um quebra-cabeça de formas!).\n' +
+      '⚡ **Futurismo**: Mostra a velocidade, o movimento e a vida moderna de forma dinâmica. (Ex: Pintores Umberto Boccioni e Giacomo Balla. Dica: As imagens parecem vibrar, correr e se mover rapidamente!).\n\n' +
+      'Cada estilo de pintura é uma forma diferente de os artistas mostrarem suas ideias, sentimentos e sua maneira de enxergar o mundo. Não existe um estilo melhor que o outro. Todos ajudam a contar histórias através da arte! ⭐🎨'
+  },
+  {
+    palavras: ['realismo', 'estilo realismo'],
+    resposta: '🏠 **Realismo:** Os artistas deste estilo tentavam pintar as pessoas, objetos e paisagens exatamente como eles são e acontecem na nossa vida prática.\n👨‍🎨 **Artistas famosos:** Édouard Manet, Ilya Repin.\n💡 **Dica do Candinho:** Parece uma cena do cotidiano que você poderia presenciar em qualquer esquina comum! 🏠'
+  },
+  {
+    palavras: ['foto-realismo', 'fotorealismo', 'estilo foto-realismo'],
+    resposta: '📷 **Foto-realismo:** As pinturas ganham tamanha quantidade de detalhes, texturas e brilhos reais que parecem fotografias profissionais!\n👨‍🎨 **Artistas famosos:** Richard Estes, Chuck Close.\n💡 **Dica do Candinho:** É super divertido desafiar os olhos e tentar adivinhar se é uma foto ou uma pintura! 📸'
+  },
+  {
+    palavras: ['expressionismo', 'estilo expressionismo'],
+    resposta: '💥 **Expressionismo:** O artista usa pinceladas carregadas e cores vibrantes para pintar os seus sentimentos mais fortes de dentro da alma, como uma explosão de emoções.\n👨‍🎨 **Artista famoso:** Edvard Munch (pintor da obra famosa "O Grito").\n💡 **Dica do Candinho:** O formato e as cores de tudo mudam no quadro para representar uma profunda emoção! 😱'
+  },
+  {
+    palavras: ['impressionismo', 'estilo impressionismo'],
+    resposta: '🌅 **Impressionismo:** Os pintores adoravam pintar ao ar livre sob a luz do sol, colorindo ligeiramente as paisagens exatamente do jeito de sua impressão visual de cada instante.\n👨‍🎨 **Artistas famosos:** Claude Monet, Pierre Renoir.\n💡 **Dica do Candinho:** De pertinho o quadro parece cheio de borrões e pinceladas de cores separadas; quando nos afastamos um pouquinho, ele vira uma lindíssima paisagem ensolarada! 🌅🌿'
+  },
+  {
+    palavras: ['arte abstrata', 'abstracionismo', 'estilo abstrato', 'abstrato'],
+    resposta: '🌀 **Arte Abstrata:** Não busca pintar objetos reais do dia a dia. Prefere a bela combinação livre de linhas, espirais, círculos geométricos e cores vivas para liberar a imaginação de quem vê.\n👨‍🎨 **Artistas famosos:** Wassily Kandinsky, Mark Rothko.\n💡 **Dica do Candinho:** Não procure por figuras nela! Cada vez que olhamos, podemos viajar numa interpretação fantástica diferente! 🌈✨'
+  },
+  {
+    palavras: ['surrealismo', 'estilo surrealismo'],
+    resposta: '🌙 **Surrealismo:** É o maravilhoso encontro das nossas tintas com o mundo curioso e engraçado das noites de sonhos criativos!\n👨‍🎨 **Artistas famosos:** Salvador Dalí, René Magritte.\n💡 **Dica do Candinho:** Prepare-se para ver coisas mágicas: relógios derretendo, animais com pernas de girafa ou homens voando de guarda-chuva! 🍏🐘'
+  },
+  {
+    palavras: ['pop art', 'estilo pop art'],
+    resposta: '🥤 **Pop Art:** Transforma produtos industriais modernos, latas de sopa de supermercado, astros de cinema e gibis em grandes painéis artísticos coloridos e vibrantes!\n👨‍🎨 **Artistas famosos:** Andy Warhol, Roy Lichtenstein.\n💡 **Dica do Candinho:** Usa tons super fluorescentes, carimbos repetidos e visual de propagandas de revista! 🥤🍿'
+  },
+  {
+    palavras: ['simbolismo', 'estilo simbolismo'],
+    resposta: '👁️ **Simbolismo:** O quadro é uma caça ao tesouro de segredinhos ocultos! O pintor coloca vários enigmas e símbolos para expressar uma mensagem poética.\n👨‍🎨 **Artistas famosos:** Gustave Moreau, Mikhail Vrubel.\n💡 **Dica do Candinho:** Cada pequena flor, objeto ou adorno no cenário esconde um significado profundo para decifrarmos! 👁️✨'
+  },
+  {
+    palavras: ['cubismo', 'estilo cubismo'],
+    resposta: '📦 **Cubismo:** O artista desconstrói as coisas do mundo em formas geométricas perfeitas, como triângulos, retângulos e cubos, mostrando vários ângulos ao mesmo tempo!\n👨‍🎨 **Artistas famosos:** Pablo Picasso, Georges Braque.\n💡 **Dica do Candinho:** Parece um maravilhoso e brilhante quebra-cabeça geométrico remoldado! 🔺📦'
+  },
+  {
+    palavras: ['futurismo', 'estilo futurismo'],
+    resposta: '⚡ **Futurismo:** Os artistas de vanguarda eram fascinados pela aceleração dos novos automóveis, fábricas, dinamismo e luzes das cidades modernas.\n👨‍🎨 **Artistas famosos:** Umberto Boccioni, Giacomo Balla.\n💡 **Dica do Candinho:** Os objetos parecem duplicados ou tremelicando, dando uma real e fantástica sensação de movimento de alta velocidade na tela! 🏎️⚡'
+  },
 
   // ===== ELEMENTOS DAS ARTES VISUAIS =====
   { palavras: ['ponto', 'o que é ponto'], resposta: 'O ponto é a menor marca no desenho! Sozinho chama atenção, mas muitos pontos juntos podem formar linhas, formas e até texturas. No pontilhismo, os pontos criam imagens incríveis! Seurat usou isso em "Tarde de domingo na Ilha de Grande Jatte". 🔴' },
