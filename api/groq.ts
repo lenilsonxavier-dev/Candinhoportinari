@@ -1121,23 +1121,30 @@ export default async function handler(req: any, res: any) {
       localResult = resolverMensagemLocalmente(mensagem, lib);
 
       if (localResult) {
-        if (containsImageKeywords && localResult.matchedKey) {
-          const item = lib[localResult.matchedKey];
-          const nomeFormatado = item.palavras_chave?.[0]
-            ? item.palavras_chave[0].replace(/\b\w/g, (l: string) => l.toUpperCase())
-            : "Carolina Maria de Jesus";
-          textoFinal = `Com certeza! Preparei a tela para você ver a imagem de **${nomeFormatado}**! 🖼️✨`;
-        } else {
-          textoFinal = localResult.reply;
-        }
-        
+        let encontrouNaLib = false;
         if (localResult.matchedKey) {
           const item = lib[localResult.matchedKey];
-          infoExtra = {
-            nascimento: item.ano_nascimento || "---",
-            morte: item.ano_falecimento || "---",
-            estilo: item.categoria || "Arte"
-          };
+          if (item) {
+            encontrouNaLib = true;
+            if (containsImageKeywords) {
+              const nomeFormatado = item.palavras_chave?.[0]
+                ? item.palavras_chave[0].replace(/\b\w/g, (l: string) => l.toUpperCase())
+                : "Carolina Maria de Jesus";
+              textoFinal = `Com certeza! Preparei a tela para você ver a imagem de **${nomeFormatado}**! 🖼️✨`;
+            } else {
+              textoFinal = localResult.reply;
+            }
+
+            infoExtra = {
+              nascimento: item.ano_nascimento || "---",
+              morte: item.ano_falecimento || "---",
+              estilo: item.categoria || "Arte"
+            };
+          }
+        }
+        
+        if (!encontrouNaLib) {
+          textoFinal = localResult.reply;
         }
       }
 
