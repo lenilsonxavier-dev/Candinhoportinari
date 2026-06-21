@@ -88,7 +88,32 @@ export interface BotLocalResponse {
 }
 
 function obterImagemDaGaleria(key: string): { imagemUrl: string; titulo: string; credito: string } | null {
-  const item = GALERIA_IMAGENS[key];
+  if (!key) return null;
+  
+  let targetKey = key.toLowerCase().trim();
+  
+  // Normalizar sub-chaves ou variações da biblioteca cultural para as chaves básicas da galeria
+  if (targetKey.includes("literatura")) {
+    targetKey = "literatura";
+  } else if (targetKey.includes("musica")) {
+    targetKey = "musica";
+  } else if (targetKey.includes("arte")) {
+    targetKey = "arte";
+  } else if (targetKey.includes("danca")) {
+    targetKey = "danca";
+  } else if (targetKey.includes("poema") || targetKey.includes("poesia")) {
+    targetKey = "poema";
+  } else if (targetKey.includes("desenho") || targetKey.includes("esboco")) {
+    targetKey = "desenho";
+  } else if (targetKey.includes("pintura")) {
+    targetKey = "pintura";
+  } else if (targetKey.includes("teatro") || targetKey.includes("palco")) {
+    targetKey = "teatro";
+  } else if (targetKey.includes("caboclinho")) {
+    targetKey = "caboclinho";
+  }
+
+  const item = GALERIA_IMAGENS[targetKey];
   if (!item) return null;
   if (Array.isArray(item)) {
     const idx = Math.floor(Math.random() * item.length);
