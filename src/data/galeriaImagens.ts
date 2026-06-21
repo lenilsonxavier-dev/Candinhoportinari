@@ -78,5 +78,10 @@ export const GALERIA_IMAGENS: Record<string, GaleriaItem | GaleriaItem[]> = {
       titulo: "Autorretrato",
       credito: "Leonardo da Vinci"
     }
-  ]
+  ],
+  caboclinho: {
+    imagemUrl: "https://i.imgur.com/H36yCWI.jpg",
+    titulo: "Dança dos Caboclinhos",
+    credito: "Manifestação Folclórica e Cultural Brasileira"
+  }
 };

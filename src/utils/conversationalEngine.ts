@@ -954,8 +954,9 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
     resposta: '🐂 O Bumba Meu Boi é uma festa do folclore brasileiro, muito forte no Maranhão. Conta a história de um boi que morre e revive, com personagens como o Pai Francisco e a Mãe Catirina. Tem dança, música e teatro ao mesmo tempo!' 
   },
   { 
-    palavras: ['caboclinho'], 
-    resposta: '🌿 Caboclinho é uma dança indígena do Nordeste, com cocares de penas, arco e flecha. Os dançarinos imitam a caça e a guerra, com passos rápidos e muita força. É uma forma de preservar a cultura dos povos originários.' 
+    palavras: ['caboclinho', 'caboclinhos'], 
+    resposta: '🌿 Caboclinho é uma dança indígena do Nordeste, com cocares de penas, arco e flecha. Os dançarinos imitam a caça e a guerra, com passos rápidos e muita força. É uma forma de preservar a cultura dos povos originários.',
+    matchedKey: 'caboclinho'
   },
   { 
     palavras: ['cavalo marinho'], 
