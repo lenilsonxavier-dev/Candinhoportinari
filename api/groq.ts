@@ -485,6 +485,16 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     imagemUrl: "https://i.imgur.com/Q60zPHo.jpeg",
     titulo: "Arte Africana",
     credito: "Arte Africana"
+  },
+  danca_brasil: {
+    imagemUrl: "https://i.imgur.com/CVHkdCZ.jpeg",
+    titulo: "Dança Tradicional no Brasil",
+    credito: "Acervo de Dança do Brasil"
+  },
+  desenho_brasil: {
+    imagemUrl: "https://i.imgur.com/KSd4nHC.jpeg",
+    titulo: "Desenho na História do Brasil",
+    credito: "Acervo de Desenho do Brasil"
   }
 };
 
@@ -955,6 +965,12 @@ async function buscarImagem(pergunta: string, matchedKey?: string, lib?: any) {
     if (lowerQuery.includes("arte africana") || lowerQuery.includes("cultura africana") || lowerQuery.includes("mascaras africanas") || lowerQuery.includes("máscaras africanas")) {
       return ARTISTS_GUARANTEED_IMAGES.arte_africana;
     }
+    if (lowerQuery.includes("danca no brasil") || lowerQuery.includes("dança no brasil") || lowerQuery.includes("danca brasileira") || lowerQuery.includes("dança brasileira") || lowerQuery.includes("danca no br") || lowerQuery.includes("dança no br")) {
+      return ARTISTS_GUARANTEED_IMAGES.danca_brasil;
+    }
+    if (lowerQuery.includes("desenho no brasil") || lowerQuery.includes("desenho brasileiro") || lowerQuery.includes("desenho no br")) {
+      return ARTISTS_GUARANTEED_IMAGES.desenho_brasil;
+    }
 
     let termo = "";
 
@@ -1012,7 +1028,10 @@ async function buscarImagem(pergunta: string, matchedKey?: string, lib?: any) {
           "uma", "do", "da", "de", "em", "na", "no", "para", "com", "onde", "como", "qual", 
           "o que", "por que", "porque", "para", "mais", "tem", "algum", "alguma", "ilustra",
           "desenha", "veja", "olha", "mostra", "exibir", "pinta", "pintou", "criou", "fez",
-          "uns", "umas", "dos", "das", "pelo", "pela", "por", "com", "sem", "ou"
+          "uns", "umas", "dos", "das", "pelo", "pela", "por", "com", "sem", "ou",
+          "que", "esta", "este", "essa", "esse", "sua", "seu", "suas", "seus", "minha", "meu",
+          "minhas", "meus", "dele", "dela", "deles", "delas", "qual", "quais", "quem", "como",
+          "tudo", "nada", "algo", "coisa"
         ];
         
         const palavras = pergunta.toLowerCase()

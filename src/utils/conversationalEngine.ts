@@ -93,7 +93,11 @@ function obterImagemDaGaleria(key: string): { imagemUrl: string; titulo: string;
   let targetKey = key.toLowerCase().trim();
   
   // Normalizar sub-chaves ou variações da biblioteca cultural para as chaves básicas da galeria
-  if (targetKey.includes("literatura")) {
+  if (targetKey === "danca_brasil" || targetKey === "danca_no_brasil" || targetKey === "historia_danca_brasil") {
+    targetKey = "danca_brasil";
+  } else if (targetKey === "desenho_brasil" || targetKey === "desenho_no_brasil" || targetKey === "historia_desenho_brasil") {
+    targetKey = "desenho_brasil";
+  } else if (targetKey.includes("literatura")) {
     targetKey = "literatura";
   } else if (targetKey.includes("musica")) {
     targetKey = "musica";
@@ -928,35 +932,41 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   },
   { 
     palavras: ['tango', 'dança tango'], 
-    resposta: '💃 **TANGO**\n\n**Origem:**\nO Tango surgiu na Argentina, principalmente na cidade de Buenos Aires, há mais de 100 anos.\n\n**Características:**\nÉ uma dança feita em dupla, com movimentos elegantes, passos marcados e muita expressão. Os dançarinos costumam dançar bem próximos um do outro.' 
+    resposta: '💃 **TANGO**\n\n**Origem:**\nO Tango surgiu na Argentina, principalmente na cidade de Buenos Aires, há mais de 100 anos.\n\n**Características:**\nÉ uma dança feita em dupla, com movimentos elegantes, passos marcados e muita expressão. Os dançarinos costumam dançar bem próximos um do outro.',
+    matchedKey: 'tango'
   },
   { 
     palavras: ['salsa', 'dança salsa'], 
-    resposta: '🌶️ **SALSA**\n\n**Origem:**\nA Salsa surgiu da mistura de ritmos caribenhos, especialmente em Cuba, e ficou muito popular em vários países da América Latina.\n\n**Características:**\nÉ uma dança alegre e animada, com passos rápidos, giros e muito ritmo. Geralmente é dançada em dupla ao som de músicas vibrantes.' 
+    resposta: '🌶️ **SALSA**\n\n**Origem:**\nA Salsa surgiu da mistura de ritmos caribenhos, especialmente em Cuba, e ficou muito popular em vários países da América Latina.\n\n**Características:**\nÉ uma dança alegre e animada, com passos rápidos, giros e muito ritmo. Geralmente é dançada em dupla ao som de músicas vibrantes.',
+    matchedKey: 'salsa'
   },
   { 
     palavras: ['valsa', 'dança valsa'], 
-    resposta: '👑 **VALSA**\n\n**Origem:**\nA Valsa nasceu na Áustria e na Alemanha no século XVIII.\n\n**Características:**\nÉ uma dança suave e elegante, realizada em dupla. Seus movimentos são circulares e acompanham o compasso de três tempos da música, dando a sensação de que os dançarinos estão deslizando pelo salão.' 
+    resposta: '👑 **VALSA**\n\n**Origem:**\nA Valsa nasceu na Áustria e na Alemanha no século XVIII.\n\n**Características:**\nÉ uma dança suave e elegante, realizada em dupla. Seus movimentos são circulares e acompanham o compasso de três tempos da música, dando a sensação de que os dançarinos estão deslizando pelo salão.',
+    matchedKey: 'valsa'
   },
   { 
     palavras: ['elementos da dança'], 
     resposta: 'Os principais elementos da dança são: movimento (gestos e ações do corpo, organizados por fluência, espaço, peso e tempo, estudados por Rudolf Laban), espaço (o local onde a dança acontece), som (música, respiração, batidas do corpo) e corpo (o instrumento da dança, valorizando a diversidade corporal, social e cultural).' 
   },
   { 
-    palavras: ['balé', 'ballet', 'dança clássica'], 
-    resposta: '🩰 O balé é uma dança clássica, técnica e disciplinada, que exige anos de treino. Surgiu nas cortes italianas e se desenvolveu na França e Rússia. As bailarinas usam sapatilhas de ponta e os movimentos são precisos e graciosos.' 
+    palavras: ['balé', 'ballet', 'dança clássica', 'bale'], 
+    resposta: '🩰 O balé é uma dança clássica, técnica e disciplinada, que exige anos de treino. Surgiu nas cortes italianas e se desenvolveu na França e Rússia. As bailarinas usam sapatilhas de ponta e os movimentos são precisos e graciosos.',
+    matchedKey: 'bale'
   },
   { 
-    palavras: ['dança contemporânea'], 
-    resposta: '💃 A dança contemporânea busca liberdade de movimentos, experimentação e diversidade de corpos. Ela mistura técnicas e expressões, sem regras fixas, e muitas vezes aborda temas sociais e políticos.' 
+    palavras: ['dança contemporânea', 'danca contemporanea'], 
+    resposta: '💃 A dança contemporânea busca liberdade de movimentos, experimentação e diversidade de corpos. Ela mistura técnicas e expressões, sem regras fixas, e muitas vezes aborda temas sociais e políticos.',
+    matchedKey: 'danca_contemporanea'
   },
   { 
-    palavras: ['danças urbanas', 'hip hop dança', 'street dance'], 
-    resposta: '🕺 As danças urbanas são estilos criados em contextos urbanos e periféricos, como o hip hop, breaking, locking e popping. Têm forte significado social e cultural, expressando a realidade e a criatividade das comunidades.' 
+    palavras: ['danças urbanas', 'hip hop dança', 'street dance', 'hip hop', 'hiphop'], 
+    resposta: '🕺 As danças urbanas são estilos criados em contextos urbanos e periféricos, como o hip hop, breaking, locking e popping. Têm forte significado social e cultural, expressando a realidade e a criatividade das comunidades.',
+    matchedKey: 'hip_hop'
   },
   { 
     palavras: ['jazz dança', 'jazz dance'], 
-    resposta: '🎷 O jazz é um estilo de dança marcado pelo improviso e pelas raízes populares. Surgiu nos Estados Unidos com a música jazz e incorpora elementos do balé e da dança moderna, com movimentos energéticos e expressivos.' 
+    resposta: '🎷 O jazz é um estilo de dança marcado pelo improviso e pelas raízes populares. Surgiu nos Estados Unidos com a música jazz e incorpora elements do balé e da dança moderna, com movimentos energéticos e expressivos.' 
   },
   { 
     palavras: ['samba dança', 'dança samba'], 
@@ -972,7 +982,8 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   },
   { 
     palavras: ['frevo', 'dança frevo'], 
-    resposta: '🎉 Frevo é uma dança típica de Pernambuco, cheia de energia e passos malabarísticos. Os dançarinos usam sombrinhas coloridas e se movem rapidamente ao som de uma orquestra de metais. É patrimônio cultural imaterial da humanidade!' 
+    resposta: '🎉 Frevo é uma dança típica de Pernambuco, cheia de energia e passos malabarísticos. Os dançarinos usam sombrinhas coloridas e se movem rapidamente ao som de uma orquestra de metais. É patrimônio cultural imaterial da humanidade!',
+    matchedKey: 'frevo'
   },
   { 
     palavras: ['bumba meu boi', 'bumba boi', 'boi bumbá'], 
@@ -985,11 +996,13 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   },
   { 
     palavras: ['cavalo marinho'], 
-    resposta: '🐴 Cavalo Marinho é uma dança dramática do folclore pernambucano. Mistura música, dança e teatro, com personagens como o Cavalo Marinho (um cavalo encantado), Mateus e Catirina. É uma grande brincadeira!' 
+    resposta: '🐴 Cavalo Marinho é uma dança dramática do folclore pernambucano. Mistura música, dança e teatro, com personagens como o Cavalo Marinho (um cavalo encantado), Mateus e Catirina. É uma grande brincadeira!',
+    matchedKey: 'cavalo_marinho'
   },
   { 
-    palavras: ['coco', 'dança coco'], 
-    resposta: '🥥 Coco é uma dança de roda do Nordeste, com sapateado e palmas. Surgiu nos engenhos de cana, quando os trabalhadores batiam os pés no chão enquanto quebravam coco. O ritmo é contagiante!' 
+    palavras: ['coco', 'dança coco', 'coco pernambucano', 'coco de roda'], 
+    resposta: '🥥 Coco é uma dança de roda do Nordeste, com sapateado e palmas. Surgiu nos engenhos de cana, quando os trabalhadores batiam os pés no chão enquanto quebravam coco. O ritmo é contagiante!',
+    matchedKey: 'coco_pernambucano'
   },
   { 
     palavras: ['samba de roda'], 
@@ -997,7 +1010,38 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   },
   { 
     palavras: ['jongo'], 
-    resposta: '🥁 Jongo é uma dança de origem africana, praticada no sudeste do Brasil. Os tambores chamados "caxambu" e "angona" puxam o ritmo, e os dançarinos respondem com versos improvisados. Tem umbigada e muita ancestralidade.' 
+    resposta: '🥁 Jongo é uma dança de origem africana, praticada no sudeste do Brasil. Os tambores chamados "caxambu" e "angona" puxam o ritmo, e os dançarinos respondem com versos improvisados. Tem umbigada e muita ancestralidade.',
+    matchedKey: 'jongo'
+  },
+  {
+    palavras: ['congada', 'dança congada', 'festa da congada'],
+    resposta: '👑 **CONGADA**\n\n**Origem:**\nA Congada (ou Congo) é uma expressão cultural e religiosa que nasceu no Brasil da mistura de tradições africanas com europeias (católicas).\n\n**Características:**\nÉ um desfile coreografado com muita música, cantos e danças que encena a coroação de um Rei do Congo. Tem batalhas simbólicas de espadas, roupas coloridas e som de tambores, maracas e gungas!',
+    matchedKey: 'congada'
+  },
+  {
+    palavras: ['ciranda', 'dança ciranda', 'roda de ciranda'],
+    resposta: '🌈 **CIRANDA**\n\n**Origem:**\nA Ciranda é uma dança folclórica de roda muito tradicional do Brasil, famosa especialmente nas praias de Pernambuco, como a Ilha de Itamaracá.\n\n**Características:**\nPessoas de todas as idades dão as mãos em uma grande roda na areia ou na praça, balançando o corpo no ritmo das ondas do mar ao som de bumbo, caixa e tarol. Todos são bem-vindos para girar e dançar!',
+    matchedKey: 'ciranda'
+  },
+  {
+    palavras: ['fandango', 'dança fandango'],
+    resposta: '🔥 **FANDANGO**\n\n**Origem:**\nO Fandango tem raízes muito antigas e chegou ao sul e sudeste do Brasil trazido pelos colonizadores espanhóis e portugueses.\n\n**Características:**\nÉ uma dança muito animada onde os dançarinos batem palmas e sapateiam forte com tamancos de madeira, criando um ritmo contagiante no chão. Em par ou em grupo, é pura energia!',
+    matchedKey: 'fandango'
+  },
+  {
+    palavras: ['dança de salão', 'danca de salao'],
+    resposta: '💃 **DANÇA DE SALÃO**\n\n**Origem:**\nA dança de salão engloba vários ritmos que começaram a ser dançados em dupla em cortes e salões na Europa, evoluindo no mundo inteiro com ritmos latinos e brasileiros.\n\n**Características:**\nÉ dançada em pares (dois a dois), onde as duas pessoas deslizam, giram e se movem em sintonia fina seguindo o compasso da música, como no bolero, forró, samba de gafieira e tango.',
+    matchedKey: 'danca_de_salao'
+  },
+  {
+    palavras: ['catira', 'dança catira'],
+    resposta: '🤠 **CATIRA**\n\n**Origem:**\nA Catira (ou Cateretê) é uma dança típica do folclore do interior do Brasil, muito popular em Goiás, Minas Gerais e São Paulo.\n\n**Características:**\nÉ dançada principalmente ao som da viola caipira. Os dançarinos se enfileiram uns de frente para os outros e fazem um ritmo contagiante batendo palmas e sapateando forte no chão. É cheia de ritmo e energia caipira!',
+    matchedKey: 'catira'
+  },
+  {
+    palavras: ['carimbó', 'carimbo', 'dança carimbó'],
+    resposta: '🥁 **CARIMBÓ**\n\n**Origem:**\nO Carimbó nasceu no estado do Pará, no norte do Brasil, criado pela mistura das culturas indígena, negra e portuguesa.\n\n**Características:**\nÉ uma dança de roda alegre e de ritmo rápido. As dançarinas usam saias imensas e coloridas que giram e fazem desenhos no ar, enquanto os dançarinos tentam recolher um lenço do chão apenas dobrando o corpo!',
+    matchedKey: 'carimbo'
   },
 
   // ===== TEATRO =====
@@ -1173,26 +1217,54 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
   },
   { 
     palavras: ['romero britto', 'romero brito', 'britto', 'brito', 'quem e romero britto'], 
-    resposta: 'Romero Britto (nascido em 1963, em Recife) é um pintor e escultor que faz muito sucesso mundialmente! ❤️ Ele cria desenhos de bichinhos, flores e corações misturando listras, círculos e cores neon super vibrantes. O que ele ensina: espalhar sorrisos e alegria através da arte.',
+    resposta: 'Romero Britto (nascido em 1963, em Recife) é um pintor e escultor que faz muito sucesso mundialmente! ❤️ Ele cria desenhos de bichinhos, flores e corações misturando listras, círculos e cores neon super vibrantes. O que ele ensina: espalhar sorais e alegria através da arte.',
     matchedKey: 'romero_britto'
+  },
+  {
+    palavras: ['historia da musica', 'historia da musica', 'história da música', 'história da musica', 'como surgiu a musica', 'como surgiu a música', 'origem da musica', 'origem da música'],
+    resposta: `# História da Música 🎶\n\nA música existe há milhares de anos e faz parte da vida das pessoas em todo o mundo. Desde os tempos mais antigos, os seres humanos utilizavam sons, batidas e cantos para se comunicar, celebrar festas e contar histórias.\n\n## A Música na Pré-História 🦴\nOs primeiros instrumentos musicais eram feitos de ossos, pedras, madeira e conchas. As pessoas produziam sons batendo objetos ou usando a própria voz.\n\n## A Música na Antiguidade 🏛️\nEm civilizações como o Egito, a Grécia e Roma, a música era usada em cerimônias religiosas, festas e apresentações. Instrumentos como harpas, flautas e liras eram muito populares.\n\n## A Música na Idade Média 🏰\nDurante a Idade Média, muitas músicas eram ligadas à religião. Os cantos eram realizados em igrejas e mosteiros. Surgiram também os trovadores, que cantavam histórias sobre aventuras e amor.\n\n## A Música no Renascimento 🎨\nNesse período, a música tornou-se mais elaborada. Novos instrumentos foram criados e os compositores passaram a escrever músicas mais complexas.\n\n## A Música no Período Clássico 🎼\nGrandes compositores, como Wolfgang Amadeus Mozart, criaram obras que são famosas até hoje. As orquestras cresceram e os concertos ficaram mais populares.\n\n## A Música no Período Romântico ❤️\nOs compositores passaram a expressar mais sentimentos em suas obras. A música tornou-se mais emocionante e cheia de emoções.\n\n## A Música nos Tempos Modernos 📱\nCom o avanço da tecnologia, surgiram novos estilos musicais, como jazz, rock, pop, rap e música eletrônica. Hoje, podemos ouvir músicas de diferentes partes do mundo usando celulares, computadores e outros aparelhos.\n\n## Conclusão ✨\nA música evoluiu ao longo da história, mas continua tendo a mesma importância: alegrar, emocionar, divertir e unir as pessoas. Ela faz parte da cultura e da vida de todos nós.`,
+    matchedKey: 'musica'
+  },
+  {
+    palavras: ['historia do teatro', 'história do teatro', 'como surgiu o teatro', 'origem do teatro'],
+    resposta: `# História do Teatro 🎭\n\nO teatro é uma forma de arte em que atores representam personagens para contar histórias. Ele existe há milhares de anos e continua encantando pessoas de todas as idades.\n\n## O Início do Teatro 🏛️\nO teatro surgiu na Antiguidade, na Grécia, há cerca de 2.500 anos. As primeiras apresentações aconteciam em grandes espaços ao ar livre e faziam parte de festas religiosas.\n\n## O Teatro na Antiguidade 🎭\nOs gregos criaram peças de comédia e tragédia. Os atores usavam máscaras para representar diferentes personagens e emoções.\n\n## O Teatro na Idade Média ⛪\nDurante a Idade Média, muitas peças apresentavam histórias religiosas e eram encenadas em igrejas e praças públicas.\n\n## O Teatro no Renascimento 👑\nO teatro cresceu e tornou-se mais popular. Novos teatros foram construídos, e grandes autores escreveram peças famosas, como William Shakespeare.\n\n## O Teatro nos Tempos Modernos 🌟\nCom o passar do tempo, surgiram diferentes estilos de teatro. Os cenários, figurinos e efeitos especiais ficaram mais elaborados, tornando as apresentações ainda mais interessantes.\n\n## O Teatro Hoje 🎬\nAtualmente, o teatro pode ser apresentado em escolas, teatros, praças e muitos outros lugares. Existem peças para crianças, jovens e adultos, com histórias divertidas, emocionantes e educativas.\n\n## Conclusão ✨\nO teatro é uma arte que une atuação, expressão corporal, fala, música e criatividade. Ele ajuda a contar histórias, transmitir sentimentos e aproximar as pessoas da cultura.`,
+    matchedKey: 'teatro'
+  },
+  {
+    palavras: ['historia da literatura', 'história da literatura', 'como surgiu a literatura', 'origem da literatura'],
+    resposta: `# História da Literatura 📚\n\nA literatura é a arte de contar histórias por meio da escrita e da palavra falada. Ela ajuda as pessoas a compartilhar ideias, sentimentos, conhecimentos e imaginação.\n\n## O Início da Literatura 🗣️\nAntes da invenção da escrita, as histórias eram contadas de geração em geração por meio da fala. Essas narrativas ensinavam costumes, tradições e valores.\n\n## A Literatura na Antiguidade 📜\nCom o surgimento da escrita, as histórias passaram a ser registradas em pedras, papiros e pergaminhos. Poemas, lendas e aventuras foram preservados para as futuras gerações.\n\n## A Literatura na Idade Média 🛡️\nMuitas histórias falavam sobre cavaleiros, reis, princesas e aventuras. Também eram comuns os textos religiosos e as narrativas sobre heróis.\n\n## A Literatura no Renascimento 🔭\nOs escritores passaram a valorizar mais o ser humano, a ciência e a observação da natureza. Muitas obras importantes foram produzidas nesse período.\n\n## A Literatura Moderna 📰\nCom a invenção da imprensa, os livros tornaram-se mais acessíveis. Surgiram novos gêneros literários, como romances, contos e histórias infantis.\n\n## A Literatura Contemporânea 📱\nHoje, a literatura está presente em livros, revistas, jornais e até em formatos digitais. Existem histórias para todos os gostos e idades.\n\n## Conclusão ✨\nA literatura faz parte da cultura da humanidade. Por meio das histórias, aprendemos sobre o passado, desenvolvemos a imaginação e conhecemos diferentes ideias e culturas.`,
+    matchedKey: 'literatura'
+  },
+  {
+    palavras: ['historia da arte no brasil', 'história da arte no brasil', 'história da arte brasileira', 'historia da arte brasileira', 'arte no brasil historia', 'arte no brasil história'],
+    resposta: `# História da Arte no Brasil 🇧🇷\n\nA história da arte no Brasil começou muito antes da chegada dos portugueses. Os povos indígenas já produziam arte por meio de pinturas corporais, cerâmicas, cestos, músicas e danças.\n\n## Arte no Período Colonial ⛪\nCom a chegada dos portugueses em 1500, a arte recebeu influências europeias. Igrejas, esculturas e pinturas religiosas tornaram-se comuns. Nesse período destacou-se o artist Antônio Francisco Lisboa, o Aleijadinho, famoso por suas esculturas e obras barrocas.\n\n## Arte no Século XIX 🖼️\nNo século XIX, artistas passaram a retratar a história, a natureza e o povo brasileiro. Muitas pinturas mostravam paisagens, costumes e acontecimentos importantes do país.\n\n## Arte Moderna 🎨\nEm 1922 aconteceu a Semana de Arte Moderna, um marco importante para a arte brasileira. Os artistas buscavam criar obras com características próprias do Brasil.\n\n## Arte Contemporânea 🌐\nHoje, a arte brasileira é muito diversa. Ela inclui pinturas, esculturas, fotografias, grafites, vídeos e arte digital. Os artistas utilizam diferentes materiais e técnicas para expressar suas ideias.\n\n## Artistas Brasileiros Famosos 🌟\nEntre os artistas mais conhecidos estão Tarsila do Amaral, Cândido Portinari e Anita Malfatti.\n\n## Conclusão ✨\nA arte brasileira reflete a diversidade cultural do país. Ela reúne influências indígenas, africanas, europeias e de muitos outros povos, formando uma rica expressão da identidade do Brasil.`,
+    matchedKey: 'arte'
+  },
+  {
+    palavras: [
+      'historia da danca no brasil', 'historia da dança no brasil', 'história da danca no brasil', 'história da dança no brasil', 
+      'danca no brasil historia', 'dança no brasil história', 'dança no brasil historia', 'danca no brasil história',
+      'historia danca no brasil', 'história danca no brasil', 'historia d danca no br', 'história d danca no br',
+      'historia da danca no br', 'história da dança no br', 'danca no br historia', 'dança no br história'
+    ],
+    resposta: `# História da Dança no Brasil 🇧🇷\n\nA dança faz parte da cultura brasileira desde antes da chegada dos portugueses. Os povos indígenas realizavam danças em festas, celebrações e rituais para marcar acontecimentos importantes.\n\n## Influência Africana 🥁\nCom a chegada dos povos africanos ao Brasil, muitas danças, ritmos e tradições foram incorporados à cultura brasileira. Essas influências deram origem a manifestações culturais muito importantes.\n\n## Influência Europeia 🎻\nOs portugueses trouxeram danças populares da Europa, que também passaram a fazer parte da cultura do país. Com o tempo, as tradições europeias se misturaram às indígenas e africanas.\n\n## Danças Tradicionais Brasileiras 💃\nAo longo da história surgiram diversas danças típicas brasileiras, como o samba, o frevo, o maracatu, a quadrilha e o forró. Cada região do Brasil desenvolveu suas próprias manifestações culturais.\n\n## O Samba 🥁\nO samba é uma das danças mais conhecidas do Brasil. Ele surgiu a partir das tradições africanas e tornou-se um símbolo da cultura brasileira, especialmente durante o Carnaval.\n\n## A Dança Hoje ✨\nAtualmente, o Brasil possui uma grande diversidade de estilos de dança. Além das danças tradicionais, muitas pessoas praticam balé, dança contemporânea, hip-hop e outros estilos.\n\n## Conclusão 💫\nA dança brasileira é resultado da mistura de diferentes culturas. Ela representa a alegria, a criatividade e a diversidade do povo brasileiro.`,
+    matchedKey: 'danca_brasil'
+  },
+  {
+    palavras: [
+      'historia do desenho no brasil', 'história do desenho no brasil', 'como surgiu o desenho no brasil', 'origem do desenho no brasil', 
+      'desenho no brasil historia', 'desenho no brasil história',
+      'historia desenho no brasil', 'história desenho no brasil', 'historia d desenho no br', 'história d desenho no br',
+      'historia do desenho no br', 'história do desenho no br', 'desenho no br historia', 'desenho no br história'
+    ],
+    resposta: `# História do Desenho no Brasil (para crianças de 10 anos) 🖍️🇧🇷\n\nO desenho faz parte da história do Brasil há muito tempo. Antes mesmo da chegada dos portugueses, os povos indígenas já faziam desenhos em pedras, cerâmicas, cestos e pinturas corporais para contar histórias, representar a natureza e registrar costumes.\n\n## Período Colonial (1500-1822) 📜\nDurante a colonização, muitos desenhos eram usados para registrar paisagens, plantas, animais e a vida das pessoas no Brasil. Viajantes e artistas europeus desenhavam o que viam para mostrar o país na Europa.\n\n## Império do Brasil (1822-1889) 🏛️\nCom a chegada da família real portuguesa e da chamada Missão Artística Francesa, o ensino do desenho tornou-se mais organizado. Surgiram escolas de arte onde os alunos aprendiam a desenhar pessoas, paisagens e objetos. O desenho era considerado importante para a educação das elites e para a formação artística.\n\n## Época Moderna (Século XX) 🎨\nO desenho passou a ser ensinado em mais escolas e também foi utilizado na indústria, na arquitetura, na publicidade e nas histórias em quadrinhos. Artistas brasileiros criaram estilos próprios inspirados na cultura nacional.\nEntre os artistas que valorizaram o desenho estão Candido Portinari, que fazia muitos estudos desenhados antes de pintar suas obras, e Tarsila do Amaral, importante representante do modernismo brasileiro.\n\n## Atualmente 📱\nHoje o desenho está presente em livros, quadrinhos, animações, jogos digitais, design e arte digital. Muitas crianças aprendem a desenhar tanto no papel quanto em computadores e tablets.\n\n## Resumindo 📝\n- Os primeiros desenhos no Brasil foram feitos pelos povos indígenas.\n- No período colonial, viajantes registravam o país por meio do desenho.\n- No Império surgiram escolas de arte e o ensino do desenho.\n- No século XX o desenho ganhou espaço nas escolas, quadrinhos e publicidade.\n- Atualmente o desenho também é feito com tecnologias digitais.\n\n## Curiosidade 💡\nO desenho é uma das formas mais antigas de comunicação da humanidade e continua sendo usado para criar arte, contar histórias e expressar ideias.`,
+    matchedKey: 'desenho_brasil'
   }
 ];
 
 function resolverMensagemLocalmenteRaw(mensagem: string, lib: Record<string, any>): { reply: string, matchedKey?: string } | null {
   const normalizedMsg = normalizarTexto(mensagem);
   if (!normalizedMsg) return null;
-
-  // Step A.00: Check our rich curated curiosities acervo FIRST for precise high-quality answers (anime, manga, mona lisa, gogh, etc.)
-  const matchedCuriosity = buscarCuriosidadePorKeyword(mensagem);
-  if (matchedCuriosity) {
-    let reply = `💡 **Que curiosidade fantástica!**\n\n**Pergunta:** ${matchedCuriosity.pergunta}\n\n👉 **Resposta:** ${matchedCuriosity.resposta}`;
-    if (matchedCuriosity.detalhes) {
-      reply += `\n\n🤓 **Curiosidade extra:** ${matchedCuriosity.detalhes}`;
-    }
-    return {
-      reply: reply
-    };
-  }
 
   // Step A.01: Check for Local Jokes / Piadas Trigger
   if (
@@ -1329,6 +1401,18 @@ function resolverMensagemLocalmenteRaw(mensagem: string, lib: Record<string, any
     return {
       reply: finalReply,
       matchedKey: bestConhecimentoMatch.matchedKey
+    };
+  }
+
+  // Step B.50: Check our rich curated curiosities acervo as a secondary check (anime, manga, mona lisa, gogh, etc.)
+  const matchedCuriosity = buscarCuriosidadePorKeyword(mensagem);
+  if (matchedCuriosity) {
+    let reply = `💡 **Que curiosidade fantástica!**\n\n**Pergunta:** ${matchedCuriosity.pergunta}\n\n👉 **Resposta:** ${matchedCuriosity.resposta}`;
+    if (matchedCuriosity.detalhes) {
+      reply += `\n\n🤓 **Curiosidade extra:** ${matchedCuriosity.detalhes}`;
+    }
+    return {
+      reply: reply
     };
   }
 
