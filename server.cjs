@@ -7527,6 +7527,121 @@ var GALERIA_IMAGENS = {
     imagemUrl: "https://i.imgur.com/H36yCWI.jpg",
     titulo: "Dan\xE7a dos Caboclinhos",
     credito: "Manifesta\xE7\xE3o Folcl\xF3rica e Cultural Brasileira"
+  },
+  tango: {
+    imagemUrl: "https://i.imgur.com/S2eEbmj.jpeg",
+    titulo: "Dan\xE7ando Tango",
+    credito: "Ilustra\xE7\xE3o de Tango"
+  },
+  salsa: {
+    imagemUrl: "https://i.imgur.com/KNsG8wH.jpeg",
+    titulo: "Dan\xE7ando Salsa",
+    credito: "Ilustra\xE7\xE3o de Salsa"
+  },
+  valsa: {
+    imagemUrl: "https://i.imgur.com/6hxKnNJ.jpeg",
+    titulo: "Dan\xE7ando Valsa",
+    credito: "Ilustra\xE7\xE3o de Valsa"
+  },
+  rock: {
+    imagemUrl: "https://i.imgur.com/7SdA0k3.jpeg",
+    titulo: "Alegria do Rock",
+    credito: "Ilustra\xE7\xE3o de Rock"
+  },
+  jongo: {
+    imagemUrl: "https://i.imgur.com/MMPXy3l.jpeg",
+    titulo: "Dan\xE7ando Jongo",
+    credito: "Ilustra\xE7\xE3o de Jongo"
+  },
+  congada: {
+    imagemUrl: "https://i.imgur.com/SZqtIoj.jpeg",
+    titulo: "Festa da Congada",
+    credito: "Ilustra\xE7\xE3o de Congada"
+  },
+  coco_pernambucano: {
+    imagemUrl: "https://i.imgur.com/7OAUdNp.jpeg",
+    titulo: "Dan\xE7ando o Coco Pernambucano",
+    credito: "Ilustra\xE7\xE3o de Coco Pernambucano"
+  },
+  ciranda: {
+    imagemUrl: "https://i.imgur.com/zIlLJGr.png",
+    titulo: "Roda de Ciranda",
+    credito: "Ilustra\xE7\xE3o de Ciranda"
+  },
+  hip_hop: {
+    imagemUrl: "https://i.imgur.com/B58RbYS.jpeg",
+    titulo: "Dan\xE7ando Hip Hop",
+    credito: "Ilustra\xE7\xE3o de Hip Hop"
+  },
+  funk: {
+    imagemUrl: "https://i.imgur.com/pTTr7cm.jpeg",
+    titulo: "Dan\xE7a Funk",
+    credito: "Ilustra\xE7\xE3o de Funk"
+  },
+  frevo: {
+    imagemUrl: "https://i.imgur.com/ZvsUU43.png",
+    titulo: "Dan\xE7ando Frevo com Sombrinha",
+    credito: "Ilustra\xE7\xE3o de Frevo"
+  },
+  fandango: {
+    imagemUrl: "https://i.imgur.com/jFjNeOU.jpeg",
+    titulo: "Dan\xE7ando Fandango",
+    credito: "Ilustra\xE7\xE3o de Fandango"
+  },
+  danca_de_salao: {
+    imagemUrl: "https://i.imgur.com/hNTTLUl.jpeg",
+    titulo: "Dan\xE7a de Sal\xE3o",
+    credito: "Ilustra\xE7\xE3o de Dan\xE7a de Sal\xE3o"
+  },
+  danca_contemporanea: {
+    imagemUrl: "https://i.imgur.com/viD0O3q.jpeg",
+    titulo: "Dan\xE7a Contempor\xE2nea",
+    credito: "Ilustra\xE7\xE3o de Dan\xE7a Contempor\xE2nea"
+  },
+  danca_classica: {
+    imagemUrl: "https://i.imgur.com/e5uLrzE.jpeg",
+    titulo: "Dan\xE7a Cl\xE1ssica",
+    credito: "Ilustra\xE7\xE3o de Dan\xE7a Cl\xE1ssica"
+  },
+  cavalo_marinho: {
+    imagemUrl: "https://i.imgur.com/cVro96g.jpeg",
+    titulo: "Festa do Cavalo Marinho",
+    credito: "Ilustra\xE7\xE3o de Cavalo Marinho"
+  },
+  catira: {
+    imagemUrl: "https://i.imgur.com/M6wTWYU.jpeg",
+    titulo: "Dan\xE7ando Catira",
+    credito: "Ilustra\xE7\xE3o de Catira"
+  },
+  carimbo: {
+    imagemUrl: "https://i.imgur.com/rjujUdi.jpeg",
+    titulo: "Dan\xE7ando Carimb\xF3",
+    credito: "Ilustra\xE7\xE3o de Carimb\xF3"
+  },
+  bale: {
+    imagemUrl: "https://i.imgur.com/pp0VUB5.jpeg",
+    titulo: "Dan\xE7ando Bal\xE9",
+    credito: "Ilustra\xE7\xE3o de Bal\xE9"
+  },
+  arte_indigena: {
+    imagemUrl: "https://i.imgur.com/1OEjWd9.jpeg",
+    titulo: "Arte Ind\xEDgena",
+    credito: "Ilustra\xE7\xE3o de Arte Ind\xEDgena"
+  },
+  arte_africana: {
+    imagemUrl: "https://i.imgur.com/Q60zPHo.jpeg",
+    titulo: "Arte Africana",
+    credito: "Ilustra\xE7\xE3o de Arte Africana"
+  },
+  danca_brasil: {
+    imagemUrl: "https://i.imgur.com/CVHkdCZ.jpeg",
+    titulo: "Dan\xE7a Tradicional no Brasil",
+    credito: "Acervo de Dan\xE7a do Brasil"
+  },
+  desenho_brasil: {
+    imagemUrl: "https://i.imgur.com/KSd4nHC.jpeg",
+    titulo: "Desenho na Hist\xF3ria do Brasil",
+    credito: "Acervo de Desenho do Brasil"
   }
 };
 
@@ -7583,7 +7698,11 @@ function getRandomElement(arr) {
 function obterImagemDaGaleria(key) {
   if (!key) return null;
   let targetKey = key.toLowerCase().trim();
-  if (targetKey.includes("literatura")) {
+  if (targetKey === "danca_brasil" || targetKey === "danca_no_brasil" || targetKey === "historia_danca_brasil") {
+    targetKey = "danca_brasil";
+  } else if (targetKey === "desenho_brasil" || targetKey === "desenho_no_brasil" || targetKey === "historia_desenho_brasil") {
+    targetKey = "desenho_brasil";
+  } else if (targetKey.includes("literatura")) {
     targetKey = "literatura";
   } else if (targetKey.includes("musica")) {
     targetKey = "musica";
@@ -8313,35 +8432,41 @@ var CONHECIMENTO_CANDINHO = [
   },
   {
     palavras: ["tango", "dan\xE7a tango"],
-    resposta: "\u{1F483} **TANGO**\n\n**Origem:**\nO Tango surgiu na Argentina, principalmente na cidade de Buenos Aires, h\xE1 mais de 100 anos.\n\n**Caracter\xEDsticas:**\n\xC9 uma dan\xE7a feita em dupla, com movimentos elegantes, passos marcados e muita express\xE3o. Os dan\xE7arinos costumam dan\xE7ar bem pr\xF3ximos um do outro."
+    resposta: "\u{1F483} **TANGO**\n\n**Origem:**\nO Tango surgiu na Argentina, principalmente na cidade de Buenos Aires, h\xE1 mais de 100 anos.\n\n**Caracter\xEDsticas:**\n\xC9 uma dan\xE7a feita em dupla, com movimentos elegantes, passos marcados e muita express\xE3o. Os dan\xE7arinos costumam dan\xE7ar bem pr\xF3ximos um do outro.",
+    matchedKey: "tango"
   },
   {
     palavras: ["salsa", "dan\xE7a salsa"],
-    resposta: "\u{1F336}\uFE0F **SALSA**\n\n**Origem:**\nA Salsa surgiu da mistura de ritmos caribenhos, especialmente em Cuba, e ficou muito popular em v\xE1rios pa\xEDses da Am\xE9rica Latina.\n\n**Caracter\xEDsticas:**\n\xC9 uma dan\xE7a alegre e animada, com passos r\xE1pidos, giros e muito ritmo. Geralmente \xE9 dan\xE7ada em dupla ao som de m\xFAsicas vibrantes."
+    resposta: "\u{1F336}\uFE0F **SALSA**\n\n**Origem:**\nA Salsa surgiu da mistura de ritmos caribenhos, especialmente em Cuba, e ficou muito popular em v\xE1rios pa\xEDses da Am\xE9rica Latina.\n\n**Caracter\xEDsticas:**\n\xC9 uma dan\xE7a alegre e animada, com passos r\xE1pidos, giros e muito ritmo. Geralmente \xE9 dan\xE7ada em dupla ao som de m\xFAsicas vibrantes.",
+    matchedKey: "salsa"
   },
   {
     palavras: ["valsa", "dan\xE7a valsa"],
-    resposta: "\u{1F451} **VALSA**\n\n**Origem:**\nA Valsa nasceu na \xC1ustria e na Alemanha no s\xE9culo XVIII.\n\n**Caracter\xEDsticas:**\n\xC9 uma dan\xE7a suave e elegante, realizada em dupla. Seus movimentos s\xE3o circulares e acompanham o compasso de tr\xEAs tempos da m\xFAsica, dando a sensa\xE7\xE3o de que os dan\xE7arinos est\xE3o deslizando pelo sal\xE3o."
+    resposta: "\u{1F451} **VALSA**\n\n**Origem:**\nA Valsa nasceu na \xC1ustria e na Alemanha no s\xE9culo XVIII.\n\n**Caracter\xEDsticas:**\n\xC9 uma dan\xE7a suave e elegante, realizada em dupla. Seus movimentos s\xE3o circulares e acompanham o compasso de tr\xEAs tempos da m\xFAsica, dando a sensa\xE7\xE3o de que os dan\xE7arinos est\xE3o deslizando pelo sal\xE3o.",
+    matchedKey: "valsa"
   },
   {
     palavras: ["elementos da dan\xE7a"],
     resposta: "Os principais elementos da dan\xE7a s\xE3o: movimento (gestos e a\xE7\xF5es do corpo, organizados por flu\xEAncia, espa\xE7o, peso e tempo, estudados por Rudolf Laban), espa\xE7o (o local onde a dan\xE7a acontece), som (m\xFAsica, respira\xE7\xE3o, batidas do corpo) e corpo (o instrumento da dan\xE7a, valorizando a diversidade corporal, social e cultural)."
   },
   {
-    palavras: ["bal\xE9", "ballet", "dan\xE7a cl\xE1ssica"],
-    resposta: "\u{1FA70} O bal\xE9 \xE9 uma dan\xE7a cl\xE1ssica, t\xE9cnica e disciplinada, que exige anos de treino. Surgiu nas cortes italianas e se desenvolveu na Fran\xE7a e R\xFAssia. As bailarinas usam sapatilhas de ponta e os movimentos s\xE3o precisos e graciosos."
+    palavras: ["bal\xE9", "ballet", "dan\xE7a cl\xE1ssica", "bale"],
+    resposta: "\u{1FA70} O bal\xE9 \xE9 uma dan\xE7a cl\xE1ssica, t\xE9cnica e disciplinada, que exige anos de treino. Surgiu nas cortes italianas e se desenvolveu na Fran\xE7a e R\xFAssia. As bailarinas usam sapatilhas de ponta e os movimentos s\xE3o precisos e graciosos.",
+    matchedKey: "bale"
   },
   {
-    palavras: ["dan\xE7a contempor\xE2nea"],
-    resposta: "\u{1F483} A dan\xE7a contempor\xE2nea busca liberdade de movimentos, experimenta\xE7\xE3o e diversidade de corpos. Ela mistura t\xE9cnicas e express\xF5es, sem regras fixas, e muitas vezes aborda temas sociais e pol\xEDticos."
+    palavras: ["dan\xE7a contempor\xE2nea", "danca contemporanea"],
+    resposta: "\u{1F483} A dan\xE7a contempor\xE2nea busca liberdade de movimentos, experimenta\xE7\xE3o e diversidade de corpos. Ela mistura t\xE9cnicas e express\xF5es, sem regras fixas, e muitas vezes aborda temas sociais e pol\xEDticos.",
+    matchedKey: "danca_contemporanea"
   },
   {
-    palavras: ["dan\xE7as urbanas", "hip hop dan\xE7a", "street dance"],
-    resposta: "\u{1F57A} As dan\xE7as urbanas s\xE3o estilos criados em contextos urbanos e perif\xE9ricos, como o hip hop, breaking, locking e popping. T\xEAm forte significado social e cultural, expressando a realidade e a criatividade das comunidades."
+    palavras: ["dan\xE7as urbanas", "hip hop dan\xE7a", "street dance", "hip hop", "hiphop"],
+    resposta: "\u{1F57A} As dan\xE7as urbanas s\xE3o estilos criados em contextos urbanos e perif\xE9ricos, como o hip hop, breaking, locking e popping. T\xEAm forte significado social e cultural, expressando a realidade e a criatividade das comunidades.",
+    matchedKey: "hip_hop"
   },
   {
     palavras: ["jazz dan\xE7a", "jazz dance"],
-    resposta: "\u{1F3B7} O jazz \xE9 um estilo de dan\xE7a marcado pelo improviso e pelas ra\xEDzes populares. Surgiu nos Estados Unidos com a m\xFAsica jazz e incorpora elementos do bal\xE9 e da dan\xE7a moderna, com movimentos energ\xE9ticos e expressivos."
+    resposta: "\u{1F3B7} O jazz \xE9 um estilo de dan\xE7a marcado pelo improviso e pelas ra\xEDzes populares. Surgiu nos Estados Unidos com a m\xFAsica jazz e incorpora elements do bal\xE9 e da dan\xE7a moderna, com movimentos energ\xE9ticos e expressivos."
   },
   {
     palavras: ["samba dan\xE7a", "dan\xE7a samba"],
@@ -8357,7 +8482,8 @@ var CONHECIMENTO_CANDINHO = [
   },
   {
     palavras: ["frevo", "dan\xE7a frevo"],
-    resposta: "\u{1F389} Frevo \xE9 uma dan\xE7a t\xEDpica de Pernambuco, cheia de energia e passos malabar\xEDsticos. Os dan\xE7arinos usam sombrinhas coloridas e se movem rapidamente ao som de uma orquestra de metais. \xC9 patrim\xF4nio cultural imaterial da humanidade!"
+    resposta: "\u{1F389} Frevo \xE9 uma dan\xE7a t\xEDpica de Pernambuco, cheia de energia e passos malabar\xEDsticos. Os dan\xE7arinos usam sombrinhas coloridas e se movem rapidamente ao som de uma orquestra de metais. \xC9 patrim\xF4nio cultural imaterial da humanidade!",
+    matchedKey: "frevo"
   },
   {
     palavras: ["bumba meu boi", "bumba boi", "boi bumb\xE1"],
@@ -8370,11 +8496,13 @@ var CONHECIMENTO_CANDINHO = [
   },
   {
     palavras: ["cavalo marinho"],
-    resposta: "\u{1F434} Cavalo Marinho \xE9 uma dan\xE7a dram\xE1tica do folclore pernambucano. Mistura m\xFAsica, dan\xE7a e teatro, com personagens como o Cavalo Marinho (um cavalo encantado), Mateus e Catirina. \xC9 uma grande brincadeira!"
+    resposta: "\u{1F434} Cavalo Marinho \xE9 uma dan\xE7a dram\xE1tica do folclore pernambucano. Mistura m\xFAsica, dan\xE7a e teatro, com personagens como o Cavalo Marinho (um cavalo encantado), Mateus e Catirina. \xC9 uma grande brincadeira!",
+    matchedKey: "cavalo_marinho"
   },
   {
-    palavras: ["coco", "dan\xE7a coco"],
-    resposta: "\u{1F965} Coco \xE9 uma dan\xE7a de roda do Nordeste, com sapateado e palmas. Surgiu nos engenhos de cana, quando os trabalhadores batiam os p\xE9s no ch\xE3o enquanto quebravam coco. O ritmo \xE9 contagiante!"
+    palavras: ["coco", "dan\xE7a coco", "coco pernambucano", "coco de roda"],
+    resposta: "\u{1F965} Coco \xE9 uma dan\xE7a de roda do Nordeste, com sapateado e palmas. Surgiu nos engenhos de cana, quando os trabalhadores batiam os p\xE9s no ch\xE3o enquanto quebravam coco. O ritmo \xE9 contagiante!",
+    matchedKey: "coco_pernambucano"
   },
   {
     palavras: ["samba de roda"],
@@ -8382,7 +8510,38 @@ var CONHECIMENTO_CANDINHO = [
   },
   {
     palavras: ["jongo"],
-    resposta: '\u{1F941} Jongo \xE9 uma dan\xE7a de origem africana, praticada no sudeste do Brasil. Os tambores chamados "caxambu" e "angona" puxam o ritmo, e os dan\xE7arinos respondem com versos improvisados. Tem umbigada e muita ancestralidade.'
+    resposta: '\u{1F941} Jongo \xE9 uma dan\xE7a de origem africana, praticada no sudeste do Brasil. Os tambores chamados "caxambu" e "angona" puxam o ritmo, e os dan\xE7arinos respondem com versos improvisados. Tem umbigada e muita ancestralidade.',
+    matchedKey: "jongo"
+  },
+  {
+    palavras: ["congada", "dan\xE7a congada", "festa da congada"],
+    resposta: "\u{1F451} **CONGADA**\n\n**Origem:**\nA Congada (ou Congo) \xE9 uma express\xE3o cultural e religiosa que nasceu no Brasil da mistura de tradi\xE7\xF5es africanas com europeias (cat\xF3licas).\n\n**Caracter\xEDsticas:**\n\xC9 um desfile coreografado com muita m\xFAsica, cantos e dan\xE7as que encena a coroa\xE7\xE3o de um Rei do Congo. Tem batalhas simb\xF3licas de espadas, roupas coloridas e som de tambores, maracas e gungas!",
+    matchedKey: "congada"
+  },
+  {
+    palavras: ["ciranda", "dan\xE7a ciranda", "roda de ciranda"],
+    resposta: "\u{1F308} **CIRANDA**\n\n**Origem:**\nA Ciranda \xE9 uma dan\xE7a folcl\xF3rica de roda muito tradicional do Brasil, famosa especialmente nas praias de Pernambuco, como a Ilha de Itamarac\xE1.\n\n**Caracter\xEDsticas:**\nPessoas de todas as idades d\xE3o as m\xE3os em uma grande roda na areia ou na pra\xE7a, balan\xE7ando o corpo no ritmo das ondas do mar ao som de bumbo, caixa e tarol. Todos s\xE3o bem-vindos para girar e dan\xE7ar!",
+    matchedKey: "ciranda"
+  },
+  {
+    palavras: ["fandango", "dan\xE7a fandango"],
+    resposta: "\u{1F525} **FANDANGO**\n\n**Origem:**\nO Fandango tem ra\xEDzes muito antigas e chegou ao sul e sudeste do Brasil trazido pelos colonizadores espanh\xF3is e portugueses.\n\n**Caracter\xEDsticas:**\n\xC9 uma dan\xE7a muito animada onde os dan\xE7arinos batem palmas e sapateiam forte com tamancos de madeira, criando um ritmo contagiante no ch\xE3o. Em par ou em grupo, \xE9 pura energia!",
+    matchedKey: "fandango"
+  },
+  {
+    palavras: ["dan\xE7a de sal\xE3o", "danca de salao"],
+    resposta: "\u{1F483} **DAN\xC7A DE SAL\xC3O**\n\n**Origem:**\nA dan\xE7a de sal\xE3o engloba v\xE1rios ritmos que come\xE7aram a ser dan\xE7ados em dupla em cortes e sal\xF5es na Europa, evoluindo no mundo inteiro com ritmos latinos e brasileiros.\n\n**Caracter\xEDsticas:**\n\xC9 dan\xE7ada em pares (dois a dois), onde as duas pessoas deslizam, giram e se movem em sintonia fina seguindo o compasso da m\xFAsica, como no bolero, forr\xF3, samba de gafieira e tango.",
+    matchedKey: "danca_de_salao"
+  },
+  {
+    palavras: ["catira", "dan\xE7a catira"],
+    resposta: "\u{1F920} **CATIRA**\n\n**Origem:**\nA Catira (ou Cateret\xEA) \xE9 uma dan\xE7a t\xEDpica do folclore do interior do Brasil, muito popular em Goi\xE1s, Minas Gerais e S\xE3o Paulo.\n\n**Caracter\xEDsticas:**\n\xC9 dan\xE7ada principalmente ao som da viola caipira. Os dan\xE7arinos se enfileiram uns de frente para os outros e fazem um ritmo contagiante batendo palmas e sapateando forte no ch\xE3o. \xC9 cheia de ritmo e energia caipira!",
+    matchedKey: "catira"
+  },
+  {
+    palavras: ["carimb\xF3", "carimbo", "dan\xE7a carimb\xF3"],
+    resposta: "\u{1F941} **CARIMB\xD3**\n\n**Origem:**\nO Carimb\xF3 nasceu no estado do Par\xE1, no norte do Brasil, criado pela mistura das culturas ind\xEDgena, negra e portuguesa.\n\n**Caracter\xEDsticas:**\n\xC9 uma dan\xE7a de roda alegre e de ritmo r\xE1pido. As dan\xE7arinas usam saias imensas e coloridas que giram e fazem desenhos no ar, enquanto os dan\xE7arinos tentam recolher um len\xE7o do ch\xE3o apenas dobrando o corpo!",
+    matchedKey: "carimbo"
   },
   // ===== TEATRO =====
   {
@@ -8555,29 +8714,212 @@ var CONHECIMENTO_CANDINHO = [
   },
   {
     palavras: ["romero britto", "romero brito", "britto", "brito", "quem e romero britto"],
-    resposta: "Romero Britto (nascido em 1963, em Recife) \xE9 um pintor e escultor que faz muito sucesso mundialmente! \u2764\uFE0F Ele cria desenhos de bichinhos, flores e cora\xE7\xF5es misturando listras, c\xEDrculos e cores neon super vibrantes. O que ele ensina: espalhar sorrisos e alegria atrav\xE9s da arte.",
+    resposta: "Romero Britto (nascido em 1963, em Recife) \xE9 um pintor e escultor que faz muito sucesso mundialmente! \u2764\uFE0F Ele cria desenhos de bichinhos, flores e cora\xE7\xF5es misturando listras, c\xEDrculos e cores neon super vibrantes. O que ele ensina: espalhar sorais e alegria atrav\xE9s da arte.",
     matchedKey: "romero_britto"
+  },
+  {
+    palavras: ["historia da musica", "historia da musica", "hist\xF3ria da m\xFAsica", "hist\xF3ria da musica", "como surgiu a musica", "como surgiu a m\xFAsica", "origem da musica", "origem da m\xFAsica"],
+    resposta: `# Hist\xF3ria da M\xFAsica \u{1F3B6}
+
+A m\xFAsica existe h\xE1 milhares de anos e faz parte da vida das pessoas em todo o mundo. Desde os tempos mais antigos, os seres humanos utilizavam sons, batidas e cantos para se comunicar, celebrar festas e contar hist\xF3rias.
+
+## A M\xFAsica na Pr\xE9-Hist\xF3ria \u{1F9B4}
+Os primeiros instrumentos musicais eram feitos de ossos, pedras, madeira e conchas. As pessoas produziam sons batendo objetos ou usando a pr\xF3pria voz.
+
+## A M\xFAsica na Antiguidade \u{1F3DB}\uFE0F
+Em civiliza\xE7\xF5es como o Egito, a Gr\xE9cia e Roma, a m\xFAsica era usada em cerim\xF4nias religiosas, festas e apresenta\xE7\xF5es. Instrumentos como harpas, flautas e liras eram muito populares.
+
+## A M\xFAsica na Idade M\xE9dia \u{1F3F0}
+Durante a Idade M\xE9dia, muitas m\xFAsicas eram ligadas \xE0 religi\xE3o. Os cantos eram realizados em igrejas e mosteiros. Surgiram tamb\xE9m os trovadores, que cantavam hist\xF3rias sobre aventuras e amor.
+
+## A M\xFAsica no Renascimento \u{1F3A8}
+Nesse per\xEDodo, a m\xFAsica tornou-se mais elaborada. Novos instrumentos foram criados e os compositores passaram a escrever m\xFAsicas mais complexas.
+
+## A M\xFAsica no Per\xEDodo Cl\xE1ssico \u{1F3BC}
+Grandes compositores, como Wolfgang Amadeus Mozart, criaram obras que s\xE3o famosas at\xE9 hoje. As orquestras cresceram e os concertos ficaram mais populares.
+
+## A M\xFAsica no Per\xEDodo Rom\xE2ntico \u2764\uFE0F
+Os compositores passaram a expressar mais sentimentos em suas obras. A m\xFAsica tornou-se mais emocionante e cheia de emo\xE7\xF5es.
+
+## A M\xFAsica nos Tempos Modernos \u{1F4F1}
+Com o avan\xE7o da tecnologia, surgiram novos estilos musicais, como jazz, rock, pop, rap e m\xFAsica eletr\xF4nica. Hoje, podemos ouvir m\xFAsicas de diferentes partes do mundo usando celulares, computadores e outros aparelhos.
+
+## Conclus\xE3o \u2728
+A m\xFAsica evoluiu ao longo da hist\xF3ria, mas continua tendo a mesma import\xE2ncia: alegrar, emocionar, divertir e unir as pessoas. Ela faz parte da cultura e da vida de todos n\xF3s.`,
+    matchedKey: "musica"
+  },
+  {
+    palavras: ["historia do teatro", "hist\xF3ria do teatro", "como surgiu o teatro", "origem do teatro"],
+    resposta: `# Hist\xF3ria do Teatro \u{1F3AD}
+
+O teatro \xE9 uma forma de arte em que atores representam personagens para contar hist\xF3rias. Ele existe h\xE1 milhares de anos e continua encantando pessoas de todas as idades.
+
+## O In\xEDcio do Teatro \u{1F3DB}\uFE0F
+O teatro surgiu na Antiguidade, na Gr\xE9cia, h\xE1 cerca de 2.500 anos. As primeiras apresenta\xE7\xF5es aconteciam em grandes espa\xE7os ao ar livre e faziam parte de festas religiosas.
+
+## O Teatro na Antiguidade \u{1F3AD}
+Os gregos criaram pe\xE7as de com\xE9dia e trag\xE9dia. Os atores usavam m\xE1scaras para representar diferentes personagens e emo\xE7\xF5es.
+
+## O Teatro na Idade M\xE9dia \u26EA
+Durante a Idade M\xE9dia, muitas pe\xE7as apresentavam hist\xF3rias religiosas e eram encenadas em igrejas e pra\xE7as p\xFAblicas.
+
+## O Teatro no Renascimento \u{1F451}
+O teatro cresceu e tornou-se mais popular. Novos teatros foram constru\xEDdos, e grandes autores escreveram pe\xE7as famosas, como William Shakespeare.
+
+## O Teatro nos Tempos Modernos \u{1F31F}
+Com o passar do tempo, surgiram diferentes estilos de teatro. Os cen\xE1rios, figurinos e efeitos especiais ficaram mais elaborados, tornando as apresenta\xE7\xF5es ainda mais interessantes.
+
+## O Teatro Hoje \u{1F3AC}
+Atualmente, o teatro pode ser apresentado em escolas, teatros, pra\xE7as e muitos outros lugares. Existem pe\xE7as para crian\xE7as, jovens e adultos, com hist\xF3rias divertidas, emocionantes e educativas.
+
+## Conclus\xE3o \u2728
+O teatro \xE9 uma arte que une atua\xE7\xE3o, express\xE3o corporal, fala, m\xFAsica e criatividade. Ele ajuda a contar hist\xF3rias, transmitir sentimentos e aproximar as pessoas da cultura.`,
+    matchedKey: "teatro"
+  },
+  {
+    palavras: ["historia da literatura", "hist\xF3ria da literatura", "como surgiu a literatura", "origem da literatura"],
+    resposta: `# Hist\xF3ria da Literatura \u{1F4DA}
+
+A literatura \xE9 a arte de contar hist\xF3rias por meio da escrita e da palavra falada. Ela ajuda as pessoas a compartilhar ideias, sentimentos, conhecimentos e imagina\xE7\xE3o.
+
+## O In\xEDcio da Literatura \u{1F5E3}\uFE0F
+Antes da inven\xE7\xE3o da escrita, as hist\xF3rias eram contadas de gera\xE7\xE3o em gera\xE7\xE3o por meio da fala. Essas narrativas ensinavam costumes, tradi\xE7\xF5es e valores.
+
+## A Literatura na Antiguidade \u{1F4DC}
+Com o surgimento da escrita, as hist\xF3rias passaram a ser registradas em pedras, papiros e pergaminhos. Poemas, lendas e aventuras foram preservados para as futuras gera\xE7\xF5es.
+
+## A Literatura na Idade M\xE9dia \u{1F6E1}\uFE0F
+Muitas hist\xF3rias falavam sobre cavaleiros, reis, princesas e aventuras. Tamb\xE9m eram comuns os textos religiosos e as narrativas sobre her\xF3is.
+
+## A Literatura no Renascimento \u{1F52D}
+Os escritores passaram a valorizar mais o ser humano, a ci\xEAncia e a observa\xE7\xE3o da natureza. Muitas obras importantes foram produzidas nesse per\xEDodo.
+
+## A Literatura Moderna \u{1F4F0}
+Com a inven\xE7\xE3o da imprensa, os livros tornaram-se mais acess\xEDveis. Surgiram novos g\xEAneros liter\xE1rios, como romances, contos e hist\xF3rias infantis.
+
+## A Literatura Contempor\xE2nea \u{1F4F1}
+Hoje, a literatura est\xE1 presente em livros, revistas, jornais e at\xE9 em formatos digitais. Existem hist\xF3rias para todos os gostos e idades.
+
+## Conclus\xE3o \u2728
+A literatura faz parte da cultura da humanidade. Por meio das hist\xF3rias, aprendemos sobre o passado, desenvolvemos a imagina\xE7\xE3o e conhecemos diferentes ideias e culturas.`,
+    matchedKey: "literatura"
+  },
+  {
+    palavras: ["historia da arte no brasil", "hist\xF3ria da arte no brasil", "hist\xF3ria da arte brasileira", "historia da arte brasileira", "arte no brasil historia", "arte no brasil hist\xF3ria"],
+    resposta: `# Hist\xF3ria da Arte no Brasil \u{1F1E7}\u{1F1F7}
+
+A hist\xF3ria da arte no Brasil come\xE7ou muito antes da chegada dos portugueses. Os povos ind\xEDgenas j\xE1 produziam arte por meio de pinturas corporais, cer\xE2micas, cestos, m\xFAsicas e dan\xE7as.
+
+## Arte no Per\xEDodo Colonial \u26EA
+Com a chegada dos portugueses em 1500, a arte recebeu influ\xEAncias europeias. Igrejas, esculturas e pinturas religiosas tornaram-se comuns. Nesse per\xEDodo destacou-se o artist Ant\xF4nio Francisco Lisboa, o Aleijadinho, famoso por suas esculturas e obras barrocas.
+
+## Arte no S\xE9culo XIX \u{1F5BC}\uFE0F
+No s\xE9culo XIX, artistas passaram a retratar a hist\xF3ria, a natureza e o povo brasileiro. Muitas pinturas mostravam paisagens, costumes e acontecimentos importantes do pa\xEDs.
+
+## Arte Moderna \u{1F3A8}
+Em 1922 aconteceu a Semana de Arte Moderna, um marco importante para a arte brasileira. Os artistas buscavam criar obras com caracter\xEDsticas pr\xF3prias do Brasil.
+
+## Arte Contempor\xE2nea \u{1F310}
+Hoje, a arte brasileira \xE9 muito diversa. Ela inclui pinturas, esculturas, fotografias, grafites, v\xEDdeos e arte digital. Os artistas utilizam diferentes materiais e t\xE9cnicas para expressar suas ideias.
+
+## Artistas Brasileiros Famosos \u{1F31F}
+Entre os artistas mais conhecidos est\xE3o Tarsila do Amaral, C\xE2ndido Portinari e Anita Malfatti.
+
+## Conclus\xE3o \u2728
+A arte brasileira reflete a diversidade cultural do pa\xEDs. Ela re\xFAne influ\xEAncias ind\xEDgenas, africanas, europeias e de muitos outros povos, formando uma rica express\xE3o da identidade do Brasil.`,
+    matchedKey: "arte"
+  },
+  {
+    palavras: [
+      "historia da danca no brasil",
+      "historia da dan\xE7a no brasil",
+      "hist\xF3ria da danca no brasil",
+      "hist\xF3ria da dan\xE7a no brasil",
+      "danca no brasil historia",
+      "dan\xE7a no brasil hist\xF3ria",
+      "dan\xE7a no brasil historia",
+      "danca no brasil hist\xF3ria",
+      "historia danca no brasil",
+      "hist\xF3ria danca no brasil",
+      "historia d danca no br",
+      "hist\xF3ria d danca no br",
+      "historia da danca no br",
+      "hist\xF3ria da dan\xE7a no br",
+      "danca no br historia",
+      "dan\xE7a no br hist\xF3ria"
+    ],
+    resposta: `# Hist\xF3ria da Dan\xE7a no Brasil \u{1F1E7}\u{1F1F7}
+
+A dan\xE7a faz parte da cultura brasileira desde antes da chegada dos portugueses. Os povos ind\xEDgenas realizavam dan\xE7as em festas, celebra\xE7\xF5es e rituais para marcar acontecimentos importantes.
+
+## Influ\xEAncia Africana \u{1F941}
+Com a chegada dos povos africanos ao Brasil, muitas dan\xE7as, ritmos e tradi\xE7\xF5es foram incorporados \xE0 cultura brasileira. Essas influ\xEAncias deram origem a manifesta\xE7\xF5es culturais muito importantes.
+
+## Influ\xEAncia Europeia \u{1F3BB}
+Os portugueses trouxeram dan\xE7as populares da Europa, que tamb\xE9m passaram a fazer parte da cultura do pa\xEDs. Com o tempo, as tradi\xE7\xF5es europeias se misturaram \xE0s ind\xEDgenas e africanas.
+
+## Dan\xE7as Tradicionais Brasileiras \u{1F483}
+Ao longo da hist\xF3ria surgiram diversas dan\xE7as t\xEDpicas brasileiras, como o samba, o frevo, o maracatu, a quadrilha e o forr\xF3. Cada regi\xE3o do Brasil desenvolveu suas pr\xF3prias manifesta\xE7\xF5es culturais.
+
+## O Samba \u{1F941}
+O samba \xE9 uma das dan\xE7as mais conhecidas do Brasil. Ele surgiu a partir das tradi\xE7\xF5es africanas e tornou-se um s\xEDmbolo da cultura brasileira, especialmente durante o Carnaval.
+
+## A Dan\xE7a Hoje \u2728
+Atualmente, o Brasil possui uma grande diversidade de estilos de dan\xE7a. Al\xE9m das dan\xE7as tradicionais, muitas pessoas praticam bal\xE9, dan\xE7a contempor\xE2nea, hip-hop e outros estilos.
+
+## Conclus\xE3o \u{1F4AB}
+A dan\xE7a brasileira \xE9 resultado da mistura de diferentes culturas. Ela representa a alegria, a criatividade e a diversidade do povo brasileiro.`,
+    matchedKey: "danca_brasil"
+  },
+  {
+    palavras: [
+      "historia do desenho no brasil",
+      "hist\xF3ria do desenho no brasil",
+      "como surgiu o desenho no brasil",
+      "origem do desenho no brasil",
+      "desenho no brasil historia",
+      "desenho no brasil hist\xF3ria",
+      "historia desenho no brasil",
+      "hist\xF3ria desenho no brasil",
+      "historia d desenho no br",
+      "hist\xF3ria d desenho no br",
+      "historia do desenho no br",
+      "hist\xF3ria do desenho no br",
+      "desenho no br historia",
+      "desenho no br hist\xF3ria"
+    ],
+    resposta: `# Hist\xF3ria do Desenho no Brasil (para crian\xE7as de 10 anos) \u{1F58D}\uFE0F\u{1F1E7}\u{1F1F7}
+
+O desenho faz parte da hist\xF3ria do Brasil h\xE1 muito tempo. Antes mesmo da chegada dos portugueses, os povos ind\xEDgenas j\xE1 faziam desenhos em pedras, cer\xE2micas, cestos e pinturas corporais para contar hist\xF3rias, representar a natureza e registrar costumes.
+
+## Per\xEDodo Colonial (1500-1822) \u{1F4DC}
+Durante a coloniza\xE7\xE3o, muitos desenhos eram usados para registrar paisagens, plantas, animais e a vida das pessoas no Brasil. Viajantes e artistas europeus desenhavam o que viam para mostrar o pa\xEDs na Europa.
+
+## Imp\xE9rio do Brasil (1822-1889) \u{1F3DB}\uFE0F
+Com a chegada da fam\xEDlia real portuguesa e da chamada Miss\xE3o Art\xEDstica Francesa, o ensino do desenho tornou-se mais organizado. Surgiram escolas de arte onde os alunos aprendiam a desenhar pessoas, paisagens e objetos. O desenho era considerado importante para a educa\xE7\xE3o das elites e para a forma\xE7\xE3o art\xEDstica.
+
+## \xC9poca Moderna (S\xE9culo XX) \u{1F3A8}
+O desenho passou a ser ensinado em mais escolas e tamb\xE9m foi utilizado na ind\xFAstria, na arquitetura, na publicidade e nas hist\xF3rias em quadrinhos. Artistas brasileiros criaram estilos pr\xF3prios inspirados na cultura nacional.
+Entre os artistas que valorizaram o desenho est\xE3o Candido Portinari, que fazia muitos estudos desenhados antes de pintar suas obras, e Tarsila do Amaral, importante representante do modernismo brasileiro.
+
+## Atualmente \u{1F4F1}
+Hoje o desenho est\xE1 presente em livros, quadrinhos, anima\xE7\xF5es, jogos digitais, design e arte digital. Muitas crian\xE7as aprendem a desenhar tanto no papel quanto em computadores e tablets.
+
+## Resumindo \u{1F4DD}
+- Os primeiros desenhos no Brasil foram feitos pelos povos ind\xEDgenas.
+- No per\xEDodo colonial, viajantes registravam o pa\xEDs por meio do desenho.
+- No Imp\xE9rio surgiram escolas de arte e o ensino do desenho.
+- No s\xE9culo XX o desenho ganhou espa\xE7o nas escolas, quadrinhos e publicidade.
+- Atualmente o desenho tamb\xE9m \xE9 feito com tecnologias digitais.
+
+## Curiosidade \u{1F4A1}
+O desenho \xE9 uma das formas mais antigas de comunica\xE7\xE3o da humanidade e continua sendo usado para criar arte, contar hist\xF3rias e expressar ideias.`,
+    matchedKey: "desenho_brasil"
   }
 ];
 function resolverMensagemLocalmenteRaw(mensagem, lib) {
   const normalizedMsg = normalizarTexto(mensagem);
   if (!normalizedMsg) return null;
-  const matchedCuriosity = buscarCuriosidadePorKeyword(mensagem);
-  if (matchedCuriosity) {
-    let reply = `\u{1F4A1} **Que curiosidade fant\xE1stica!**
-
-**Pergunta:** ${matchedCuriosity.pergunta}
-
-\u{1F449} **Resposta:** ${matchedCuriosity.resposta}`;
-    if (matchedCuriosity.detalhes) {
-      reply += `
-
-\u{1F913} **Curiosidade extra:** ${matchedCuriosity.detalhes}`;
-    }
-    return {
-      reply
-    };
-  }
   if (normalizedMsg.includes("piada") || normalizedMsg.includes("engracad") || normalizedMsg.includes("charada") || normalizedMsg.includes("brincadeira") || normalizedMsg.includes("risada") || normalizedMsg.includes("humor") || normalizedMsg.includes("rir") || normalizedMsg.includes("sorrir")) {
     const randomJoke = getRandomElement(PIADAS_CANDINHO);
     return {
@@ -8688,6 +9030,22 @@ Incr\xEDvel, n\xE3o \xE9? A arte sempre nos ajuda a ver em novos tons! Se quiser
     return {
       reply: finalReply,
       matchedKey: bestConhecimentoMatch.matchedKey
+    };
+  }
+  const matchedCuriosity = buscarCuriosidadePorKeyword(mensagem);
+  if (matchedCuriosity) {
+    let reply = `\u{1F4A1} **Que curiosidade fant\xE1stica!**
+
+**Pergunta:** ${matchedCuriosity.pergunta}
+
+\u{1F449} **Resposta:** ${matchedCuriosity.resposta}`;
+    if (matchedCuriosity.detalhes) {
+      reply += `
+
+\u{1F913} **Curiosidade extra:** ${matchedCuriosity.detalhes}`;
+    }
+    return {
+      reply
     };
   }
   for (const intent of PORTINARI_INTENTS) {
@@ -9333,6 +9691,16 @@ var ARTISTS_GUARANTEED_IMAGES = {
     imagemUrl: "https://i.imgur.com/Q60zPHo.jpeg",
     titulo: "Arte Africana",
     credito: "Arte Africana"
+  },
+  danca_brasil: {
+    imagemUrl: "https://i.imgur.com/CVHkdCZ.jpeg",
+    titulo: "Dan\xE7a Tradicional no Brasil",
+    credito: "Acervo de Dan\xE7a do Brasil"
+  },
+  desenho_brasil: {
+    imagemUrl: "https://i.imgur.com/KSd4nHC.jpeg",
+    titulo: "Desenho na Hist\xF3ria do Brasil",
+    credito: "Acervo de Desenho do Brasil"
   }
 };
 async function buscarImagem(pergunta, matchedKey, lib) {
@@ -9611,6 +9979,12 @@ async function buscarImagem(pergunta, matchedKey, lib) {
     if (lowerQuery.includes("arte africana") || lowerQuery.includes("cultura africana") || lowerQuery.includes("mascaras africanas") || lowerQuery.includes("m\xE1scaras africanas")) {
       return ARTISTS_GUARANTEED_IMAGES.arte_africana;
     }
+    if (lowerQuery.includes("danca no brasil") || lowerQuery.includes("dan\xE7a no brasil") || lowerQuery.includes("danca brasileira") || lowerQuery.includes("dan\xE7a brasileira") || lowerQuery.includes("danca no br") || lowerQuery.includes("dan\xE7a no br")) {
+      return ARTISTS_GUARANTEED_IMAGES.danca_brasil;
+    }
+    if (lowerQuery.includes("desenho no brasil") || lowerQuery.includes("desenho brasileiro") || lowerQuery.includes("desenho no br")) {
+      return ARTISTS_GUARANTEED_IMAGES.desenho_brasil;
+    }
     const matchConceptWord = (word) => {
       const regex = new RegExp(`\\b${word}\\b`, "i");
       return regex.test(lowerQuery);
@@ -9825,7 +10199,32 @@ async function buscarImagem(pergunta, matchedKey, lib) {
           "por",
           "com",
           "sem",
-          "ou"
+          "ou",
+          "que",
+          "esta",
+          "este",
+          "essa",
+          "esse",
+          "sua",
+          "seu",
+          "suas",
+          "seus",
+          "minha",
+          "meu",
+          "minhas",
+          "meus",
+          "dele",
+          "dela",
+          "deles",
+          "delas",
+          "qual",
+          "quais",
+          "quem",
+          "como",
+          "tudo",
+          "nada",
+          "algo",
+          "coisa"
         ];
         let palavras = pergunta.toLowerCase().replace(/[?!.,]/g, "").split(/\s+/).filter((p) => p.length > 2 && !stopWords.includes(p));
         termo = palavras.join(" ");
