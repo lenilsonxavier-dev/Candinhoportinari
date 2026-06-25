@@ -31,8 +31,8 @@ const getProxiedImageUrl = (url: string) => {
   if (!url) return "";
   if (url.startsWith("/") || url.startsWith("data:")) return url;
   
-  // Imgur e GitHubusercontent funcionam perfeitamente direto no cliente
-  if (url.includes("imgur.com") || url.includes("githubusercontent.com")) {
+  // Imgur, GitHub e Vercel funcionam perfeitamente direto no cliente sem necessidade de proxy
+  if (url.includes("imgur.com") || url.includes("githubusercontent.com") || url.includes("vercel.app")) {
     return url;
   }
   
