@@ -29,12 +29,20 @@ interface Message {
 
 const getProxiedImageUrl = (url: string) => {
   if (!url) return "";
+  
+  // Redireciona URLs do GitHub contendo imagens para a pasta local correspondente
+  if (url.includes("githubusercontent.com/lenilsonxavier-dev/candinho-3")) {
+    if (url.includes("/imagens/")) {
+      const parts = url.split("/imagens/");
+      return `/imagens/${parts[parts.length - 1]}`;
+    }
+  }
+
   if (url.startsWith("/") || url.startsWith("data:")) return url;
   
-  // Imgur e GitHub funcionam perfeitamente direto no cliente sem necessidade de proxy
+  // Imgur funciona perfeitamente direto no cliente sem necessidade de proxy
   if (
-    url.includes("imgur.com") || 
-    url.includes("githubusercontent.com")
+    url.includes("imgur.com")
   ) {
     return url;
   }
