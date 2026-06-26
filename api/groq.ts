@@ -382,7 +382,7 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     credito: "Wikimedia Commons / Fonte Wikipedia"
   },
   caboclinho: {
-    imagemUrl: "https://i.imgur.com/1OEjWd9.jpeg",
+    imagemUrl: "https://i.imgur.com/H36yCWI.jpg",
     titulo: "Dança dos Caboclinhos",
     credito: "Wikimedia Commons"
   },
@@ -482,7 +482,7 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     credito: "Wikimedia Commons"
   },
   arte_indigena: {
-    imagemUrl: "https://i.imgur.com/1OEjWd9.jpeg",
+    imagemUrl: "https://i.imgur.com/1OEjWd9.jpg",
     titulo: "Arte Indígena",
     credito: "Wikimedia Commons"
   },
@@ -492,13 +492,23 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     credito: "Wikimedia Commons"
   },
   danca_brasil: {
-    imagemUrl: "https://i.imgur.com/rjujUdi.jpeg",
+    imagemUrl: "https://i.imgur.com/CVHkdCZ.jpg",
     titulo: "Dança Tradicional no Brasil",
     credito: "Wikimedia Commons"
   },
   desenho_brasil: {
-    imagemUrl: "https://i.imgur.com/4zBo1Q2.jpeg",
+    imagemUrl: "https://i.imgur.com/KSd4nHC.jpg",
     titulo: "Desenho na História do Brasil",
+    credito: "Wikimedia Commons"
+  },
+  teatro: {
+    imagemUrl: "https://i.imgur.com/JHzxAbj.jpg",
+    titulo: "Teatro Municipal de São Paulo",
+    credito: "Teatro Municipal de São Paulo"
+  },
+  teatro_historia: {
+    imagemUrl: "https://i.imgur.com/3di4jIS.jpeg",
+    titulo: "História do Teatro",
     credito: "Wikimedia Commons"
   }
 };
@@ -990,6 +1000,12 @@ async function buscarImagem(pergunta: string, matchedKey?: string, lib?: any) {
     }
     if (lowerQuery.includes("desenho no brasil") || lowerQuery.includes("desenho brasileiro") || lowerQuery.includes("desenho no br")) {
       return ARTISTS_GUARANTEED_IMAGES.desenho_brasil;
+    }
+    if (lowerQuery.includes("teatro") || lowerQuery.includes("palco")) {
+      if (lowerQuery.includes("historia") || lowerQuery.includes("origem") || lowerQuery.includes("antigo") || lowerQuery.includes("passado") || lowerQuery.includes("surgi")) {
+        return ARTISTS_GUARANTEED_IMAGES.teatro_historia;
+      }
+      return ARTISTS_GUARANTEED_IMAGES.teatro;
     }
 
     let termo = "";

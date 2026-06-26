@@ -41,9 +41,14 @@ export const GALERIA_IMAGENS: Record<string, GaleriaItem | GaleriaItem[]> = {
     credito: "Claude Monet"
   },
   teatro: {
-    imagemUrl: "https://i.imgur.com/JHzxAbj.jpeg",
+    imagemUrl: "https://i.imgur.com/JHzxAbj.jpg",
     titulo: "Teatro Municipal de São Paulo",
     credito: "Teatro Municipal de São Paulo"
+  },
+  teatro_historia: {
+    imagemUrl: "https://i.imgur.com/3di4jIS.jpeg",
+    titulo: "História do Teatro",
+    credito: "Wikimedia Commons"
   },
   piada: [
     {
@@ -80,7 +85,7 @@ export const GALERIA_IMAGENS: Record<string, GaleriaItem | GaleriaItem[]> = {
     }
   ],
   caboclinho: {
-    imagemUrl: "https://i.imgur.com/1OEjWd9.jpeg",
+    imagemUrl: "https://i.imgur.com/H36yCWI.jpg",
     titulo: "Dança dos Caboclinhos",
     credito: "Wikimedia Commons"
   },
@@ -180,7 +185,7 @@ export const GALERIA_IMAGENS: Record<string, GaleriaItem | GaleriaItem[]> = {
     credito: "Wikimedia Commons"
   },
   arte_indigena: {
-    imagemUrl: "https://i.imgur.com/1OEjWd9.jpeg",
+    imagemUrl: "https://i.imgur.com/1OEjWd9.jpg",
     titulo: "Arte Indígena",
     credito: "Wikimedia Commons"
   },
@@ -190,12 +195,12 @@ export const GALERIA_IMAGENS: Record<string, GaleriaItem | GaleriaItem[]> = {
     credito: "Wikimedia Commons"
   },
   danca_brasil: {
-    imagemUrl: "https://i.imgur.com/rjujUdi.jpeg",
+    imagemUrl: "https://i.imgur.com/CVHkdCZ.jpg",
     titulo: "Dança Tradicional no Brasil",
     credito: "Wikimedia Commons"
   },
   desenho_brasil: {
-    imagemUrl: "https://i.imgur.com/4zBo1Q2.jpeg",
+    imagemUrl: "https://i.imgur.com/KSd4nHC.jpg",
     titulo: "Desenho na História do Brasil",
     credito: "Wikimedia Commons"
   }
