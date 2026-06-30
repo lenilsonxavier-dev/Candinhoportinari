@@ -139,6 +139,53 @@ Portinari produziu mais de 5 mil obras ao longo da vida. Seu trabalho é reconhe
     ano_falecimento: "Vivos",
     categoria: "Grafite / Street Art"
   },
+  madalena_reinbolt: {
+    palavras_chave: ["madalena", "madalena dos santos reinbolt", "reinbolt", "madalena reinbolt"],
+    inicio: [
+      "🎨 Madalena dos Santos Reinbolt (1919-1977) foi uma fantástica artista brasileira autodidata de imenso talento!"
+    ],
+    explicacao_curta: [
+      "Nascida em Vitória da Conquista, ela cresceu no interior da Bahia em contato com o bordado e a tecelagem. Ficou especialmente conhecida por seus expressivos 'quadros de lã' – tapeçarias coloridas maravilhosas!"
+    ],
+    explicacao_aprofundada: [
+      "Na vida adulta, trabalhou como cozinheira e empregada doméstica em Salvador, Rio de Janeiro e Petrópolis. Mesmo enfrentando rotinas difíceis, continuou criando arte para expressar as lembranças de sua infância, retratando paisagens rurais, animais, festas populares e o cotidiano do povo brasileiro. Suas tapeçarias de lã eram feitas com centenas de fios e agulhas, criando texturas e relevos únicos."
+    ],
+    curiosidade: [
+      "Madalena usava as agulhas de forma tão livre e espontânea que parecia 'pintar' usando fios de lã em vez de tinta!"
+    ],
+    interacao: [
+      "Você já experimentou fazer alguma arte colando linhas, barbantes ou pedacinhos de lã colorida?"
+    ],
+    atividade: [
+      "Que tal fazer um desenho bem alegre de uma cena da natureza usando linhas bem grossas e coloridas, inspirando-se na arte de Madalena? 🧶🎨"
+    ],
+    final: [
+      "Sua obra é hoje celebrada nacional e internacionalmente como um grande tesouro da nossa arte popular! 🇧🇷✨"
+    ],
+    ano_nascimento: "1919",
+    ano_falecimento: "1977",
+    categoria: "Arte Popular / Tapeçaria",
+    resposta_direta: `🎨 **Madalena dos Santos Reinbolt**
+
+Madalena dos Santos Reinbolt (1919-1977) foi uma artista brasileira autodidata, nascida em Vitória da Conquista, na Bahia.
+
+Filha de agricultores, ela cresceu no interior do estado e desde criança teve contato com atividades artesanais tradicionais, como o bordado, a tecelagem e a modelagem em argila. Apesar de não ter tido a oportunidade de frequentar a escola, desenvolveu de forma espontânea um imenso talento para criar formas e cores.
+
+Na vida adulta, trabalhou como empregada doméstica e cozinheira em Salvador, no Rio de Janeiro e em Petrópolis. Enfrentando uma rotina cansativa e cheia de desafios, ela encontrava na arte uma maneira de expressar sua imaginação e sentimentos.
+
+🖼️ **Seus Impressionantes Quadros de Lã**
+Inicialmente, Madalena pintava com tinta a óleo sobre tela, retratando paisagens, animais e festas populares. No entanto, ela se consagrou com os seus famosos **"quadros de lã"**: tapeçarias coloridas e tridimensionais feitas com centenas de linhas e agulhas de tapeçaria. Madalena usava a agulha de forma livre, quase como se estivesse pincelando com fios de lã, criando texturas e relevos incríveis.
+
+🌟 **Temas e Legado**
+Suas obras retratavam principalmente as lembranças da infância rural na Bahia:
+• Festas populares e folguedos tradicionais
+• Paisagens rurais com plantas e animais
+• Cenas do cotidiano do povo brasileiro
+
+Hoje, sua obra é reconhecida internacionalmente e considerada um dos maiores tesouros da arte popular e do expressionismo têxtil no Brasil.
+
+**Resumo**: Madalena dos Santos Reinbolt foi uma pioneira da arte têxtil brasileira, conhecida por criar dinâmicos e expressivos "quadros de lã" que retratavam a cultura popular e a vida no campo com cores vibrantes e texturas únicas. 🇧🇷🧶`
+  },
   romero_britto: {
     palavras_chave: ["romero britto", "romero brito", "britto"],
     inicio: [

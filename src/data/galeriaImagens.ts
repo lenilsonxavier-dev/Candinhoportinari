@@ -203,5 +203,10 @@ export const GALERIA_IMAGENS: Record<string, GaleriaItem | GaleriaItem[]> = {
     imagemUrl: "https://i.imgur.com/KSd4nHC.jpg",
     titulo: "Desenho na História do Brasil",
     credito: "Wikimedia Commons"
+  },
+  madalena_reinbolt: {
+    imagemUrl: "https://i.imgur.com/aCJ087A.jpeg",
+    titulo: "Madalena dos Santos Reinbolt",
+    credito: "Madalena dos Santos Reinbolt"
   }
 };

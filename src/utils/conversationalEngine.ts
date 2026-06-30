@@ -1228,6 +1228,11 @@ const CONHECIMENTO_CANDINHO: ConhecimentoItem[] = [
     resposta: 'Rosana Paulino (nascida em 1967, em São Paulo) é artista visual, curadora e educadora. 🧵 Ela usa tecidos, costuras, linhas e fotos antigas para falar sobre memória, identidade e o respeito à mulher negra. O que ela ensina: a costurar nossas memórias com amor e reflexão.',
     matchedKey: 'rosana_paulino'
   },
+  {
+    palavras: ['madalena dos santos reinbolt', 'madalena reinbolt', 'madalena', 'reinbolt', 'quem foi madalena dos santos reinbolt', 'quem e madalena dos santos reinbolt'],
+    resposta: 'Madalena dos Santos Reinbolt (1919–1977) foi uma fantástica pintora e artista têxtil brasileira. 🧶 Ela usava linhas coloridas e agulhas para criar impressionantes "quadros de lã" que mostravam festas populares, o cotidiano e a vida no campo. O que ela ensina: a expressar nossas memórias e histórias através de linhas e cores vibrantes.',
+    matchedKey: 'madalena_reinbolt'
+  },
   { 
     palavras: ['eduardo kobra', 'kobra', 'quem e eduardo kobra'], 
     resposta: 'Eduardo Kobra (nascido em 1975, em São Paulo) é um dos maiores muralistas do mundo! 🌈 Ele pinta prédios inteiros com desenhos geométricos super coloridos que trazem mensagens de paz, tolerância e muito amor. O que ele ensina: colorir o mundo com mensagens de paz.',

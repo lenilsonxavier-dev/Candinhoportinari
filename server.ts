@@ -321,6 +321,11 @@ const ARTISTS_GUARANTEED_IMAGES: Record<string, { imagemUrl: string; titulo: str
     titulo: "Obra de Silvana Mendes",
     credito: "Silvana Mendes"
   },
+  madalena_reinbolt: {
+    imagemUrl: "https://i.imgur.com/aCJ087A.jpeg",
+    titulo: "Madalena dos Santos Reinbolt",
+    credito: "Madalena dos Santos Reinbolt"
+  },
   arjan_martins: {
     imagemUrl: "https://i.imgur.com/qQnFyUc.jpeg",
     titulo: "Obra de Arjan Martins",
@@ -748,6 +753,9 @@ async function buscarImagem(pergunta: string, matchedKey?: string, lib?: any) {
     }
     if (lowerQuery.includes("silvana mendes") || lowerQuery.includes("silvia mendes")) {
       return ARTISTS_GUARANTEED_IMAGES.silvana_mendes;
+    }
+    if (lowerQuery.includes("madalena") || lowerQuery.includes("reinbolt") || lowerQuery.includes("santos reinbolt")) {
+      return ARTISTS_GUARANTEED_IMAGES.madalena_reinbolt;
     }
     if (lowerQuery.includes("arjan martins") || lowerQuery.includes("arjan")) {
       return ARTISTS_GUARANTEED_IMAGES.arjan_martins;
