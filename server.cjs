@@ -161,6 +161,53 @@ Portinari produziu mais de 5 mil obras ao longo da vida. Seu trabalho \xE9 recon
     ano_falecimento: "Vivos",
     categoria: "Grafite / Street Art"
   },
+  madalena_reinbolt: {
+    palavras_chave: ["madalena", "madalena dos santos reinbolt", "reinbolt", "madalena reinbolt"],
+    inicio: [
+      "\u{1F3A8} Madalena dos Santos Reinbolt (1919-1977) foi uma fant\xE1stica artista brasileira autodidata de imenso talento!"
+    ],
+    explicacao_curta: [
+      "Nascida em Vit\xF3ria da Conquista, ela cresceu no interior da Bahia em contato com o bordado e a tecelagem. Ficou especialmente conhecida por seus expressivos 'quadros de l\xE3' \u2013 tape\xE7arias coloridas maravilhosas!"
+    ],
+    explicacao_aprofundada: [
+      "Na vida adulta, trabalhou como cozinheira e empregada dom\xE9stica em Salvador, Rio de Janeiro e Petr\xF3polis. Mesmo enfrentando rotinas dif\xEDceis, continuou criando arte para expressar as lembran\xE7as de sua inf\xE2ncia, retratando paisagens rurais, animais, festas populares e o cotidiano do povo brasileiro. Suas tape\xE7arias de l\xE3 eram feitas com centenas de fios e agulhas, criando texturas e relevos \xFAnicos."
+    ],
+    curiosidade: [
+      "Madalena usava as agulhas de forma t\xE3o livre e espont\xE2nea que parecia 'pintar' usando fios de l\xE3 em vez de tinta!"
+    ],
+    interacao: [
+      "Voc\xEA j\xE1 experimentou fazer alguma arte colando linhas, barbantes ou pedacinhos de l\xE3 colorida?"
+    ],
+    atividade: [
+      "Que tal fazer um desenho bem alegre de uma cena da natureza usando linhas bem grossas e coloridas, inspirando-se na arte de Madalena? \u{1F9F6}\u{1F3A8}"
+    ],
+    final: [
+      "Sua obra \xE9 hoje celebrada nacional e internacionalmente como um grande tesouro da nossa arte popular! \u{1F1E7}\u{1F1F7}\u2728"
+    ],
+    ano_nascimento: "1919",
+    ano_falecimento: "1977",
+    categoria: "Arte Popular / Tape\xE7aria",
+    resposta_direta: `\u{1F3A8} **Madalena dos Santos Reinbolt**
+
+Madalena dos Santos Reinbolt (1919-1977) foi uma artista brasileira autodidata, nascida em Vit\xF3ria da Conquista, na Bahia.
+
+Filha de agricultores, ela cresceu no interior do estado e desde crian\xE7a teve contato com atividades artesanais tradicionais, como o bordado, a tecelagem e a modelagem em argila. Apesar de n\xE3o ter tido a oportunidade de frequentar a escola, desenvolveu de forma espont\xE2nea um imenso talento para criar formas e cores.
+
+Na vida adulta, trabalhou como empregada dom\xE9stica e cozinheira em Salvador, no Rio de Janeiro e em Petr\xF3polis. Enfrentando uma rotina cansativa e cheia de desafios, ela encontrava na arte uma maneira de expressar sua imagina\xE7\xE3o e sentimentos.
+
+\u{1F5BC}\uFE0F **Seus Impressionantes Quadros de L\xE3**
+Inicialmente, Madalena pintava com tinta a \xF3leo sobre tela, retratando paisagens, animais e festas populares. No entanto, ela se consagrou com os seus famosos **"quadros de l\xE3"**: tape\xE7arias coloridas e tridimensionais feitas com centenas de linhas e agulhas de tape\xE7aria. Madalena usava a agulha de forma livre, quase como se estivesse pincelando com fios de l\xE3, criando texturas e relevos incr\xEDveis.
+
+\u{1F31F} **Temas e Legado**
+Suas obras retratavam principalmente as lembran\xE7as da inf\xE2ncia rural na Bahia:
+\u2022 Festas populares e folguedos tradicionais
+\u2022 Paisagens rurais com plantas e animais
+\u2022 Cenas do cotidiano do povo brasileiro
+
+Hoje, sua obra \xE9 reconhecida internacionalmente e considerada um dos maiores tesouros da arte popular e do expressionismo t\xEAxtil no Brasil.
+
+**Resumo**: Madalena dos Santos Reinbolt foi uma pioneira da arte t\xEAxtil brasileira, conhecida por criar din\xE2micos e expressivos "quadros de l\xE3" que retratavam a cultura popular e a vida no campo com cores vibrantes e texturas \xFAnicas. \u{1F1E7}\u{1F1F7}\u{1F9F6}`
+  },
   romero_britto: {
     palavras_chave: ["romero britto", "romero brito", "britto"],
     inicio: [
@@ -7647,6 +7694,11 @@ var GALERIA_IMAGENS = {
     imagemUrl: "https://i.imgur.com/KSd4nHC.jpg",
     titulo: "Desenho na Hist\xF3ria do Brasil",
     credito: "Wikimedia Commons"
+  },
+  madalena_reinbolt: {
+    imagemUrl: "https://i.imgur.com/aCJ087A.jpeg",
+    titulo: "Madalena dos Santos Reinbolt",
+    credito: "Madalena dos Santos Reinbolt"
   }
 };
 
@@ -8726,6 +8778,11 @@ var CONHECIMENTO_CANDINHO = [
     matchedKey: "rosana_paulino"
   },
   {
+    palavras: ["madalena dos santos reinbolt", "madalena reinbolt", "madalena", "reinbolt", "quem foi madalena dos santos reinbolt", "quem e madalena dos santos reinbolt"],
+    resposta: 'Madalena dos Santos Reinbolt (1919\u20131977) foi uma fant\xE1stica pintora e artista t\xEAxtil brasileira. \u{1F9F6} Ela usava linhas coloridas e agulhas para criar impressionantes "quadros de l\xE3" que mostravam festas populares, o cotidiano e a vida no campo. O que ela ensina: a expressar nossas mem\xF3rias e hist\xF3rias atrav\xE9s de linhas e cores vibrantes.',
+    matchedKey: "madalena_reinbolt"
+  },
+  {
     palavras: ["eduardo kobra", "kobra", "quem e eduardo kobra"],
     resposta: "Eduardo Kobra (nascido em 1975, em S\xE3o Paulo) \xE9 um dos maiores muralistas do mundo! \u{1F308} Ele pinta pr\xE9dios inteiros com desenhos geom\xE9tricos super coloridos que trazem mensagens de paz, toler\xE2ncia e muito amor. O que ele ensina: colorir o mundo com mensagens de paz.",
     matchedKey: "eduardo_kobra"
@@ -9445,6 +9502,11 @@ var ARTISTS_GUARANTEED_IMAGES = {
     titulo: "Obra de Silvana Mendes",
     credito: "Silvana Mendes"
   },
+  madalena_reinbolt: {
+    imagemUrl: "https://i.imgur.com/aCJ087A.jpeg",
+    titulo: "Madalena dos Santos Reinbolt",
+    credito: "Madalena dos Santos Reinbolt"
+  },
   arjan_martins: {
     imagemUrl: "https://i.imgur.com/qQnFyUc.jpeg",
     titulo: "Obra de Arjan Martins",
@@ -9865,6 +9927,9 @@ async function buscarImagem(pergunta, matchedKey, lib) {
     }
     if (lowerQuery.includes("silvana mendes") || lowerQuery.includes("silvia mendes")) {
       return ARTISTS_GUARANTEED_IMAGES.silvana_mendes;
+    }
+    if (lowerQuery.includes("madalena") || lowerQuery.includes("reinbolt") || lowerQuery.includes("santos reinbolt")) {
+      return ARTISTS_GUARANTEED_IMAGES.madalena_reinbolt;
     }
     if (lowerQuery.includes("arjan martins") || lowerQuery.includes("arjan")) {
       return ARTISTS_GUARANTEED_IMAGES.arjan_martins;
